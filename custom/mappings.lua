@@ -20,7 +20,12 @@ M.general = {
 
     -- NvChad specific
     ["<C-h>"] = { "<cmd> NvimTreeOpen <CR> <C-w>h" },
-    ["<C-S-i>"] = { function() vim.lsp.buf.format { async = true } end, "Formatting generalization (from vscode)" },
+    ["<C-S-i>"] = {
+      function()
+        vim.lsp.buf.format { async = true }
+      end,
+      "Formatting generalization (from vscode)",
+    },
   },
 
   i = {
@@ -45,6 +50,8 @@ M.general = {
 
     ["<C-j>"] = { "<ESC><cmd> bp <CR>", "modern change tab left" },
     ["<C-k>"] = { "<ESC><cmd> bn <CR>", "modern change tab right" },
+
+    ["<C-BS>"] = { "<C-w>" },
   },
 
   v = {

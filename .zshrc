@@ -39,6 +39,7 @@ alias cnvp='~/.config/nvim/ && nvim lua/custom/plugins.lua'
 alias cnvl='~/.config/nvim/ && nvim lua/custom/configs/lspconfig.lua'
 alias cnvk='~/.config/kitty/ && nvim kitty.conf'
 alias cnvd='~/codes/text/diary/ && nvim'
+alias cnvrc='~/repos/config/ && nvim'
 
 alias nvz='nvim ~/.zshrc'
 alias nvi='nvim ~/.ideavimrc'
