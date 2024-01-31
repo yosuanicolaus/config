@@ -2,22 +2,29 @@
 local M = {}
 
 M.general = {
-  -- x = {
-  -- somehow it already works here?
-  --   ["<leader>p"] = { '"_dP' },
-  -- },
-
   n = {
     ["<C-a>"] = { "GVgg", "select all" },
     ["<C-f>"] = { "<cmd> Telescope live_grep <CR>", "open search in all files" },
+
+    ["<C-d>"] = { "<C-d>zz" },
+    ["<C-u>"] = { "<C-u>zz" },
+    ["<"] = { "<<" },
+    [">"] = { ">>" },
+    ["zh"] = { "20zh" },
+    ["zl"] = { "20zl" },
 
     ["J"] = { "mzJ`z" },
     ["n"] = { "nzzzv" },
     ["N"] = { "Nzzzv" },
     ["<leader>s"] = { ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>" },
+
+    -- NvChad specific
+    ["<C-h>"] = { "<cmd> NvimTreeOpen <CR> <C-w>h" },
+    ["<C-S-i>"] = { function() vim.lsp.buf.format { async = true } end, "Formatting generalization (from vscode)" },
   },
 
   i = {
+    ["<C-a>"] = { "<ESC> GVgg", "select all" },
     ["<C-s>"] = { "<ESC> :w <CR>" },
     ["jk"] = { "<ESC>", "escape insert mode", opts = { nowait = true } },
     ["<C-v>"] = { "<C-r>+", "paste" },
@@ -29,8 +36,9 @@ M.general = {
     ["<A-l>"] = { "<Right>", "move right" },
     ["<A-j>"] = { "<Down>", "move down" },
     ["<A-k>"] = { "<Up>", "move up" },
-    ["<A-C-h>"] = { "<C-Left>", "move left" },
-    ["<A-C-l>"] = { "<C-Right>", "move right" },
+    -- we don't do this anymore :)
+    -- ["<A-C-h>"] = { "<C-Left>", "move left" },
+    -- ["<A-C-l>"] = { "<C-Right>", "move right" },
 
     ["<C-h>"] = { "<Home>", "go to beginning of line" },
     ["<C-l>"] = { "<End>", "go to end of line" },
@@ -40,11 +48,13 @@ M.general = {
   },
 
   v = {
+    ["<C-a>"] = { "<ESC> GVgg", "select all" },
     ["<C-f>"] = { "y <cmd> Telescope live_grep <CR><C-r>+", "search in all files the current selection" },
     ["/"] = { "y /<C-r>+<CR>zz" },
+    ["?"] = { "y ?<C-r>+<CR>zz" },
 
-    ["<A-j>"] = { ":m '>+1<CR>gv=gv", "move selection line down" },
-    ["<A-k>"] = { ":m '<-2<CR>gv=gv", "move selection line up" },
+    ["<A-j>"] = { ":m '>+2<CR>gv=gv", "move selection line down" },
+    ["<A-k>"] = { ":m '<-1<CR>gv=gv", "move selection line up" },
 
     ["J"] = { "mzJ`z" },
     ["<C-d>"] = { "<C-d>zz" },
@@ -61,19 +71,19 @@ M.tabufline = {
   n = {
     ["<C-k>"] = {
       function()
-        require("nvchad_ui.tabufline").tabuflineNext()
+        require("nvchad.tabufline").tabuflineNext()
       end,
       "goto next buffer",
     },
     ["<C-j>"] = {
       function()
-        require("nvchad_ui.tabufline").tabuflinePrev()
+        require("nvchad.tabufline").tabuflinePrev()
       end,
       "goto prev buffer",
     },
     ["<C-w>"] = {
       function()
-        require("nvchad_ui.tabufline").close_buffer()
+        require("nvchad.tabufline").close_buffer()
       end,
       "close buffer",
     },
@@ -81,12 +91,8 @@ M.tabufline = {
 }
 
 M.comment = {
-  n = {
-    ["<C-/>"] = { "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>", "toggle comment" },
-  },
-  i = {
-    ["<C-/>"] = { "<ESC><cmd>lua require('Comment.api').toggle.linewise.current()<CR> A", "toggle comment" },
-  },
+  n = { ["<C-/>"] = { "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>", "toggle comment" } },
+  i = { ["<C-/>"] = { "<ESC><cmd>lua require('Comment.api').toggle.linewise.current()<CR> A", "toggle comment" } },
   v = {
     ["<C-/>"] = { "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", "toggle comment" },
   },

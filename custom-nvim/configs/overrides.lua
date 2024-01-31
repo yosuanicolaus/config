@@ -3,7 +3,7 @@ local M = {}
 M.treesitter = {
   ensure_installed = {
     "vim",
-    "lua",
+    -- "lua",
     "html",
     "css",
     "javascript",
@@ -46,6 +46,8 @@ M.mason = {
     "pyright",
     -- 2023-08-05
     "gdtoolkit",
+    -- 2023-11-15 .zshrc formatter
+    "beautysh",
   },
 }
 

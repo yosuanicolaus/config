@@ -10,7 +10,7 @@ local plugins = {
     dependencies = {
       -- format & linting
       {
-        "jose-elias-alvarez/null-ls.nvim",
+        "nvimtools/none-ls.nvim",
         config = function()
           require "custom.configs.null-ls"
         end,
@@ -35,6 +35,7 @@ local plugins = {
 
   {
     "nvim-tree/nvim-tree.lua",
+    cmd = { "NvimTreeToggle", "NvimTreeFocus", "NvimTreeOpen" },
     opts = overrides.nvimtree,
   },
 
@@ -58,10 +59,19 @@ local plugins = {
       }
     end,
   },
+
   {
     "mg979/vim-visual-multi",
-    version = "master",
+    -- version = "master",
     event = "VeryLazy",
+  },
+
+  -- 2023-11-13 markdown preview in browser
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function() vim.fn["mkdp#util#install"]() end,
   },
 
   -- To make a plugin not be loaded
