@@ -1,17 +1,25 @@
 List of all commands used in Startup Applications
 
-CapsLock as Escape on short press
+- CapsLock as Escape on short press
 
+```
 xcape -e 'Control_L=Escape'
+```
 
+- kitty
+
+```
 kitty
+```
 
-kitty
+- Microsoft Edge
 
-Microsoft Edge
-
+```
 /usr/bin/microsoft-edge-stable %U
+```
 
-xbindkeys
+- xbindkeys
 
+```
 xbindkeys_autostart
+```
