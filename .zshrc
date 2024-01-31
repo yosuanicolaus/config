@@ -16,6 +16,7 @@ alias t=touch
 alias sz='source ~/.zshrc'
 alias code=code-insiders
 alias py='python3'
+alias python='python3'
 alias kittyupdate='curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin'
 
 alias diary='export DIARY_FILE="$(date +'%y%m%d').md" && cd ~/codes/text/diary/ && touch $DIARY_FILE && nvim $DIARY_FILE'
@@ -35,11 +36,11 @@ alias ccn=~/.config/nvim/
 alias cnvz='~ && nvim .zshrc'
 alias cnvi='~ && nvim ~/.ideavimrc'
 alias cnvc='~/.config/nvim/ && nvim lua/custom/mappings.lua'
-alias cnvp='~/.config/nvim/ && nvim lua/custom/plugins.lua'
 alias cnvl='~/.config/nvim/ && nvim lua/custom/configs/lspconfig.lua'
 alias cnvk='~/.config/kitty/ && nvim kitty.conf'
 alias cnvd='~/codes/text/diary/ && nvim'
 alias cnvrc='~/repos/config/ && nvim'
+alias cnvp='~/codes/python/ && nvim'
 
 alias nvz='nvim ~/.zshrc'
 alias nvi='nvim ~/.ideavimrc'

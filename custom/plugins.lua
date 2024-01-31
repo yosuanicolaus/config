@@ -62,8 +62,7 @@ local plugins = {
 
   {
     "mg979/vim-visual-multi",
-    -- version = "master",
-    event = "VeryLazy",
+    lazy = false,
   },
 
   -- 2023-11-13 markdown preview in browser
@@ -71,7 +70,22 @@ local plugins = {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     ft = { "markdown" },
-    build = function() vim.fn["mkdp#util#install"]() end,
+    build = function()
+      vim.fn["mkdp#util#install"]()
+    end,
+  },
+
+  -- 2024-01-31 competitive programming problem parser
+  {
+    "xeluxee/competitest.nvim",
+    dependencies = "MunifTanjim/nui.nvim",
+    keys = {
+      { "<leader>cprp", "<cmd> CompetiTest receive problem <CR>" },
+      { "<leader>cprt", "<cmd> CompetiTest receive testcases <CR>" },
+    },
+    config = function()
+      require("competitest").setup {}
+    end,
   },
 
   -- To make a plugin not be loaded
