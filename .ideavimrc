@@ -11,11 +11,12 @@
 
 " Basic setup
 
+map <space> <nop>
+let mapleader="\<space>"
+
 set relativenumber
 set number
 set clipboard^=unnamed,unnamedplus
-map <Space> <Leader>
-
 set hlsearch
 set ignorecase smartcase
 set idearefactormode=keep
@@ -88,6 +89,10 @@ nnoremap > >>
 nnoremap < <<
 nnoremap zh 40zh
 nnoremap zl 40zl
+
+" update compilation.nvimrc 2024-02-05
+nnoremap H ^
+nnoremap L $
 
 " -------------------------
 

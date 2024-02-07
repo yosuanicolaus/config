@@ -19,15 +19,16 @@ alias py='python3'
 alias python='python3'
 alias kittyupdate='curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin'
 
-alias diary='export DIARY_FILE="$(date +'%y%m%d').md" && cd ~/codes/text/diary/ && touch $DIARY_FILE && nvim $DIARY_FILE'
-alias cdiary='~/codes/text/diary/'
-alias ndiary='~/codes/text/diary/ && nvim'
-alias pdiary='~/codes/text/diary/ && git add . && git commit -m "diary update" && git push'
+alias diary='export DIARY_FILE="$(date +'%y%m%d').md" && cd ~/codes/obsidian/ && touch diary/$DIARY_FILE && nvim diary/$DIARY_FILE'
+alias cdiary='~/codes/obsidian/diary/'
+# alias ndiary='~/codes/obsidian/ && nvim'
+# alias pdiary='~/codes/obsidian/diary/ && git add . && git commit -m "diary update" && git push'
+alias cnvo='~/codes/obsidian/ && nvim'
 
 alias setclip="xclip -selection c"
 alias getclip="xclip -selection c -o"
 
-alias ct=~/codes/text/
+alias ct=~/codes/obsidian/
 alias cg=~/codes/godot/
 alias cdd=~/Downloads/
 alias cda=~/app/
@@ -38,7 +39,7 @@ alias cnvi='~ && nvim ~/.ideavimrc'
 alias cnvc='~/.config/nvim/ && nvim lua/custom/mappings.lua'
 alias cnvl='~/.config/nvim/ && nvim lua/custom/configs/lspconfig.lua'
 alias cnvk='~/.config/kitty/ && nvim kitty.conf'
-alias cnvd='~/codes/text/diary/ && nvim'
+alias cnvd='~/codes/obsidian/diary/ && nvim'
 alias cnvrc='~/repos/config/ && nvim'
 alias cnvp='~/codes/python/ && nvim'
 
