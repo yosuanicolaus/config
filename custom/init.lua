@@ -11,7 +11,8 @@ vim.o.linebreak = true
 
 -- 2024-02-04 for obsidian.nvim
 if vim.fn.getcwd() == '/home/yosuanicolaus/codes/obsidian' then
-  vim.opt_local.conceallevel = 1
+  -- vim.opt_local.conceallevel = 1
+  vim.o.conceallevel = 1
   vim.o.textwidth = 80
   vim.o.wrap = true
 end

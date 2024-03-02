@@ -5,14 +5,15 @@
 " download and set VSCode shortcut plugin in Keymap setting
 " search [Ctrl+Enter], remove python console open (enables <C-CR>)
 " [Ctrl+D] Add Selection for Next Occurence <Ctrl+N>
-" Select Opened Files <C-S-o>
-" Tool Windows > Project <C-h>
+" Select Opened File <C-S-o>
+" [C-S-e] Tool Windows > Project <C-h>
 " FocusEditor <C-l>
 
 " Basic setup
 
-map <space> <nop>
-let mapleader="\<space>"
+" map <space> <nop>
+" let mapleader="\<space>"
+let mapleader = " "
 
 set relativenumber
 set number
@@ -68,10 +69,12 @@ map <C-S-Tab> <Action>(PreviousTab)
 map <C-Tab> <Action>(NextTab)
 map <C-S-n> <Action>(NewFile)
 map <C-S-p> <Action>(GotoFile)
+map <C-f> <ESC><C-S-f>
 
-nnoremap <C-S-.> :e ~/.ideavimrc<CR>
-nnoremap <leader>r :action IdeaVim.ReloadVimRc.reload<CR>
-nnoremap <leader>f :action AceAction<CR>
+map <C-S-.> :e ~/.ideavimrc<CR>
+map <leader>r <Action>(IdeaVim.ReloadVimRc.reload)
+map <leader>f <Action>(AceAction)
+map <C-S-k> <Action>(ShowErrorDescription)
 
 " -------------------------------------------------------------------------
 " -------------------------------------------------------------------------
@@ -79,6 +82,8 @@ nnoremap <leader>f :action AceAction<CR>
 
 " Normal mode
 
+nnoremap H ^
+nnoremap L $
 nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
 nnoremap J mzJ`z
@@ -89,10 +94,6 @@ nnoremap > >>
 nnoremap < <<
 nnoremap zh 40zh
 nnoremap zl 40zl
-
-" update compilation.nvimrc 2024-02-05
-nnoremap H ^
-nnoremap L $
 
 " -------------------------
 
@@ -113,8 +114,12 @@ inoremap <C-l> <ESC>A
 
 " Visual mode
 
+vnoremap H ^
+vnoremap L $
 vnoremap / y /<C-r>+<CR>zz
 vnoremap ? y ?<C-r>+<CR>zz
+vnoremap n y /<C-r>+<CR>zz
+vnoremap N y ?<C-r>+<CR>zz
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 vnoremap J mzJ`z
@@ -122,6 +127,7 @@ vnoremap <C-d> <C-d>zz
 vnoremap <C-u> <C-u>zz
 vnoremap < <gv
 vnoremap > >gv
+
 
 " -------------------------
 
@@ -131,6 +137,10 @@ map <C-a> <ESC>GVgg
 map <C-s> <ESC> :w<CR>
 cnoremap <C-v> <C-r>+
 xnoremap p p:let @+=@0<CR>:let @"=@0<CR>
+
+" 240222
+map zO zR
+map zC zM
 
 " unused anymore
 " nnoremap <C-s> <ESC>:w<CR>

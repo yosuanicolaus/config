@@ -23,16 +23,17 @@ alias diary='export DIARY_FILE="$(date +'%y%m%d').md" && cd ~/codes/obsidian/ &&
 alias cdiary='~/codes/obsidian/diary/'
 # alias ndiary='~/codes/obsidian/ && nvim'
 # alias pdiary='~/codes/obsidian/diary/ && git add . && git commit -m "diary update" && git push'
-alias cnvo='~/codes/obsidian/ && nvim'
+alias cnvo='~/codes/obsidian/ && nvim README.md'
+alias obsync='~/codes/obsidian/ && git add . && git commit -m "obsidian update" && git push'
 
 alias setclip="xclip -selection c"
 alias getclip="xclip -selection c -o"
 
-alias ct=~/codes/obsidian/
-alias cg=~/codes/godot/
-alias cdd=~/Downloads/
-alias cda=~/app/
-alias ccn=~/.config/nvim/
+alias ct='cd ~/codes/obsidian/'
+alias cg='cd ~/codes/godot/'
+alias cdd='cd ~/Downloads/'
+alias cda='cd ~/app/'
+alias ccn='cd ~/.config/nvim/'
 
 alias cnvz='~ && nvim .zshrc'
 alias cnvi='~ && nvim ~/.ideavimrc'
@@ -42,6 +43,7 @@ alias cnvk='~/.config/kitty/ && nvim kitty.conf'
 alias cnvd='~/codes/obsidian/diary/ && nvim'
 alias cnvrc='~/repos/config/ && nvim'
 alias cnvp='~/codes/python/ && nvim'
+alias cnve='~/.config/espanso/ && nvim match/base.yml'
 
 alias nvz='nvim ~/.zshrc'
 alias nvi='nvim ~/.ideavimrc'
@@ -131,6 +133,7 @@ addons="--addons-path=$ODOO_ROOT/odoo/addons,$ODOO_ROOT/enterprise"
 dev='--dev=xml,reload'
 
 alias obin='db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin --dev=xml,reload -d $db $l1 $l2 $l3 $l4 $addons $dev'
+alias ofin='$ODOO_ROOT/odoofin/odoofin'
 alias oshell='db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin shell --shell-interface=ipython -d $db $addons'
 alias obincom='$ODOO_ROOT/odoo/odoo-bin -d $(obranchcom) --addons-path=$ODOO_ROOT/odoo/addons'
 alias obackup='odup $("obranch") $("obranch")-dup'
@@ -147,6 +150,7 @@ alias cwe=~/work/enterprise/
 alias cwu=~/work/upgrade/
 alias cwd=~/work/documentation/
 alias cwn=~/work/notes/
+alias cwf=~/work/odoofin/
 
 alias nvn='db=$(obranch); [[ $db != 1  ]] && touch "~/work/notes/$db.md" && nvim "~/work/notes/$db.md" '
 alias cnvn='db=$(obranch); [[ $db != 1  ]] && ~/work/notes/ && touch "$db.md" && nvim "$db.md" '
@@ -165,7 +169,10 @@ ogit() {
     cd "$current_dir" || return 1
 }
 
-ogfap() { ogit fetch --all --prune }
+# 240215
+# ogfap() { ogit fetch --all --prune }
+# --jobs=10 parameter not needed...? (240226)
+ogfa() { ogit fetch --all --prune }
 ogco() { ogit checkout "$1" }
 ogb() { ogit branch "$1" }
 ogrb() { [ -z "$1" ] && ogit rebase || ogit rebase "$1"; }
@@ -192,9 +199,6 @@ export PYTHONPATH=${PYTHONPATH}:${HOME}/work/odoo/
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# 230806 autocomplete with Tab
-bindkey '^I' autosuggest-accept
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -208,3 +212,12 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 # rust - 2023-11-12
 . "$HOME/.cargo/env"
+
+# zoxide and fzf - 240215
+eval "$(zoxide init --cmd cd zsh)"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# 230806 autocomplete with Tab, update 240215
+bindkey '^I' autosuggest-accept
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"

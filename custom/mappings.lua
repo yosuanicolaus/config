@@ -5,17 +5,22 @@ M.general = {
   n = {
     ["H"] = { "^" },
     ["L"] = { "$" },
+    ["<A-h>"] = { "<C-w>h" },
+    ["<A-j>"] = { "<C-w>j" },
+    ["<A-k>"] = { "<C-w>k" },
+    ["<A-l>"] = { "<C-w>l" },
     ["<C-a>"] = { "GVgg" },
     ["<C-d>"] = { "<C-d>zz" },
     ["<C-u>"] = { "<C-u>zz" },
-    ["<"] = { "<<", opts = { nowait = true } },
-    [">"] = { ">>", opts = { nowait = true } },
     ["zh"] = { "20zh" },
     ["zl"] = { "20zl" },
     ["n"] = { "nzzzv" },
     ["N"] = { "Nzzzv" },
     ["J"] = { "mzJ`z" },
+    ["<"] = { "<<", opts = { nowait = true } },
+    [">"] = { ">>", opts = { nowait = true } },
     ["<leader>s"] = { ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>" },
+    ["<leader>qa"] = { "<cmd>%bd|e#<CR>", "close all buffers except current" },
   },
 
   i = {
@@ -34,7 +39,9 @@ M.general = {
   },
 
   v = {
-    ["<C-a>"] = { "<ESC> GVgg", "select all" },
+    ["<C-h>"] = { "<Home>" },
+    ["<C-l>"] = { "<End>" },
+    ["<C-a>"] = { "<ESC> GVgg" },
     ["<C-d>"] = { "<C-d>zz" },
     ["<C-u>"] = { "<C-u>zz" },
     ["<A-j>"] = { ":m '>+1<CR>gv=gv", "move selection line down" },
@@ -55,8 +62,10 @@ M.plugins = {
     ["<C-b>"] = { "<cmd> NvimTreeToggle <CR>" },
     ["<C-k>"] = { "<cmd>lua require('nvchad.tabufline').tabuflineNext()<CR>" },
     ["<C-j>"] = { "<cmd>lua require('nvchad.tabufline').tabuflinePrev()<CR>" },
-    ["<C-w>"] = { "<cmd>lua require('nvchad.tabufline').close_buffer()<CR>" },
+    ["<C-q>"] = { "<cmd>lua require('nvchad.tabufline').close_buffer()<CR>" },
     ["<C-/>"] = { "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>" },
+    ["<C-`>"] = { "<cmd>lua require('nvterm.terminal').toggle 'float'<CR>" },
+    ["<leader>oc"] = { "<cmd>lua require('obsidian').util.toggle_checkbox()<CR>" },
   },
   i = {
     ["<C-/>"] = { "<ESC><cmd>lua require('Comment.api').toggle.linewise.current()<CR> A" },
@@ -66,6 +75,9 @@ M.plugins = {
   v = {
     ["<C-f>"] = { "y <cmd> Telescope live_grep <CR><C-r>+", "search current selection in all files" },
     ["<C-/>"] = { "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>" },
+  },
+  t = {
+    ["<C-`>"] = { "<cmd>lua require('nvterm.terminal').toggle 'float'<CR>" },
   },
 }
 
