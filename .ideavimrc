@@ -3,11 +3,11 @@
 
 " Manual configuration
 " download and set VSCode shortcut plugin in Keymap setting
-" search [Ctrl+Enter], remove python console open (enables <C-CR>)
-" [Ctrl+D] Add Selection for Next Occurence <Ctrl+N>
-" Select Opened File <C-S-o>
-" [C-S-e] Tool Windows > Project <C-h>
-" FocusEditor <C-l>
+" Searh <C-d>, Add Selection for Next Occurrence <Ctrl+N>
+" Searh <C-S-e>, Tool Windows > Project <C-h>
+" Editor Actions > Focus Editor <C-l>
+" Other > Select Opened File && Select File in Project View <C-S-o>
+" Search 'Reformat code' <C-S-i>
 
 " Basic setup
 
@@ -134,7 +134,7 @@ vnoremap > >gv
 " All / Others
 
 map <C-a> <ESC>GVgg
-map <C-s> <ESC> :w<CR>
+map <C-s> <ESC>:w<CR>
 cnoremap <C-v> <C-r>+
 xnoremap p p:let @+=@0<CR>:let @"=@0<CR>
 

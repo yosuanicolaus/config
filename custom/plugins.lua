@@ -160,6 +160,20 @@ local plugins = {
     },
   },
 
+  -- -- 240330 neoscroll, try workaround for cursor not moving on C-d / C-u
+  -- {
+  --   "karb94/neoscroll.nvim",
+  --   config = function()
+  --     require("neoscroll").setup {
+  --     }
+  --     require("neoscroll.config").set_mappings {
+  --       ["<C-u>"] = { "scroll", { "-vim.wo.scroll", "true", "0" } },
+  --       ["<C-d>"] = { "scroll", { "vim.wo.scroll", "true", "0" } },
+  --       ["zz"] = { "zz", { "10" } },
+  --     }
+  --   end,
+  --   lazy = false,
+  -- },
 }
 
 return plugins

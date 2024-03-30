@@ -20,11 +20,15 @@ alias python='python3'
 alias kittyupdate='curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin'
 
 alias diary='export DIARY_FILE="$(date +'%y%m%d').md" && cd ~/codes/obsidian/ && touch diary/$DIARY_FILE && nvim diary/$DIARY_FILE'
+alias buffer='export BUFFER_FILE="b$(date +'%y%m%d').md" && cd ~/codes/obsidian/ && touch buffer/$BUFFER_FILE && nvim buffer/$BUFFER_FILE'
 alias cdiary='~/codes/obsidian/diary/'
+alias cdob='~/codes/obsidian/'
 # alias ndiary='~/codes/obsidian/ && nvim'
-# alias pdiary='~/codes/obsidian/diary/ && git add . && git commit -m "diary update" && git push'
 alias cnvo='~/codes/obsidian/ && nvim README.md'
 alias obsync='~/codes/obsidian/ && git add . && git commit -m "obsidian update" && git push'
+
+# 240308 interactive rust REPL
+alias irust='~/app/evcxr'
 
 alias setclip="xclip -selection c"
 alias getclip="xclip -selection c -o"
@@ -130,10 +134,12 @@ l2='--limit-time-real=99999999'
 l3='--limit-memory-soft=17179869184'
 l4='--limit-memory-hard=17179869184'
 addons="--addons-path=$ODOO_ROOT/odoo/addons,$ODOO_ROOT/enterprise"
+addons_with_fin="--addons-path=$ODOO_ROOT/odoo/addons,$ODOO_ROOT/enterprise,$ODOO_ROOT/odoofin"
 dev='--dev=xml,reload'
 
 alias obin='db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin --dev=xml,reload -d $db $l1 $l2 $l3 $l4 $addons $dev'
-alias ofin='$ODOO_ROOT/odoofin/odoofin'
+alias ofbin='db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin --dev=xml,reload -d $db $l1 $l2 $l3 $l4 $addons_with_fin $dev'
+alias ofin='$ODOO_ROOT/odoofin/ && ./odoofin'
 alias oshell='db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin shell --shell-interface=ipython -d $db $addons'
 alias obincom='$ODOO_ROOT/odoo/odoo-bin -d $(obranchcom) --addons-path=$ODOO_ROOT/odoo/addons'
 alias obackup='odup $("obranch") $("obranch")-dup'
@@ -169,15 +175,35 @@ ogit() {
     cd "$current_dir" || return 1
 }
 
+ofgit() {
+    local current_dir=$(pwd)
+    echo '------ odoo ------' && 
+      cd ~/work/odoo/ && git "$@" &&
+      echo '\n--- enterprise ---' &&
+      cd ~/work/enterprise/ && git "$@" &&
+      echo '\n---- odoofin -----' &&
+      cd ~/work/odoofin/ && git "$@"
+    cd "$current_dir" || return 1
+}
+
+
 # 240215
-# ogfap() { ogit fetch --all --prune }
-# --jobs=10 parameter not needed...? (240226)
+# ogfap() { ogit fetch --all --prune } changed to ogfa
+# --jobs=10 parameter not needed...? (240226) for better progress view
 ogfa() { ogit fetch --all --prune }
 ogco() { ogit checkout "$1" }
 ogb() { ogit branch "$1" }
 ogrb() { [ -z "$1" ] && ogit rebase || ogit rebase "$1"; }
-ogpfwl() { ogit push --force-with-lease }
+ogpf() { ogit push --force-with-lease --force-if-includes }
 ogst() { ogit status }
+
+# 240314 include odoofin with 'ofg' prefix instead of 'og'
+ofgfa() { ofgit fetch --all --prune }
+ofgco() { ofgit checkout "$1" }
+ofgb() { ofgit branch "$1" }
+ofgrb() { [ -z "$1" ] && ofgit rebase || ofgit rebase "$1"; }
+ofgpf() { ofgit push --force-with-lease --force-if-includes }
+ofgst() { ofgit status }
 
 otest() { obin --stop-after-init --test-tags="$1" "${@:2}" }
 
@@ -190,6 +216,8 @@ otest() { obin --stop-after-init --test-tags="$1" "${@:2}" }
 # alias cwos=~/work/odoo-stubs/
 # alias otest='~/work/odoo/odoo-bin --addons=~/work/odoo/addons,~/work/enterprise --stop-after-init --log-level=test'
 
+# ----------------------------------------------------------------------------------------------------------------------------------------
+# Work Aliases END -----------------------------------------------------------------------------------------------------------------------
 # ----------------------------------------------------------------------------------------------------------------------------------------
 
 # 230514 -> set PYTHONPATH to odoo 
