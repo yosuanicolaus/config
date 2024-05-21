@@ -29,6 +29,10 @@ alias obsync='~/codes/obsidian/ && git add . && git commit -m "obsidian update" 
 
 # 240308 interactive rust REPL
 alias irust='~/app/evcxr'
+# 240331 interactive cpp REPL
+alias icpp='termic++'
+# 240509 cf tools
+alias cf='~/app/cf'
 
 alias setclip="xclip -selection c"
 alias getclip="xclip -selection c -o"
@@ -59,7 +63,7 @@ alias gpfwl='git push --force-with-lease'
 alias gfap='git fetch --all --prune'
 alias grhm='git reset HEAD~1'
 alias grhp='git reset HEAD@{1}'
-alias wip='git add . && git commit -m "wip"'
+alias gwip='git add . && git commit -m "[IMP] wip"'
 
 codes() { ~/codes/$1 }
 repos() { ~/repos/$1 }
@@ -123,9 +127,9 @@ odebug() {
 
 otask() { 
     if [ -z "$1" ]; then
-        microsoft-edge "https://www.odoo.com/web#action=333&active_id=967&model=project.task&view_type=kanban&cids=1&menu_id=4720"
+        xdg-open "https://www.odoo.com/web#action=333&active_id=967&model=project.task&view_type=kanban&cids=1&menu_id=4720"
     else
-        microsoft-edge "https://www.odoo.com/web#id=$1&cids=1&menu_id=4720&action=333&active_id=967&model=project.task&view_type=form"
+        xdg-open "https://www.odoo.com/web#id=$1&cids=1&menu_id=4720&action=333&active_id=967&model=project.task&view_type=form"
     fi
 }
 
@@ -146,9 +150,9 @@ alias obackup='odup $("obranch") $("obranch")-dup'
 alias oreset='odel $("obranch") && odup $("obranch")-dup $("obranch")'
 alias opopulate='db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin populate -d $db --addons-path="$ODOO_ROOT/odoo/addons,$ODOO_ROOT/enterprise"'
 
-alias otab='microsoft-edge "http://localhost:8069"'
-alias omail='microsoft-edge "https://mail.google.com/mail/u/2/#inbox"'
-alias otime='microsoft-edge "https://www.odoo.com/web#action=4528&model=hr.leave.report.calendar&view_type=gantt&cids=1&menu_id=6279"'
+alias otab='xdg-open "http://localhost:8069"'
+alias omail='xdg-open "https://mail.google.com/mail/u/2/#inbox"'
+alias otime='xdg-open "https://www.odoo.com/web#action=4528&model=hr.leave.report.calendar&view_type=gantt&cids=1&menu_id=6279"'
 
 alias cw=~/work/
 alias cwo=~/work/odoo/
@@ -249,3 +253,6 @@ eval "$(zoxide init --cmd cd zsh)"
 bindkey '^I' autosuggest-accept
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+# 240405 Kattis CLI - submit competitive programming problem to Kattis
+export PATH="$PATH:/home/yosuanicolaus/.kattis"

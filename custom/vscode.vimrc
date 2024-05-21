@@ -7,6 +7,10 @@
 
 nnoremap H ^
 nnoremap L $
+nnoremap dH d^
+nnoremap dL d$
+nnoremap cH c^
+nnoremap cL c$
 nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
 nnoremap J mzJ`z
@@ -38,7 +42,7 @@ inoremap <C-l> <ESC>A
 " Visual mode
 
 vnoremap H ^
-vnoremap L $
+vnoremap L $h
 vnoremap / y /<C-r>+<CR>zz
 vnoremap ? y ?<C-r>+<CR>zz
 vnoremap n y /<C-r>+<CR>zz
@@ -50,7 +54,6 @@ vnoremap <C-d> <C-d>zz
 vnoremap <C-u> <C-u>zz
 vnoremap < <gv
 vnoremap > >gv
-
 
 " -------------------------
 

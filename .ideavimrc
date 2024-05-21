@@ -8,6 +8,10 @@
 " Editor Actions > Focus Editor <C-l>
 " Other > Select Opened File && Select File in Project View <C-S-o>
 " Search 'Reformat code' <C-S-i>
+" Search <Alt+0> -> <C-S-g>
+"
+" Actions on Save
+" format
 
 " Basic setup
 
@@ -56,6 +60,7 @@ sethandler <C-S-e> a:ide " select file tree
 sethandler <C-b> a:ide   " hide file tree
 sethandler <C-f> a:vim   " 
 sethandler <C-h> n:ide   " also select file tree (set manually)
+sethandler <C-l> n:ide   " also select file tree (set manually) 240502
 
 " -------------------------------------------------------------------------
 
@@ -84,6 +89,10 @@ map <C-S-k> <Action>(ShowErrorDescription)
 
 nnoremap H ^
 nnoremap L $
+nnoremap dH d^
+nnoremap dL d$
+nnoremap cH c^
+nnoremap cL c$
 nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
 nnoremap J mzJ`z
