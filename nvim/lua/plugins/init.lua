@@ -1,65 +1,53 @@
-local overrides = require "custom.configs.overrides"
-
----@type NvPluginSpec[]
-local plugins = {
-
-  -- To make a plugin not be loaded
-  -- {
-  --   "NvChad/nvim-colorizer.lua",
-  --   enabled = false
-  -- },
-
-  -- All NvChad plugins are lazy-loaded by default
-  -- For a plugin to be loaded, you will need to set either `ft`, `cmd`, `keys`, `event`, or set `lazy = false`
-  -- If you want a plugin to load on startup, add `lazy = false` to a plugin spec, for example
-  -- {
-  --   "mg979/vim-visual-multi",
-  --   lazy = false,
-  -- }
-
-  -- Override plugin definition options
-
+return {
   {
-    "neovim/nvim-lspconfig",
-    dependencies = {
-      -- format & linting
-      {
-        "nvimtools/none-ls.nvim",
-        config = function()
-          require "custom.configs.null-ls"
-        end,
-      },
-    },
+    "stevearc/conform.nvim",
+    event = "BufWritePre", -- uncomment for format on save
     config = function()
-      require "plugins.configs.lspconfig"
-      require "custom.configs.lspconfig"
-    end, -- Override to setup mason-lspconfig
+      require "configs.conform"
+    end,
   },
 
-  -- override plugin configs
+  -- These are some examples, uncomment them if you want to see them work!
+  {
+    "neovim/nvim-lspconfig",
+    config = function()
+      require("nvchad.configs.lspconfig").defaults()
+      require "configs.lspconfig"
+    end,
+  },
+
   {
     "williamboman/mason.nvim",
-    opts = overrides.mason,
+    opts = {
+      ensure_installed = {
+        "lua-language-server",
+        "bash-language-server",
+        "markdown-oxide",
+        "rust-analyzer",
+        "html-lsp",
+        "css-lsp",
+        "harper-ls",
+        "stylua",
+        "prettier",
+        "ast-grep",
+      },
+    },
   },
 
   {
     "nvim-treesitter/nvim-treesitter",
-    opts = overrides.treesitter,
-  },
-
-  {
-    "nvim-tree/nvim-tree.lua",
-    cmd = { "NvimTreeToggle", "NvimTreeFocus", "NvimTreeOpen" },
-    opts = overrides.nvimtree,
-  },
-
-  -- Install a plugin
-  {
-    "max397574/better-escape.nvim",
-    event = "InsertEnter",
-    config = function()
-      require("better_escape").setup()
-    end,
+    lazy = false,
+    opts = {
+      ensure_installed = {
+        "vim",
+        "lua",
+        "vimdoc",
+        "html",
+        "css",
+        "rust",
+        "bash",
+      },
+    },
   },
 
   -- 2023-08-04
@@ -160,20 +148,9 @@ local plugins = {
     },
   },
 
-  -- -- 240330 neoscroll, try workaround for cursor not moving on C-d / C-u
-  -- {
-  --   "karb94/neoscroll.nvim",
-  --   config = function()
-  --     require("neoscroll").setup {
-  --     }
-  --     require("neoscroll.config").set_mappings {
-  --       ["<C-u>"] = { "scroll", { "-vim.wo.scroll", "true", "0" } },
-  --       ["<C-d>"] = { "scroll", { "vim.wo.scroll", "true", "0" } },
-  --       ["zz"] = { "zz", { "10" } },
-  --     }
-  --   end,
-  --   lazy = false,
-  -- },
+  -- 240524 Write in sudo
+  {
+    "lambdalisue/vim-suda",
+    cmd = { "SudaRead", "SudaWrite" },
+  },
 }
-
-return plugins

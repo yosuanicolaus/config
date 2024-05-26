@@ -45,7 +45,7 @@ alias ccn='cd ~/.config/nvim/'
 
 alias cnvz='~ && nvim .zshrc'
 alias cnvi='~ && nvim ~/.ideavimrc'
-alias cnvc='~/.config/nvim/ && nvim lua/custom/mappings.lua'
+alias cnvc='~/.config/nvim/ && nvim ./lua/mappings.lua'
 alias cnvl='~/.config/nvim/ && nvim lua/custom/configs/lspconfig.lua'
 alias cnvk='~/.config/kitty/ && nvim kitty.conf'
 alias cnvd='~/codes/obsidian/diary/ && nvim'
@@ -198,6 +198,7 @@ ogfa() { ogit fetch --all --prune }
 ogco() { ogit checkout "$1" }
 ogb() { ogit branch "$1" }
 ogrb() { [ -z "$1" ] && ogit rebase || ogit rebase "$1"; }
+ogp() { ogit push }
 ogpf() { ogit push --force-with-lease --force-if-includes }
 ogst() { ogit status }
 

@@ -5,10 +5,12 @@
 import shutil
 
 file_counterpart_locations = {
+    # [config file name]: [real file name]
     '.zshrc': '~/.zshrc',
     '.xbindkeysrc': '~/.xbindkeysrc',
     '.ideavimrc': '~/.ideavimrc',
     'kitty.conf': '~/.config/kitty/kitty.conf',
+    'espanso.yml': '~/.config/espanso/match/base.yml'
 }
 
 for config_file, real_file in file_counterpart_locations.items():
@@ -30,10 +32,10 @@ for config_file, real_file in file_counterpart_locations.items():
         print(f'Error updating {config_file}: {str(e)}')
 
 
-# copy nvchad custom folder content
+# copy nvim (nvchad) folder content
 try:
-    real_folder_loc = '/home/yosuanicolaus/.config/nvim/lua/custom/'
-    config_folder_loc = '/home/yosuanicolaus/repos/config/custom/'
+    real_folder_loc = '/home/yosuanicolaus/.config/nvim/'
+    config_folder_loc = '/home/yosuanicolaus/repos/config/nvim/'
 
     # remove existing custom/ folder
     shutil.rmtree(config_folder_loc, ignore_errors=True)
@@ -43,4 +45,4 @@ try:
     print(f'Successfully updated NvChad custom file')
 
 except Exception as e:
-    print(f'Error updating NvChad custom file: {str(e)}')
+    print(f'Error updating nvim folder: {str(e)}')

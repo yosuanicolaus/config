@@ -1,7 +1,8 @@
 " @yosuanicolaus 2023
 " copied from ~/.ideavimrc at 2023-12-14
-" updated at 240229
+" updated at 240229,240522
 
+" -------------------------
 
 " Normal mode
 
