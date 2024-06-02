@@ -23,16 +23,11 @@ alias diary='export DIARY_FILE="$(date +'%y%m%d').md" && cd ~/codes/obsidian/ &&
 alias buffer='export BUFFER_FILE="b$(date +'%y%m%d').md" && cd ~/codes/obsidian/ && touch buffer/$BUFFER_FILE && nvim buffer/$BUFFER_FILE'
 alias cdiary='~/codes/obsidian/diary/'
 alias cdob='~/codes/obsidian/'
-# alias ndiary='~/codes/obsidian/ && nvim'
 alias cnvo='~/codes/obsidian/ && nvim README.md'
 alias obsync='~/codes/obsidian/ && git add . && git commit -m "obsidian update" && git push'
 
-# 240308 interactive rust REPL
-alias irust='~/app/evcxr'
-# 240331 interactive cpp REPL
-alias icpp='termic++'
-# 240509 cf tools
-alias cf='~/app/cf'
+alias irust=evcxr
+alias icpp=termic++
 
 alias setclip="xclip -selection c"
 alias getclip="xclip -selection c -o"
@@ -127,9 +122,9 @@ odebug() {
 
 otask() { 
     if [ -z "$1" ]; then
-        xdg-open "https://www.odoo.com/web#action=333&active_id=967&model=project.task&view_type=kanban&cids=1&menu_id=4720"
+        xdg-open "https://www.odoo.com/odoo/967/tasks?cids=1"
     else
-        xdg-open "https://www.odoo.com/web#id=$1&cids=1&menu_id=4720&action=333&active_id=967&model=project.task&view_type=form"
+        xdg-open "https://www.odoo.com/odoo/967/tasks/$1?cids=1"
     fi
 }
 
@@ -175,25 +170,26 @@ alias cnvb='~/work/notes/ && nvim "!branch.md"'
 
 ogit() {
     local current_dir=$(pwd)
-    echo '------ odoo ------' && cd ~/work/odoo/ && git "$@" && echo '\n--- enterprise ---' && cd ~/work/enterprise/ && git "$@"
+    echo '------ odoo ------' && cd ~/work/odoo/ && git "$@" &&
+      echo '\n--- enterprise ---' && cd ~/work/enterprise/ && git "$@"
     cd "$current_dir" || return 1
 }
 
 ofgit() {
     local current_dir=$(pwd)
-    echo '------ odoo ------' && 
-      cd ~/work/odoo/ && git "$@" &&
-      echo '\n--- enterprise ---' &&
-      cd ~/work/enterprise/ && git "$@" &&
-      echo '\n---- odoofin -----' &&
-      cd ~/work/odoofin/ && git "$@"
+    ogit "$@" && echo '\n---- odoofin -----' && cd ~/work/odoofin/ && git "$@"
     cd "$current_dir" || return 1
 }
 
+ougit() {
+    local current_dir=$(pwd)
+    ogit "$@" && echo '\n---- upgrade -----' && cd ~/work/upgrade/ && git "$@"
+    cd "$current_dir" || return 1
+}
+
+otest() { obin --stop-after-init --test-tags="$1" "${@:2}" }
 
 # 240215
-# ogfap() { ogit fetch --all --prune } changed to ogfa
-# --jobs=10 parameter not needed...? (240226) for better progress view
 ogfa() { ogit fetch --all --prune }
 ogco() { ogit checkout "$1" }
 ogb() { ogit branch "$1" }
@@ -210,16 +206,13 @@ ofgrb() { [ -z "$1" ] && ofgit rebase || ofgit rebase "$1"; }
 ofgpf() { ofgit push --force-with-lease --force-if-includes }
 ofgst() { ofgit status }
 
-otest() { obin --stop-after-init --test-tags="$1" "${@:2}" }
-
-# Unused anymore
-# alias ndb='export db="db$(date +'%y%m%d%H%M%S')"'
-# alias cdb='export db="db$(date +'%y%m%d%H%M%S')"'
-# alias ocdb='export db="db$(date +'%y%m%d%H%M%S')" && ~/work/odoo/odoo-bin --addons=~/work/odoo/addons,~/work/enterprise --stop-after-init -d $db'
-# alias orundb='~/work/odoo/odoo-bin --addons=~/work/odoo/addons,~/work/enterprise --dev=xml,reload -d $db'
-# alias otestdb='~/work/odoo/odoo-bin --addons=~/work/odoo/addons,~/work/enterprise --stop-after-init --log-level=test -d $db'
-# alias cwos=~/work/odoo-stubs/
-# alias otest='~/work/odoo/odoo-bin --addons=~/work/odoo/addons,~/work/enterprise --stop-after-init --log-level=test'
+# 240529 include upgrade with 'oug'
+ougfa() { ougit fetch --all --prune }
+ougco() { ougit checkout "$1" }
+ougb() { ougit branch "$1" }
+ougrb() { [ -z "$1" ] && ougit rebase || ougit rebase "$1"; }
+ougpf() { ougit push --force-with-lease --force-if-includes }
+ougst() { ougit status }
 
 # ----------------------------------------------------------------------------------------------------------------------------------------
 # Work Aliases END -----------------------------------------------------------------------------------------------------------------------
@@ -257,3 +250,6 @@ eval "$(rbenv init -)"
 
 # 240405 Kattis CLI - submit competitive programming problem to Kattis
 export PATH="$PATH:/home/yosuanicolaus/.kattis"
+
+# 240601 add ~/app/bin/ to $PATH
+export PATH="$PATH:/home/yosuanicolaus/app/bin"
