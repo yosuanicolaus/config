@@ -58,6 +58,7 @@ map({ "n", "i" }, "<C-/>", "<cmd>lua require('Comment.api').toggle.linewise.curr
 map("v", "<C-/>", "<esc>gv<cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>")
 map("n", "<C-f>", "<cmd> Telescope live_grep <CR>", { desc = "open search in all files" })
 map("n", "<C-q>", "<cmd>lua require('nvchad.tabufline').close_buffer()<CR>")
+map("n", "Q", ":Bdelete other<CR>")
 map("n", "<leader>oc", "<cmd>lua require('obsidian').util.toggle_checkbox()<CR>")
 map("v", "<C-f>", "y <cmd> Telescope live_grep <CR><C-r>+", { desc = "search current selection in all files" })
 

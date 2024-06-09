@@ -3,7 +3,7 @@ require "nvchad.options"
 -- add yours here!
 
 local o = vim.opt
-o.cursorlineopt ='both' -- to enable cursorline!
+o.cursorlineopt = "both" -- to enable cursorline!
 
 ---------------------------------------------------------
 
@@ -22,4 +22,10 @@ end
 -- 2023-08-02
 if o.termguicolors == "kitty" then
   o.termguicolors = true
+end
+
+-- 240609 for godot
+local projectfile = vim.fn.getcwd() .. "/project.godot"
+if projectfile then
+  vim.fn.serverstart "./godothost"
 end

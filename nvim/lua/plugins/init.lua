@@ -30,6 +30,7 @@ return {
         "stylua",
         "prettier",
         "ast-grep",
+        "gdtoolkit",
       },
     },
   },
@@ -46,6 +47,9 @@ return {
         "css",
         "rust",
         "bash",
+        "gdscript",
+        "gdshader",
+        "godot_resource",
       },
     },
   },
@@ -152,5 +156,11 @@ return {
   {
     "lambdalisue/vim-suda",
     cmd = { "SudaRead", "SudaWrite" },
+  },
+
+  -- 240602 close all other buffers except current (:Bdelete other)
+  {
+    "Asheq/close-buffers.vim",
+    cmd = { "Bdelete" },
   },
 }
