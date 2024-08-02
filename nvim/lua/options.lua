@@ -25,7 +25,7 @@ if o.termguicolors == "kitty" then
 end
 
 -- 240609 for godot
-local projectfile = vim.fn.getcwd() .. "/project.godot"
-if projectfile then
-  vim.fn.serverstart "./godothost"
-end
+-- local projectfile = vim.fn.getcwd() .. "/project.godot"
+-- if projectfile then
+--   vim.fn.serverstart "./godothost"
+-- end

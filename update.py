@@ -8,6 +8,7 @@ file_counterpart_locations = {
     # [config file name]: [real file name]
     '.zshrc': '~/.zshrc',
     '.xbindkeysrc': '~/.xbindkeysrc',
+    '.Xmodmap': '~/.Xmodmap',
     '.ideavimrc': '~/.ideavimrc',
     'kitty.conf': '~/.config/kitty/kitty.conf',
     'espanso.yml': '~/.config/espanso/match/base.yml'

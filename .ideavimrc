@@ -111,10 +111,14 @@ nnoremap zl 40zl
 inoremap <C-CR> <ESC>o
 inoremap <S-CR> <ESC>O
 
-inoremap <A-h> <ESC>i
-inoremap <A-l> <ESC>la
-inoremap <A-j> <ESC>ja
-inoremap <A-k> <ESC>ka
+" inoremap <A-h> <ESC>i
+" inoremap <A-l> <ESC>la
+" inoremap <A-j> <ESC>ja
+" inoremap <A-k> <ESC>ka
+inoremap <A-h> <Left>
+inoremap <A-l> <Right>
+inoremap <A-j> <Down>
+inoremap <A-k> <Up>
 
 inoremap <C-h> <ESC>I
 inoremap <C-l> <ESC>A

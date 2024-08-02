@@ -16,7 +16,6 @@ alias t=touch
 alias sz='source ~/.zshrc'
 alias code=code-insiders
 alias py='python3'
-alias python='python3'
 alias kittyupdate='curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin'
 
 alias diary='export DIARY_FILE="$(date +'%y%m%d').md" && cd ~/codes/obsidian/ && touch diary/$DIARY_FILE && nvim diary/$DIARY_FILE'
@@ -58,7 +57,7 @@ alias gpfwl='git push --force-with-lease'
 alias gfap='git fetch --all --prune'
 alias grhm='git reset HEAD~1'
 alias grhp='git reset HEAD@{1}'
-alias gwip='git add . && git commit -m "[IMP] wip"'
+alias gwip='git add . && git commit -m "[IMP] WIP: work-in-progress"'
 
 codes() { ~/codes/$1 }
 repos() { ~/repos/$1 }
@@ -122,9 +121,9 @@ odebug() {
 
 otask() { 
     if [ -z "$1" ]; then
-        xdg-open "https://www.odoo.com/odoo/967/tasks?cids=1"
+        xdg-open "https://www.odoo.com/odoo/project/967/tasks?cids=1"
     else
-        xdg-open "https://www.odoo.com/odoo/967/tasks/$1?cids=1"
+        xdg-open "https://www.odoo.com/odoo/project/967/tasks/$1?cids=1"
     fi
 }
 
@@ -136,14 +135,16 @@ addons="--addons-path=$ODOO_ROOT/odoo/addons,$ODOO_ROOT/enterprise"
 addons_with_fin="--addons-path=$ODOO_ROOT/odoo/addons,$ODOO_ROOT/enterprise,$ODOO_ROOT/odoofin"
 dev='--dev=xml,reload'
 
-alias obin='db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin --dev=xml,reload -d $db $l1 $l2 $l3 $l4 $addons $dev'
-alias ofbin='db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin --dev=xml,reload -d $db $l1 $l2 $l3 $l4 $addons_with_fin $dev'
+alias tobin='db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin -d $db $l1 $l2 $l3 $l4 $dev --addons-path=$ODOO_ROOT/odoo/addons,$ODOO_ROOT/enterprise,$ODOO_ROOT/tutorials'
+alias obin='db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin -d $db $l1 $l2 $l3 $l4 $addons $dev'
+alias ofbin='db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin -d $db $l1 $l2 $l3 $l4 $addons_with_fin $dev'
 alias ofin='$ODOO_ROOT/odoofin/ && ./odoofin'
 alias oshell='db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin shell --shell-interface=ipython -d $db $addons'
 alias obincom='$ODOO_ROOT/odoo/odoo-bin -d $(obranchcom) --addons-path=$ODOO_ROOT/odoo/addons'
 alias obackup='odup $("obranch") $("obranch")-dup'
 alias oreset='odel $("obranch") && odup $("obranch")-dup $("obranch")'
 alias opopulate='db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin populate -d $db --addons-path="$ODOO_ROOT/odoo/addons,$ODOO_ROOT/enterprise"'
+alias oexpire="psql -d $(obranch) -c \"update ir_config_parameter set value='2060-05-05' where key='database.expiration_date';\""
 
 alias otab='xdg-open "http://localhost:8069"'
 alias omail='xdg-open "https://mail.google.com/mail/u/2/#inbox"'
