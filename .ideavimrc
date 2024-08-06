@@ -111,15 +111,6 @@ nnoremap zl 40zl
 inoremap <C-CR> <ESC>o
 inoremap <S-CR> <ESC>O
 
-" inoremap <A-h> <ESC>i
-" inoremap <A-l> <ESC>la
-" inoremap <A-j> <ESC>ja
-" inoremap <A-k> <ESC>ka
-inoremap <A-h> <Left>
-inoremap <A-l> <Right>
-inoremap <A-j> <Down>
-inoremap <A-k> <Up>
-
 inoremap <C-h> <ESC>I
 inoremap <C-l> <ESC>A
 
@@ -133,14 +124,15 @@ vnoremap / y /<C-r>+<CR>zz
 vnoremap ? y ?<C-r>+<CR>zz
 vnoremap n y /<C-r>+<CR>zz
 vnoremap N y ?<C-r>+<CR>zz
-vnoremap <A-j> :m '>+1<CR>gv=gv
-vnoremap <A-k> :m '<-2<CR>gv=gv
 vnoremap J mzJ`z
 vnoremap <C-d> <C-d>zz
 vnoremap <C-u> <C-u>zz
 vnoremap < <gv
 vnoremap > >gv
 
+" TODO - doesn't work now, change or remove it?
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
 
 " -------------------------
 

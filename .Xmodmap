@@ -1,20 +1,14 @@
 ! 240802 map alt+hjkl to arrow keys
 ! https://stackoverflow.com/questions/77723880/intellij-pycharm-does-not-recognize-altgr-shortcuts-anymore-in-linux
 ! https://askubuntu.com/questions/465924/how-to-map-modifier-hjkl-to-arrow-key-functionality
-
-! First we need clear the existing mods
-clear mod1
-clear mod3
-clear mod5
-! The Mode_switch needs to be bound to a key, in order to work
-! In my layout this wasn't the case, so I needed to manually do this
-keycode 203 = Mode_switch NoSymbol Mode_switch
-! Finally delcare the correct modifiers
-add mod1 = Alt_L Meta_L
-add mod5 = ISO_Level3_Shift Mode_switch
+! https://youtrack.jetbrains.com/issue/IJPL-54508/Use-national-layouts-for-shortcuts-option-not-accessible-for-some-layouts
+!
+! to make it work on PyCharm, turn on the "Use national layout for shortcut" option
+! TODO: alt+<anything> shortcut doesn't work now. In particulart alt+Up & alt+Down for discord switching channel
 
 keycode 64 = Mode_switch
 keycode 43 = h H Left H
 keycode 44 = j J Down J
 keycode 45 = k K Up K
 keycode 46 = l L Right L
+

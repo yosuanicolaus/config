@@ -49,33 +49,34 @@
 
 # ----------------- configured 20230408 --------------------------
 # Configure some shortcut for win+Arrow to h/j/k/l
-"xdotool key super+Down"
-  Mod4 + j
-"xdotool key super+Up"
-  Mod4 + k
-"xdotool key super+Left"
-  Mod4 + h
-"xdotool key super+Right"
-  Mod4 + l
+
+# "xdotool key super+Down"
+#   Mod4 + j
+# "xdotool key super+Up"
+#   Mod4 + k
+# "xdotool key super+Left"
+#   Mod4 + h
+# "xdotool key super+Right"
+#   Mod4 + l
 
 # ----------------- configured 240726 --------------------------
 # I want alt - j/k/l/i to be the alternate arrow keys
 
-"xdotool key Down"
-  alt + j
-"xdotool key Up"
-  alt + k
-"xdotool key Left"
-  alt + h
-"xdotool key Right"
-  alt + l
+# "xdotool key Down"
+#   alt + j
+# "xdotool key Up"
+#   alt + k
+# "xdotool key Left"
+#   alt + h
+# "xdotool key Right"
+#   alt + l
 
 # ------------------ end of configuration ------------------------
 
 # Examples of commands:
 
-"xbindkeys_show" 
-  control+shift + q
+# "xbindkeys_show" 
+#   control+shift + q
 
 # set directly keycode (here control + f with my keyboard)
 #"xterm"

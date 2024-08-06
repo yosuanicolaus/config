@@ -24,12 +24,7 @@ map("n", ">", ">>", { nowait = true })
 -- Insert mode
 map("i", "<C-v>", "<C-r>+")
 map("i", "<C-CR>", "<End><CR>")
-map("i", "<A-h>", "<Left>")
 map("i", "<C-BS>", "<C-w>")
-map("i", "<A-h>", "<Left>")
-map("i", "<A-j>", "<Down>")
-map("i", "<A-k>", "<Up>")
-map("i", "<A-l>", "<Right>")
 
 -- Visual mode
 map("v", "<A-j>", ":m '>+1<CR>gv=gv")
