@@ -11,7 +11,9 @@ file_counterpart_locations = {
     '.Xmodmap': '~/.Xmodmap',
     '.ideavimrc': '~/.ideavimrc',
     'kitty.conf': '~/.config/kitty/kitty.conf',
-    'espanso.yml': '~/.config/espanso/match/base.yml'
+    'espanso.yml': '~/.config/espanso/match/base.yml',
+    'vscode_keybindings.json': '~/.config/Code - Insiders/User/keybindings.json',
+    'vscode_settings.json': '~/.config/Code - Insiders/User/settings.json',
 }
 
 for config_file, real_file in file_counterpart_locations.items():

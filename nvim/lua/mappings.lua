@@ -47,13 +47,13 @@ map({ "i", "v" }, "<C-l>", "<End>")
 map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 
 -- Plugins
-map({ "n", "i", "v" }, "<C-j>", "<cmd>bp<cr>", { desc = "change tab left" })
-map({ "n", "i", "v" }, "<C-k>", "<cmd>bn<cr>", { desc = "change tab right" })
+map({ "n", "i", "v" }, "<C-j>", "<cmd>lua require('nvchad.tabufline').prev()<CR>", { desc = "change tab left" })
+map({ "n", "i", "v" }, "<C-k>", "<cmd>lua require('nvchad.tabufline').next()<CR>", { desc = "change tab right" })
 map({ "n", "i" }, "<C-/>", "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>")
 map("v", "<C-/>", "<esc>gv<cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>")
 map("n", "<C-f>", "<cmd> Telescope live_grep <CR>", { desc = "open search in all files" })
 map("n", "<C-q>", "<cmd>lua require('nvchad.tabufline').close_buffer()<CR>")
-map("n", "Q", ":Bdelete other<CR>")
+map("n", "Q", ":Bdelete other<CR>", { desc = "close all other tab" })
 map("n", "<leader>oc", "<cmd>lua require('obsidian').util.toggle_checkbox()<CR>")
 map("v", "<C-f>", "y <cmd> Telescope live_grep <CR><C-r>+", { desc = "search current selection in all files" })
 

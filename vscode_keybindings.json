@@ -1,0 +1,246 @@
+// Place your key bindings in this file to override the default auto[]
+[
+  // --------------------------------------------------------------//
+  // --------------------------------------------------------------//
+  // VSCode
+  // Multiple cursors
+  {
+    "key": "ctrl+n",
+    "when": "editorFocus && vim.mode == 'Visual' || neovim.mode == insert",
+    "command": "editor.action.addSelectionToNextFindMatch",
+  },
+  {
+    "key": "ctrl+p",
+    "when": "editorFocus && vim.mode == 'Visual' || neovim.mode == insert",
+    "command": "editor.action.addSelectionToPreviousFindMatch",
+  },
+  {
+    "key": "ctrl+shift+alt+j",
+    "when": "neovim.mode == insert || vim.mode == 'Insert'",
+    "command": "editor.action.insertCursorBelow",
+  },
+  {
+    "key": "ctrl+shift+alt+k",
+    "when": "neovim.mode == insert || vim.mode == 'Insert'",
+    "command": "editor.action.insertCursorAbove",
+  },
+  {
+    "key": "ctrl+alt+k",
+    "command": "editor.emmet.action.removeTag",
+  },
+  {
+    // opposite of (builtin) ctrl+enter
+    "key": "shift+enter",
+    "when": "editorTextFocus && (neovim.mode == insert || vim.mode == 'Insert')",
+    "command": "editor.action.insertLineBefore",
+  },
+  // --------------------------------------------------------------//
+  // --------------------------------------------------------------//
+  // Workbench Management
+  // browser familiarization
+  {
+    "key": "ctrl+w",
+    "command": "workbench.action.closeActiveEditor",
+  },
+  {
+    "key": "ctrl+tab",
+    "command": "workbench.action.nextEditor",
+  },
+  {
+    "key": "ctrl+shift+tab",
+    "command": "workbench.action.previousEditor",
+  },
+  {
+    "key": "ctrl+pagedown",
+    "command": "workbench.action.nextEditor",
+  },
+  {
+    "key": "ctrl+pageup",
+    "command": "workbench.action.previousEditor",
+  },
+  // NvChad familiarization
+  {
+    "key": "tab",
+    "when": "editorTextFocus && (neovim.mode == normal || vim.mode == 'Normal')",
+    "command": "workbench.action.nextEditor",
+  },
+  {
+    "key": "shift+tab",
+    "when": "editorTextFocus && (neovim.mode == normal || vim.mode == 'Normal')",
+    "command": "workbench.action.previousEditor"
+  },
+  // Modern way
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.previousEditor",
+  },
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.nextEditor",
+  },
+  // --------------------------------------------------------------//
+  // --------------------------------------------------------------//
+  // Neovim and Vim extension
+  {
+    // delete word (without vim/neovim); without this, it will close the file
+    "key": "ctrl+w",
+    "when": "neovim.mode == insert || vim.mode == 'Insert'",
+    "command": "deleteWordLeft",
+  },
+  {
+    // default vim behavior of 'K' (vim extension only); otherwise 'K' to hover detail won't work
+    "key": "shift+k",
+    "when": "vim.mode == 'Normal'",
+    "command": "vim.remap",
+    "args": {
+      "after": [
+        "g",
+        "h"
+      ],
+    },
+  },
+  // --------------------------------------------------------------//
+  // Cursor Navigation
+  // move to end / beginning of line
+  {
+    "key": "ctrl+h",
+    "when": "vim.mode == 'Normal'",
+    "command": "workbench.view.explorer",
+  },
+  {
+    "key": "ctrl+l",
+    "when": "vim.mode == 'Normal'",
+    "command": "workbench.view.explorer",
+  },
+  // --------------------------------------------------------------//
+  // Miscellaneous
+  // Keybindings setting shortcut
+  {
+    "key": "ctrl+shift+,",
+    "command": "workbench.action.openGlobalKeybindings",
+  },
+  {
+    "key": "ctrl+shift+.",
+    "command": "workbench.action.openGlobalKeybindingsFile",
+  },
+  // prevent accidentally quitting the window
+  {
+    "key": "ctrl+shift+q",
+    "command": "workbench.action.quit",
+  },
+  // --------------------------------------------------------------//
+  // --------------------------------------------------------------//
+  // Plugins
+  {
+    "key": "f6",
+    "command": "code-runner.run",
+  },
+  {
+    "key": "ctrl+shift+alt+s",
+    "command": "leetcode.submitSolution",
+  },
+  {
+    "key": "ctrl+alt+enter",
+    "when": "editorTextFocus && github.copilot.activated",
+    "command": "github.copilot.generate",
+  },
+  // --------------------------------------------------------------//
+  // --------------------------------------------------------------//
+  // Cancellation <and reasons>
+  {
+    // similar to ctrl+[ (escape)
+    "key": "ctrl+]",
+    "when": "editorTextFocus && !editorReadonly",
+    "command": "-editor.action.indentLines",
+  },
+  {
+    // caught by neovim
+    "key": "ctrl+b",
+    "when": "editorTextFocus && neovim.ctrlKeysNormal && neovim.init && neovim.mode != 'insert'",
+    "command": "-vscode-neovim.ctrl-b",
+  },
+  {
+    // caught by vim
+    "key": "ctrl+b",
+    "when": "editorTextFocus && vim.active && vim.use<C-b> && !inDebugRepl && vim.mode != 'Insert'",
+    "command": "-extension.vim_ctrl+b",
+  },
+  // Replaced
+  {
+    "key": "ctrl+alt+n",
+    "command": "-code-runner.run",
+  },
+  {
+    "key": "ctrl+q",
+    "command": "-workbench.action.quit",
+  },
+  {
+    "key": "ctrl+enter",
+    "when": "editorTextFocus && github.copilot.activated && !inInteractiveInput && !interactiveEditorFocused",
+    "command": "-github.copilot.generate",
+  },
+  // Useless / misleading
+  {
+    "key": "ctrl+[",
+    "when": "editorTextFocus && !editorReadonly",
+    "command": "-editor.action.outdentLines",
+  },
+  // NEW
+  {
+    "key": "shift+enter",
+    "command": "editor.action.previousMatchFindAction",
+    "when": "editorFocus && findInputFocussed"
+  },
+  {
+    "key": "ctrl+shift+n",
+    "command": "explorer.newFile"
+  },
+  {
+    "key": "ctrl+n",
+    "command": "-workbench.action.files.newUntitledFile"
+  },
+  {
+    "key": "ctrl+shift+k",
+    "command": "-editor.action.deleteLines",
+    "when": "textInputFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+capslock",
+    "command": "workbench.action.quickOpenNavigatePreviousInFilePicker",
+    "when": "inFilesPicker && inQuickOpen"
+  },
+  {
+    "key": "ctrl+shift+l",
+    "command": "cph.judgeView.focus"
+  },
+  {
+    "key": "ctrl+alt+d",
+    "command": "-cph.judgeView.focus"
+  },
+  {
+    "key": "ctrl+shift+s",
+    "command": "cph.runTestCases"
+  },
+  {
+    "key": "ctrl+alt+b",
+    "command": "-cph.runTestCases"
+  },
+  {
+    "key": "ctrl+alt+s",
+    "command": "-cph.submitToCodeForces"
+  },
+  {
+    "key": "ctrl+shift+i",
+    "command": "editor.action.formatSelection",
+    "when": "editorHasDocumentSelectionFormattingProvider && editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+k ctrl+f",
+    "command": "-editor.action.formatSelection",
+    "when": "editorHasDocumentSelectionFormattingProvider && editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+shift+o",
+    "command": "workbench.files.action.showActiveFileInExplorer"
+  },
+]

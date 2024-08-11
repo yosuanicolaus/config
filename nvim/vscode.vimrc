@@ -42,7 +42,7 @@ vnoremap / y /<C-r>+<CR>zz
 vnoremap ? y ?<C-r>+<CR>zz
 vnoremap n y /<C-r>+<CR>zz
 vnoremap N y ?<C-r>+<CR>zz
-vnoremap J mzJ`z
+" vnoremap J mzJ`z
 vnoremap <C-d> <C-d>zz
 vnoremap <C-u> <C-u>zz
 vnoremap < <gv
