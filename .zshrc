@@ -11,11 +11,13 @@ plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
 eval $(thefuck --alias)
 
+alias ls=exa  # https://the.exa.website/ "modern replacement for ls"
 alias c=clear
 alias t=touch
 alias sz='source ~/.zshrc'
 alias code=code-insiders
-alias py='python3'
+alias py=python3
+alias ipy=ipython3
 alias kittyupdate='curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin'
 
 alias diary='export DIARY_FILE="$(date +'%y%m%d').md" && cd ~/codes/obsidian/ && touch diary/$DIARY_FILE && nvim diary/$DIARY_FILE'
@@ -31,32 +33,32 @@ alias icpp=termic++
 alias setclip="xclip -selection c"
 alias getclip="xclip -selection c -o"
 
-alias ct='cd ~/codes/obsidian/'
-alias cg='cd ~/codes/godot/'
-alias cdd='cd ~/Downloads/'
-alias cda='cd ~/app/'
 alias ccn='cd ~/.config/nvim/'
+alias cda='cd ~/app/'
+alias cdd='cd ~/Downloads/'
+alias cg='cd ~/codes/godot/'
+alias ct='cd ~/codes/obsidian/'
 
-alias cnvz='~ && nvim .zshrc'
-alias cnvi='~ && nvim ~/.ideavimrc'
 alias cnvc='~/.config/nvim/ && nvim ./lua/mappings.lua'
-alias cnvl='~/.config/nvim/ && nvim lua/custom/configs/lspconfig.lua'
-alias cnvk='~/.config/kitty/ && nvim kitty.conf'
 alias cnvd='~/codes/obsidian/diary/ && nvim'
-alias cnvrc='~/repos/config/ && nvim'
-alias cnvp='~/codes/python/ && nvim'
 alias cnve='~/.config/espanso/ && nvim match/base.yml'
+alias cnvi='~ && nvim ~/.ideavimrc'
+alias cnvk='~/.config/kitty/ && nvim kitty.conf'
+alias cnvl='~/.config/nvim/ && nvim lua/custom/configs/lspconfig.lua'
+alias cnvp='~/codes/python/ && nvim'
+alias cnvrc='~/repos/config/ && nvim'
+alias cnvz='~ && nvim .zshrc'
 
-alias nvz='nvim ~/.zshrc'
+alias nvc='nvim ~/.config/nvim/lua/mappings.lua'
+alias nve='nvim ~/.config/espanso/match/base.yml'
 alias nvi='nvim ~/.ideavimrc'
-alias nvc='nvim ~/.config/nvim/lua/custom/mappings.lua'
-alias nvr='nvim --listen /tmp/nvim.pipe'
 alias nvk='nvim ~/.config/kitty/kitty.conf'
+alias nvr='nvim --listen /tmp/nvim.pipe'
+alias nvz='nvim ~/.zshrc'
 
-alias gpfwl='git push --force-with-lease'
 alias gfap='git fetch --all --prune'
-alias grhm='git reset HEAD~1'
-alias grhp='git reset HEAD@{1}'
+alias grhm='git reset HEAD~1'    # "git reset head minus"
+alias grhp='git reset HEAD@{1}'  # "git reset head plus"
 alias gwip='git add . && git commit -m "[IMP] WIP: work-in-progress"'
 
 codes() { ~/codes/$1 }
@@ -90,8 +92,11 @@ obranch() {
 }
 
 obranchcom() {
-    com=$(git --git-dir=$ODOO_ROOT/odoo/.git branch --show-current)
-    echo $com
+    echo $(git --git-dir=$ODOO_ROOT/odoo/.git branch --show-current)
+}
+
+obranchfin() {
+    echo $(git --git-dir=$ODOO_ROOT/odoofin/.git branch --show-current)
 }
 
 odel() {
@@ -104,6 +109,10 @@ odel() {
         br="$('obranch')"
     fi 
     dropdb "$br"
+}
+
+ofdel() {
+    odel $(obranchfin)
 }
 
 odup() {
@@ -127,6 +136,10 @@ otask() {
     fi
 }
 
+oexpire() {
+    psql -d "$('obranch')" -c "update ir_config_parameter set value='2060-05-05' where key='database.expiration_date';"
+}
+
 l1='--limit-time-cpu=99999999'
 l2='--limit-time-real=99999999'
 l3='--limit-memory-soft=17179869184'
@@ -134,17 +147,23 @@ l4='--limit-memory-hard=17179869184'
 addons="--addons-path=$ODOO_ROOT/odoo/addons,$ODOO_ROOT/enterprise"
 addons_with_fin="--addons-path=$ODOO_ROOT/odoo/addons,$ODOO_ROOT/enterprise,$ODOO_ROOT/odoofin"
 dev='--dev=xml,reload'
+param_fin_1="--http-port="6969""
+param_fin_2="--unaccent"
 
 alias tobin='db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin -d $db $l1 $l2 $l3 $l4 $dev --addons-path=$ODOO_ROOT/odoo/addons,$ODOO_ROOT/enterprise,$ODOO_ROOT/tutorials'
 alias obin='db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin -d $db $l1 $l2 $l3 $l4 $addons $dev'
-alias ofbin='db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin -d $db $l1 $l2 $l3 $l4 $addons_with_fin $dev'
-alias ofin='$ODOO_ROOT/odoofin/ && ./odoofin'
+
+# odoofin legacy
+alias ofbin='db=odoofin; [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin -d $db $l1 $l2 $l3 $l4 $addons_with_fin $dev $param_fin_1 $param_fin_2'
+alias obinf='db=$(obranchfin); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin -d $db $l1 $l2 $l3 $l4 $addons_with_fin $dev $param_fin_1 $param_fin_2'
+# odoofin docker 
+alias ofin='db=$(obranchfin); [[ $db != 1  ]] && $ODOO_ROOT/odoofin/odoofin -d $db $l1 $l2 $l3 $l4 $dev $param_fin_1 $param_fin_2'
+ 
 alias oshell='db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin shell --shell-interface=ipython -d $db $addons'
 alias obincom='$ODOO_ROOT/odoo/odoo-bin -d $(obranchcom) --addons-path=$ODOO_ROOT/odoo/addons'
 alias obackup='odup $("obranch") $("obranch")-dup'
 alias oreset='odel $("obranch") && odup $("obranch")-dup $("obranch")'
 alias opopulate='db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin populate -d $db --addons-path="$ODOO_ROOT/odoo/addons,$ODOO_ROOT/enterprise"'
-alias oexpire="psql -d $(obranch) -c \"update ir_config_parameter set value='2060-05-05' where key='database.expiration_date';\""
 
 alias otab='xdg-open "http://localhost:8069"'
 alias omail='xdg-open "https://mail.google.com/mail/u/2/#inbox"'
@@ -157,17 +176,25 @@ alias cwu=~/work/upgrade/
 alias cwd=~/work/documentation/
 alias cwn=~/work/notes/
 alias cwf=~/work/odoofin/
+alias cwi=~/work/iap-apps/
 
 alias nvn='db=$(obranch); [[ $db != 1  ]] && touch "~/work/notes/$db.md" && nvim "~/work/notes/$db.md" '
 alias cnvn='db=$(obranch); [[ $db != 1  ]] && ~/work/notes/ && touch "$db.md" && nvim "$db.md" '
 alias codoo='code-insiders ~/work/odoo.code-workspace'
 
-alias orun="~/work/odoo/odoo-bin $addons $dev"
-alias oruncdb='db="db$(date +'%y%m%d%H%M%S')" && ~/work/odoo/odoo-bin --addons=~/work/odoo/addons,~/work/enterprise --dev=xml,reload -d $db'
-alias otestcdb='db="db$(date +'%y%m%d%H%M%S')" && ~/work/odoo/odoo-bin --addons=~/work/odoo/addons,~/work/enterprise --stop-after-init --log-level=test -d $db'
+# alias orun="~/work/odoo/odoo-bin $addons $dev"
+# alias oruncdb='db="db$(date +'%y%m%d%H%M%S')" && ~/work/odoo/odoo-bin --addons=~/work/odoo/addons,~/work/enterprise --dev=xml,reload -d $db'
+# alias otestcdb='db="db$(date +'%y%m%d%H%M%S')" && ~/work/odoo/odoo-bin --addons=~/work/odoo/addons,~/work/enterprise --stop-after-init --log-level=test -d $db'
 
 alias nvb='nvim ~/work/notes/!branch.md'
 alias cnvb='~/work/notes/ && nvim "!branch.md"'
+
+ogh() {
+    local current_dir=$(pwd)
+    echo '------ odoo ------' && cd ~/work/odoo/ && gh "$@" &&
+      echo '\n--- enterprise ---' && cd ~/work/enterprise/ && gh "$@"
+    cd "$current_dir" || return 1
+}
 
 ogit() {
     local current_dir=$(pwd)
@@ -189,6 +216,7 @@ ougit() {
 }
 
 otest() { obin --stop-after-init --test-tags="$1" "${@:2}" }
+oftest() { ofbin --stop-after-init --test-tags="$1" "${@:2}" }
 
 # 240215
 ogfa() { ogit fetch --all --prune }
@@ -254,3 +282,9 @@ export PATH="$PATH:/home/yosuanicolaus/.kattis"
 
 # 240601 add ~/app/bin/ to $PATH
 export PATH="$PATH:/home/yosuanicolaus/app/bin"
+
+# 240812 add Go language
+export PATH=$PATH:/usr/local/go/bin
+
+# 240911 ensure xmodmap run as often as possible
+xmodmap ~/.Xmodmap

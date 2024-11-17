@@ -24,6 +24,12 @@ if o.termguicolors == "kitty" then
   o.termguicolors = true
 end
 
+-- 240825 Neovide
+if vim.g.neovide then
+  vim.o.guifont = "JetBrainsMono Nerd Font Mono:h10"
+  vim.g.neovide_scroll_animation_length = 0
+end
+
 -- 240609 for godot
 -- local projectfile = vim.fn.getcwd() .. "/project.godot"
 -- if projectfile then

@@ -20,6 +20,8 @@ map("n", "N", "Nzzzv")
 map("n", "J", "mzJ`z")
 map("n", "<", "<<", { nowait = true })
 map("n", ">", ">>", { nowait = true })
+map("n", "zO", "zR")
+map("n", "zC", "zM")
 
 -- Insert mode
 map("i", "<C-v>", "<C-r>+")
@@ -34,6 +36,7 @@ map("v", "/", "y /<C-r>+<CR>zz")
 map("v", "?", "y ?<C-r>+<CR>zz")
 map("v", "<", "<gv")
 map("v", ">", ">gv")
+map("v", "p", "pgvy")
 
 -- Other + Multi mode
 map("c", "<C-v>", "<C-r>+")

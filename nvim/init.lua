@@ -37,3 +37,6 @@ require "nvchad.autocmds"
 vim.schedule(function()
   require "mappings"
 end)
+
+-- 240815 note for godot external editor to neovim, the exec path is
+-- --server ./godothost --remote-send "<C-\><C-N>:n {file}<CR>{line}G{col}<CR>"

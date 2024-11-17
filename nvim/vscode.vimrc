@@ -1,7 +1,5 @@
-" @yosuanicolaus 2023
-" copied from ~/.ideavimrc at 2023-12-14
-" updated at 240229,240522
-
+" @yosuanicolaus 2023-2024
+" originally copied from ~/.ideavimrc at 2023-12-14
 " -------------------------
 
 " Normal mode
@@ -20,8 +18,8 @@ nnoremap N Nzzzv
 nnoremap <ESC> <ESC>:noh<CR>
 nnoremap > >>
 nnoremap < <<
-nnoremap zh 40zh
-nnoremap zl 40zl
+nnoremap zO zR
+nnoremap zC zM
 
 " -------------------------
 
@@ -42,11 +40,11 @@ vnoremap / y /<C-r>+<CR>zz
 vnoremap ? y ?<C-r>+<CR>zz
 vnoremap n y /<C-r>+<CR>zz
 vnoremap N y ?<C-r>+<CR>zz
-" vnoremap J mzJ`z
 vnoremap <C-d> <C-d>zz
 vnoremap <C-u> <C-u>zz
 vnoremap < <gv
 vnoremap > >gv
+vnoremap p pgvy
 
 " TODO change/remove
 vnoremap <A-j> :m '>+1<CR>gv=gv
@@ -62,7 +60,9 @@ cnoremap <C-v> <C-r>+
 
 " 240229 in vscode, no need for this. they have their own way
 " xnoremap p p:let @+=@0<CR>:let @"=@0<CR>
+" vnoremap J mzJ`z
 
-" 240222
-map zO zR
-map zC zM
+" 240825 doesn't work in vscode vim
+" nnoremap zh 40zh
+" nnoremap zl 40zl
+

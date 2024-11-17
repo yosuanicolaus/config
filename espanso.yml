@@ -24,6 +24,42 @@ matches:
   - trigger: ":ustd"
     replace: "using namespace std;"
 
+  # 241108 for github fast review
+  - trigger: ":sug"
+    replace: "```suggestion\n"
+  - trigger: ":4 "
+    replace: "    "
+  - trigger: ":8 "
+    replace: "        "
+  - trigger: ":12 "
+    replace: "            "
+  - trigger: ":16 "
+    replace: "                "
+
+    # 240812 for python's breakpoint
+  - trigger: ":bp"
+    replace: "from rich.pretty import pprint; import ipdb; ipdb.set_trace()"
+  - trigger: ":pp"
+    replace: "from rich.pretty import pprint"
+  - trigger: ":ipdb"
+    replace: "import ipdb; ipdb.set_trace()"
+  
+  # 241007 common symbols (euro currency, etc.)
+  - trigger: ":eur"
+    replace: "€"
+
+  # EMOJIS
+  - trigger: ":lenny"
+    replace: "( ͡° ͜ʖ ͡°)"
+  - trigger: ":shrug"
+    replace : "¯\\_(ツ)_/¯"
+  - trigger: ":tableflip"
+    replace : "(ノ ゜Д゜)ノ ︵ ┻━┻"
+  - trigger: ":tears"
+    replace : "(ಥ﹏ಥ)"
+  - trigger: ":disapproval"
+    replace : "ಠ_ಠ"
+
   # NOTE: espanso uses YAML to define matches, so pay attention to the indentation!
 
   # But matches can also be dynamic:

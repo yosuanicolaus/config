@@ -72,7 +72,8 @@
   "godot_tools.editor_path": "/home/yosuanicolaus/codes/godot/engine/Godot.64",
   "[gdscript]": {
     "editor.detectIndentation": true,
-    "editor.insertSpaces": false
+    "editor.insertSpaces": false,
+    "editor.defaultFormatter": "geequlim.godot-tools"
   },
   "workbench.iconTheme": "material-icon-theme",
   "editor.inlineSuggest.enabled": true,
@@ -86,7 +87,6 @@
     "python": false
   },
   "godot.csharp.executablePath": "/home/yosuanicolaus/codes/godot/engine/Godot.64",
-  "csharp.referencesCodeLens.enabled": false,
   "[jsonc]": {
     "editor.defaultFormatter": "vscode.json-language-features"
   },
@@ -293,13 +293,6 @@
   "python.linting.pycodestyleCategorySeverity.E": "Information",
   "python.linting.pycodestyleCategorySeverity.W": "Information",
   "python.formatting.provider": "autopep8",
-  "vim.handleKeys": {
-    "<C-c>": false,
-    "<C-x>": false,
-    "<C-v>": false,
-    "<C-f>": false,
-    "<C-d>": true,
-  },
   "gitlens.hovers.currentLine.details": false,
   "gitlens.hovers.annotations.details": false,
   "editor.cursorSurroundingLines": 1,
@@ -338,4 +331,13 @@
   "editor.formatOnSaveMode": "modificationsIfAvailable",
   "editor.formatOnSave": true,
   "rust-analyzer.rustfmt.rangeFormatting.enable": true,
+  "godotTools.editorPath.godot3": "/home/yosuanicolaus/codes/godot/engine/Godot.64",
+  "godotTools.editorPath.godot4": "/home/yosuanicolaus/app/godot/godot.x86_64",
+  "godotTools.lsp.serverPort": 6005,
+  "dotnet.codeLens.enableReferencesCodeLens": false,
+  "vim.commandLineModeKeyBindings": [],
+  "workbench.colorTheme": "One Dark Pro Monokai Darker",
+  "window.customTitleBarVisibility": "auto",
+  "window.commandCenter": false,
+  "workbench.layoutControl.enabled": false,
 }
