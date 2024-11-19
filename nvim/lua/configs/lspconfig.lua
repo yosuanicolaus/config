@@ -10,7 +10,7 @@ local servers = {
   "rust_analyzer",
   "gdscript",
   "ts_ls",
-  "cpptools",
+  "clangd",
 }
 
 -- lsps with default config

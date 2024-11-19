@@ -14,6 +14,8 @@ file_counterpart_locations = {
     'espanso.yml': '~/.config/espanso/match/base.yml',
     'vscode_keybindings.json': '~/.config/Code - Insiders/User/keybindings.json',
     'vscode_settings.json': '~/.config/Code - Insiders/User/settings.json',
+    'zed_keymap.json': '~/.config/zed/keymap.json',
+    'zed_settings.json': '~/.config/zed/settings.json',
 }
 
 for config_file, real_file in file_counterpart_locations.items():
