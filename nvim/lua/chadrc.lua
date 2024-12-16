@@ -4,7 +4,7 @@
 ---@type ChadrcConfig
 local M = {
   base46 = {
-    theme = "ayu_dark",
+    theme = "radium",
   },
 }
 

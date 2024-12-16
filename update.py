@@ -12,8 +12,10 @@ file_counterpart_locations = {
     '.ideavimrc': '~/.ideavimrc',
     'kitty.conf': '~/.config/kitty/kitty.conf',
     'espanso.yml': '~/.config/espanso/match/base.yml',
+    'rust-competitive-helper.toml': '~/.config/rust-competitive-helper/rust-competitive-helper.toml',
     'vscode_keybindings.json': '~/.config/Code - Insiders/User/keybindings.json',
     'vscode_settings.json': '~/.config/Code - Insiders/User/settings.json',
+    'wezterm.lua': '~/.config/wezterm/wezterm.lua',
     'zed_keymap.json': '~/.config/zed/keymap.json',
     'zed_settings.json': '~/.config/zed/settings.json',
 }

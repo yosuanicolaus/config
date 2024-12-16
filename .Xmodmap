@@ -12,3 +12,5 @@ keycode 44 = j J Down J
 keycode 45 = k K Up K
 keycode 46 = l L Right L
 
+! update 241210: found "Input Remapper", prebuilt app for Linux Mint! use this for everything!
+

@@ -41,13 +41,12 @@
     "context": "Editor && vim_mode == normal",
     "bindings": {
       "ctrl-a": "editor::SelectAll",
-      "z h": ["workspace::SendKeystrokes", "2 0 z h"],
-      "z l": ["workspace::SendKeystrokes", "2 0 z l"],
       "n": ["workspace::SendKeystrokes", "n z z"],
       "N": ["workspace::SendKeystrokes", "shift-n z z"],
 
       "<": ["workspace::SendKeystrokes", "< <"],
       ">": ["workspace::SendKeystrokes", "> >"],
+      "ctrl-shift-k": ["workspace::SendKeystrokes", "shift-k"],
 
       "space t h": "theme_selector::Toggle",
 

@@ -210,6 +210,7 @@
     "logichess",
     "neovim",
     "Nicolaus",
+    "nums",
     "nvchad",
     "nvim",
     "odoo",
@@ -340,4 +341,5 @@
   "window.customTitleBarVisibility": "auto",
   "window.commandCenter": false,
   "workbench.layoutControl.enabled": false,
+  "editor.fontSize": 13,
 }

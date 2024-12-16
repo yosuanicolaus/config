@@ -24,6 +24,7 @@ return {
         "bash-language-server",
         "markdown-oxide",
         "rust-analyzer",
+        "pyright",
         "html-lsp",
         "css-lsp",
         "harper-ls",
@@ -46,6 +47,7 @@ return {
         "html",
         "css",
         "rust",
+        "python",
         "bash",
         "gdscript",
         "gdshader",
@@ -184,4 +186,31 @@ return {
   },
 
   "nvzone/volt", -- optional, needed for theme switcher
+
+  -- {
+  --   "mrcjkb/rustaceanvim",
+  --   version = "^5", -- Recommended
+  --   lazy = false, -- This plugin is already lazy
+  -- },
+
+  {
+    "NvChad/nvterm",
+    config = function()
+      require("nvterm").setup {
+        terminals = {
+          type_opts = {
+            float = {
+              width = 0.9,
+              height = 0.9,
+            },
+          },
+        },
+      }
+    end,
+  },
+
+  {
+    "wsdjeg/vim-fetch",
+    lazy = false,
+  },
 }

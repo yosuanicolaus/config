@@ -19,6 +19,7 @@ alias code=code-insiders
 alias py=python3
 alias ipy=ipython3
 alias kittyupdate='curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin'
+alias wezterm='flatpak run org.wezfurlong.wezterm'
 
 alias diary='export DIARY_FILE="$(date +'%y%m%d').md" && cd ~/codes/obsidian/ && touch diary/$DIARY_FILE && nvim diary/$DIARY_FILE'
 alias buffer='export BUFFER_FILE="b$(date +'%y%m%d').md" && cd ~/codes/obsidian/ && touch buffer/$BUFFER_FILE && nvim buffer/$BUFFER_FILE'
@@ -29,6 +30,7 @@ alias obsync='~/codes/obsidian/ && git add . && git commit -m "obsidian update" 
 
 alias irust=evcxr
 alias icpp=termic++
+alias rcph="RUST_BACKTRACE=1 cargo run --manifest-path ~/repos/rust-competitive-helper/Cargo.toml"
 
 alias setclip="xclip -selection c"
 alias getclip="xclip -selection c -o"
@@ -48,6 +50,9 @@ alias cnvl='~/.config/nvim/ && nvim lua/custom/configs/lspconfig.lua'
 alias cnvp='~/codes/python/ && nvim'
 alias cnvrc='~/repos/config/ && nvim'
 alias cnvz='~ && nvim .zshrc'
+alias cnvrcph='~/.config/rust-competitive-helper/ && nvim rust-competitive-helper.toml'
+alias cnvid='~/codes/competitive-rust/ && nvid -- --listen ./rcph3'
+alias cnvw='~/.config/wezterm/ && nvim wezterm.lua'
 
 alias nvc='nvim ~/.config/nvim/lua/mappings.lua'
 alias nve='nvim ~/.config/espanso/match/base.yml'
@@ -55,6 +60,8 @@ alias nvi='nvim ~/.ideavimrc'
 alias nvk='nvim ~/.config/kitty/kitty.conf'
 alias nvr='nvim --listen /tmp/nvim.pipe'
 alias nvz='nvim ~/.zshrc'
+alias nvw='nvim ~/.config/wezterm/wezterm.lua'
+alias nvrcph='nvim ~/.config/rust-competitive-helper/rust-competitive-helper.toml'
 
 alias gfap='git fetch --all --prune'
 alias grhm='git reset HEAD~1'    # "git reset head minus"
@@ -146,6 +153,7 @@ l3='--limit-memory-soft=17179869184'
 l4='--limit-memory-hard=17179869184'
 addons="--addons-path=$ODOO_ROOT/odoo/addons,$ODOO_ROOT/enterprise"
 addons_with_fin="--addons-path=$ODOO_ROOT/odoo/addons,$ODOO_ROOT/enterprise,$ODOO_ROOT/odoofin"
+addons_with_upgrade="--addons-path=$ODOO_ROOT/odoo/addons,$ODOO_ROOT/enterprise,$ODOO_ROOT/upgrade,$ODOO_ROOT/upgrade-util"
 dev='--dev=xml,reload'
 param_fin_1="--http-port="6969""
 param_fin_2="--unaccent"
@@ -160,6 +168,7 @@ alias obinf='db=$(obranchfin); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin -d $d
 alias ofin='db=$(obranchfin); [[ $db != 1  ]] && $ODOO_ROOT/odoofin/odoofin -d $db $l1 $l2 $l3 $l4 $dev $param_fin_1 $param_fin_2'
  
 alias oshell='db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin shell --shell-interface=ipython -d $db $addons'
+alias oshellupg='db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin shell --shell-interface=ipython -d $db $addons_with_upgrade'
 alias obincom='$ODOO_ROOT/odoo/odoo-bin -d $(obranchcom) --addons-path=$ODOO_ROOT/odoo/addons'
 alias obackup='odup $("obranch") $("obranch")-dup'
 alias oreset='odel $("obranch") && odup $("obranch")-dup $("obranch")'
@@ -173,13 +182,15 @@ alias cw=~/work/
 alias cwo=~/work/odoo/
 alias cwe=~/work/enterprise/
 alias cwu=~/work/upgrade/
+alias cwuu=~/work/upgrade-util/
 alias cwd=~/work/documentation/
 alias cwn=~/work/notes/
 alias cwf=~/work/odoofin/
 alias cwi=~/work/iap-apps/
 
-alias nvn='db=$(obranch); [[ $db != 1  ]] && touch "~/work/notes/$db.md" && nvim "~/work/notes/$db.md" '
-alias cnvn='db=$(obranch); [[ $db != 1  ]] && ~/work/notes/ && touch "$db.md" && nvim "$db.md" '
+# alias nvn='db=$(obranch); [[ $db != 1  ]] && touch "~/work/notes/$db.md" && nvim "~/work/notes/$db.md" '
+alias cnvn='db=$(obranch); [[ $db != 1  ]] && ~/work/notes/ && nvim "$db.md"'
+alias cnvnx='db=$(obranch); [[ $db != 1  ]] && ~/work/notes/ && touch "$db.md" && nvim "$db.md" '
 alias codoo='code-insiders ~/work/odoo.code-workspace'
 
 # alias orun="~/work/odoo/odoo-bin $addons $dev"
@@ -288,3 +299,5 @@ export PATH=$PATH:/usr/local/go/bin
 
 # 240911 ensure xmodmap run as often as possible
 xmodmap ~/.Xmodmap
+# update 241210; found input remapper (prebuilt mint app), the GOAT for this! ... update: nvm
+# xmodmap -e "keycode 64 = Mode_switch"

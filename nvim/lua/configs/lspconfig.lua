@@ -8,6 +8,7 @@ local servers = {
   "html",
   "cssls",
   "rust_analyzer",
+  "pyright",
   "gdscript",
   "ts_ls",
   "clangd",

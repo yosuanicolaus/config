@@ -11,6 +11,9 @@ o.cursorlineopt = "both" -- to enable cursorline!
 o.relativenumber = true
 o.linebreak = true
 
+-- 241211 enable inlay hint by default
+vim.lsp.inlay_hint.enable()
+
 -- 2024-02-04 for obsidian.nvim
 if vim.fn.getcwd() == "/home/yosuanicolaus/codes/obsidian" then
   vim.opt_local.conceallevel = 1
@@ -28,6 +31,8 @@ end
 if vim.g.neovide then
   vim.o.guifont = "JetBrainsMono Nerd Font Mono:h10"
   vim.g.neovide_scroll_animation_length = 0
+  vim.g.neovide_cursor_animation_length = 0
+  -- vim.g.neovide_transparency = 0.9
 end
 
 -- 240609 for godot

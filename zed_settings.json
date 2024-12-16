@@ -14,7 +14,7 @@
   "relative_line_numbers": true,
   "theme": {
     "mode": "system",
-    "light": "Andromeda",
+    "light": "VSCode Dark Modern",
     "dark": "One Dark"
   }
 }

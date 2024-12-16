@@ -24,6 +24,12 @@ matches:
   - trigger: ":ustd"
     replace: "using namespace std;"
 
+    # 241214 for advent of code (when creating in rcph)
+  - trigger: ":aoc"
+    replace: "advent-of-code"
+  - trigger: ":vec"
+    replace: "vec![];"
+
   # 241108 for github fast review
   - trigger: ":sug"
     replace: "```suggestion\n"

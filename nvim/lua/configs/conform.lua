@@ -1,7 +1,7 @@
 local options = {
   formatters_by_ft = {
     lua = { "stylua" },
-    gdscript = { "gdformat" },  -- [240609] cmd to format using gdtoolkit
+    gdscript = { "gdformat" }, -- [240609] cmd to format using gdtoolkit
     -- css = { "prettier" },
     -- html = { "prettier" },
   },
