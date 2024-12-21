@@ -187,12 +187,6 @@ return {
 
   "nvzone/volt", -- optional, needed for theme switcher
 
-  -- {
-  --   "mrcjkb/rustaceanvim",
-  --   version = "^5", -- Recommended
-  --   lazy = false, -- This plugin is already lazy
-  -- },
-
   {
     "NvChad/nvterm",
     config = function()
@@ -207,10 +201,5 @@ return {
         },
       }
     end,
-  },
-
-  {
-    "wsdjeg/vim-fetch",
-    lazy = false,
   },
 }

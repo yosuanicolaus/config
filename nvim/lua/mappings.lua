@@ -67,6 +67,8 @@ map("n", "<leader>oc", "<cmd>lua require('obsidian').util.toggle_checkbox()<CR>"
 map("v", "<C-f>", "y <cmd> Telescope live_grep <CR><C-r>+", { desc = "search current selection in all files" })
 map("n", "<C-b>", "<cmd>NvimTreeToggle<CR>") -- toggle show file explorer
 
+map("n", "<leader>tt", "<cmd>lua require('base46').toggle_transparency()<CR>")
+
 -- Remap to NvChad
 map({ "n", "t" }, "<C-`>", "<A-i>", { remap = true }) -- toggle terminal
 map("n", "<C-h>", "<leader>e", { remap = true }) -- focus file explorer

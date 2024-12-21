@@ -4,7 +4,8 @@
 ---@type ChadrcConfig
 local M = {
   base46 = {
-    theme = "radium",
+    theme = "dark_horizon",
+    transparency = true,
   },
 }
 

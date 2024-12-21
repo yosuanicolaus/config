@@ -46,13 +46,12 @@ alias cnvd='~/codes/obsidian/diary/ && nvim'
 alias cnve='~/.config/espanso/ && nvim match/base.yml'
 alias cnvi='~ && nvim ~/.ideavimrc'
 alias cnvk='~/.config/kitty/ && nvim kitty.conf'
-alias cnvl='~/.config/nvim/ && nvim lua/custom/configs/lspconfig.lua'
 alias cnvp='~/codes/python/ && nvim'
 alias cnvrc='~/repos/config/ && nvim'
 alias cnvz='~ && nvim .zshrc'
 alias cnvrcph='~/.config/rust-competitive-helper/ && nvim rust-competitive-helper.toml'
-alias cnvid='~/codes/competitive-rust/ && nvid -- --listen ./rcph3'
 alias cnvw='~/.config/wezterm/ && nvim wezterm.lua'
+alias cnvcr="~/codes/competitive-rust/ && nvim --listen localhost:3708"
 
 alias nvc='nvim ~/.config/nvim/lua/mappings.lua'
 alias nve='nvim ~/.config/espanso/match/base.yml'
@@ -62,11 +61,16 @@ alias nvr='nvim --listen /tmp/nvim.pipe'
 alias nvz='nvim ~/.zshrc'
 alias nvw='nvim ~/.config/wezterm/wezterm.lua'
 alias nvrcph='nvim ~/.config/rust-competitive-helper/rust-competitive-helper.toml'
+alias nvcr="nvim --listen localhost:3708"
 
 alias gfap='git fetch --all --prune'
 alias grhm='git reset HEAD~1'    # "git reset head minus"
 alias grhp='git reset HEAD@{1}'  # "git reset head plus"
-alias gwip='git add . && git commit -m "[IMP] WIP: work-in-progress"'
+
+unalias gwip
+gwip() {
+    git add . && git commit -m "[IMP] WIP/to-squash: $*"
+}
 
 codes() { ~/codes/$1 }
 repos() { ~/repos/$1 }

@@ -14,6 +14,9 @@ o.linebreak = true
 -- 241211 enable inlay hint by default
 vim.lsp.inlay_hint.enable()
 
+-- 241221 allow reopening closed buffer with C-o (last cursor position)
+o.jumpoptions:remove "clean"
+
 -- 2024-02-04 for obsidian.nvim
 if vim.fn.getcwd() == "/home/yosuanicolaus/codes/obsidian" then
   vim.opt_local.conceallevel = 1
