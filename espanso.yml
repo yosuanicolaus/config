@@ -23,6 +23,10 @@ matches:
   - trigger: ":irl"
     replace: "input.read_long()"
 
+  # neovim
+  - trigger: ":vh"
+    replace: ":vert h "
+
   # github review
   - trigger: ":sug"
     replace: "```suggestion\n"
