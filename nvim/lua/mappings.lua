@@ -1,4 +1,6 @@
-require "nvchad.mappings"
+-- 241224 manually customize our own nvchad.mappings
+-- require "nvchad.mappings"
+require "nvchad_mappings"
 
 local map = vim.keymap.set
 
@@ -61,16 +63,18 @@ map({ "n", "i", "v" }, "<C-k>", "<cmd>lua require('nvchad.tabufline').next()<CR>
 map({ "n", "i" }, "<C-/>", "<esc>gcc", { desc = "toggle comment", remap = true })
 map("v", "<C-/>", "gcgv", { desc = "toggle comment", remap = true })
 map("n", "<C-f>", "<cmd> Telescope live_grep <CR>", { desc = "open search in all files" })
-map("n", "<C-q>", "<cmd>lua require('nvchad.tabufline').close_buffer()<CR>")
-map("n", "Q", ":Bdelete other<CR>", { desc = "close all other tab" })
-map("n", "<leader>oc", "<cmd>lua require('obsidian').util.toggle_checkbox()<CR>")
+map("n", "<C-q>", "<cmd> lua require('nvchad.tabufline').close_buffer() <CR>")
+map("n", "Q", "<cmd> Bdelete other <CR>", { desc = "close all other tab" })
+map("n", "<leader>oc", "<cmd>lua require('obsidian').util.toggle_checkbox() <CR>")
 map("v", "<C-f>", "y <cmd> Telescope live_grep <CR><C-r>+", { desc = "search current selection in all files" })
 map("n", "<C-b>", "<cmd>NvimTreeToggle<CR>") -- toggle show file explorer
 
 map("n", "<leader>tt", "<cmd>lua require('base46').toggle_transparency()<CR>")
 
--- Remap to NvChad
+-- Remap to NvChad (nvchad_mappings)
 map({ "n", "t" }, "<C-`>", "<A-i>", { remap = true }) -- toggle terminal
 map("n", "<C-h>", "<leader>e", { remap = true }) -- focus file explorer
 map("n", "<C-S-p>", "<leader>ff", { remap = true }) -- search file
 map("n", "<C-p>", "<leader>ff", { remap = true }) -- search file
+
+map("n", "gd", "gdzz", { remap = true })

@@ -40,13 +40,14 @@ alias cda='cd ~/app/'
 alias cdd='cd ~/Downloads/'
 alias cg='cd ~/codes/godot/'
 alias ct='cd ~/codes/obsidian/'
+alias ccr='cd ~/codes/competitive-rust/'
 
 alias cnvc='~/.config/nvim/ && nvim ./lua/mappings.lua'
+alias cnvcp='~/.config/nvim/ && nvim ./lua/plugins/init.lua'
 alias cnvd='~/codes/obsidian/diary/ && nvim'
 alias cnve='~/.config/espanso/ && nvim match/base.yml'
 alias cnvi='~ && nvim ~/.ideavimrc'
 alias cnvk='~/.config/kitty/ && nvim kitty.conf'
-alias cnvp='~/codes/python/ && nvim'
 alias cnvrc='~/repos/config/ && nvim'
 alias cnvz='~ && nvim .zshrc'
 alias cnvrcph='~/.config/rust-competitive-helper/ && nvim rust-competitive-helper.toml'
@@ -300,6 +301,10 @@ export PATH="$PATH:/home/yosuanicolaus/app/bin"
 
 # 240812 add Go language
 export PATH=$PATH:/usr/local/go/bin
+
+# 241222 add DOOMEMACS (letsgo!!) 241224 wait... spacemacs ?! letsgo!!
+export PATH="$HOME/.emacs.d/bin:$PATH"
+# alias emacs="emacsclient -c -a 'emacs'"
 
 # 240911 ensure xmodmap run as often as possible
 xmodmap ~/.Xmodmap

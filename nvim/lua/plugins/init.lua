@@ -7,12 +7,21 @@ return {
     end,
   },
 
-  -- These are some examples, uncomment them if you want to see them work!
   {
     "neovim/nvim-lspconfig",
     config = function()
       require("nvchad.configs.lspconfig").defaults()
       require "configs.lspconfig"
+    end,
+  },
+
+  {
+    -- override NvChad
+    "nvim-telescope/telescope.nvim",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    cmd = "Telescope",
+    opts = function()
+      return require "configs.telescope"
     end,
   },
 
@@ -160,15 +169,15 @@ return {
     cmd = { "SudaRead", "SudaWrite" },
   },
 
-  -- 240602 close all other buffers except current (:Bdelete other)
   {
+    -- close all other buffers except current (:Bdelete other)
     "Asheq/close-buffers.vim",
     cmd = { "Bdelete" },
+    -- keys = {
+    --   { "<S-q>", "<cmd> Bdelete other <CR>" },
+    --   -- { "<leader>cprt", "<cmd> CompetiTest receive testcases <CR>" },
+    -- },
   },
-
-  -- 241117 update nvchad, requires nvchad/ui stuffs & volt
-
-  "nvim-lua/plenary.nvim",
 
   {
     "nvchad/ui",
@@ -185,21 +194,44 @@ return {
     end,
   },
 
-  "nvzone/volt", -- optional, needed for theme switcher
+  -- {
+  --   "NvChad/nvterm",
+  --   config = function()
+  --     require("nvterm").setup {
+  --       terminals = {
+  --         type_opts = {
+  --           float = {
+  --             width = 0.9,
+  --             height = 0.9,
+  --           },
+  --         },
+  --       },
+  --     }
+  --   end,
+  -- },
+
+  -- 241224 Post Doom Emacs & Spacemacs trial
+  -- Let's make nvim great
 
   {
-    "NvChad/nvterm",
-    config = function()
-      require("nvterm").setup {
-        terminals = {
-          type_opts = {
-            float = {
-              width = 0.9,
-              height = 0.9,
-            },
-          },
-        },
-      }
-    end,
+    -- motions: I am speed, baby
+    -- <leader><leader>wa<leader><leader>f
+    "easymotion/vim-easymotion",
+    lazy = false,
+  },
+
+  {
+    -- automatically adjusts 'shiftwidth' and 'expandtab' heuristically
+    "tpope/vim-sleuth",
+    lazy = false,
+  },
+
+  {
+    -- automatically save project session
+    "rmagatti/auto-session",
+    lazy = false,
+    opts = {
+      suppressed_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
+    },
   },
 }

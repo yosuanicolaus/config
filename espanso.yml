@@ -8,29 +8,22 @@
 # Matches are substitution rules: when you type the "trigger" string
 # it gets replaced by the "replace" string.
 matches:
-  # Simple text replacement
-  - trigger: ":espanso"
-    replace: "Hi there!"
 
-  # 240222 for frequent links on browser
-  - trigger: ":m2"
-    replace: "https://mail.google.com/mail/u/2/"
-  - trigger: ":m1"
-    replace: "https://mail.google.com/mail/u/1/"
-  - trigger: ":m0"
-    replace: "https://mail.google.com/mail/u/0/"
-  
-    # 240403 for icpp init. limitation: "#" not possible
-  - trigger: ":ustd"
-    replace: "using namespace std;"
-
-    # 241214 for advent of code (when creating in rcph)
+    # competitive programming
   - trigger: ":aoc"
     replace: "advent-of-code"
-  - trigger: ":vec"
+  - trigger: ":v;"
     replace: "vec![];"
+  - trigger: ":ir;"
+    replace: "input.read();"
+  - trigger: ":irs"
+    replace: "input.read_size()"
+  - trigger: ":iri"
+    replace: "input.read_int()"
+  - trigger: ":irl"
+    replace: "input.read_long()"
 
-  # 241108 for github fast review
+  # github review
   - trigger: ":sug"
     replace: "```suggestion\n"
   - trigger: ":4 "
@@ -42,7 +35,7 @@ matches:
   - trigger: ":16 "
     replace: "                "
 
-    # 240812 for python's breakpoint
+    # python breakpoint
   - trigger: ":bp"
     replace: "from rich.pretty import pprint; import ipdb; ipdb.set_trace()"
   - trigger: ":pp"
@@ -50,11 +43,17 @@ matches:
   - trigger: ":ipdb"
     replace: "import ipdb; ipdb.set_trace()"
   
-  # 241007 common symbols (euro currency, etc.)
+  # common symbols
   - trigger: ":eur"
     replace: "€"
+  - trigger: ":gbp"
+    replace: "£"
+  - trigger: ":sum"
+    replace: "∑"
+  - trigger: ":pi"
+    replace: "π"
 
-  # EMOJIS
+  # emojis
   - trigger: ":lenny"
     replace: "( ͡° ͜ʖ ͡°)"
   - trigger: ":shrug"
