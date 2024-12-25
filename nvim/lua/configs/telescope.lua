@@ -1,10 +1,5 @@
-require("telescope").setup {
-  pickers = {
-    find_files = {
-      push_tagstack_on_edit = true,
-    },
-  },
-}
+-- require("telescope").setup {
+-- }
 
 -- update: actually... <C-u> is used for scrolling (along with <C-d>) ...
 -- local options = {}
@@ -14,7 +9,20 @@ local options = {
     mappings = {
       i = {
         -- ["<C-u>"] = false, -- allow removing line with <C-u>
-        ["<CR>"] = "select_vertical", -- open result in vertical split
+      },
+    },
+  },
+
+  pickers = {
+    find_files = {
+      push_tagstack_on_edit = true,
+    },
+
+    help_tags = {
+      mappings = {
+        i = {
+          ["<CR>"] = "select_vertical", -- open help result in vertical split
+        },
       },
     },
   },

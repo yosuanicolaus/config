@@ -282,16 +282,16 @@ return {
     },
   },
 
-  {
-    -- git blame line
-    "NeogitOrg/neogit",
-    dependencies = {
-      "nvim-lua/plenary.nvim", -- required
-      "sindrets/diffview.nvim", -- optional - Diff integration
-      "nvim-telescope/telescope.nvim", -- optional
-    },
-    config = true,
-  },
+  -- {
+  --   -- git blame line
+  --   "NeogitOrg/neogit",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim", -- required
+  --     "sindrets/diffview.nvim", -- optional - Diff integration
+  --     "nvim-telescope/telescope.nvim", -- optional
+  --   },
+  --   config = true,
+  -- },
 
   {
     -- tab out in insert mode
@@ -299,6 +299,18 @@ return {
     event = "InsertEnter",
     opts = {
       -- configuration goes here
+    },
+  },
+
+  {
+    -- git blame line
+    "f-person/git-blame.nvim",
+    event = "VeryLazy",
+    opts = {
+      message_template = "<author> • <date> • <summary> • <<sha>>", -- template for the blame message, check the Message template section for more options
+      date_format = "%d-%B-%Y", -- template for the date, check Date format section for more options
+      virtual_text_column = 110, -- virtual text start column, check Start virtual text at column section for more options
+      delay = 100,
     },
   },
 }
