@@ -77,8 +77,8 @@ map("i", "<C-s>", "<CMD>w<CR>")
 ----------------------------------------------------------------------------------
 
 -- script: move line down/up
-map("v", "<A-j>", ":m '>+1<CR>gv=gv")
-map("v", "<A-k>", ":m '<-2<CR>gv=gv")
+map("v", "<C-j>", ":m '>+1<CR>gv=gv")
+map("v", "<C-k>", ":m '<-2<CR>gv=gv")
 map("v", "J", "mzJ`z") -- save cursor position after joining lines
 
 -- script: search selected selection
@@ -162,12 +162,16 @@ map("n", "<leader>bn", "<cmd>enew<CR>", { desc = "buffer new" })
 map({ "n", "i" }, "<C-/>", "<esc>gcc", { desc = "toggle comment", remap = true })
 map("v", "<C-/>", "gcgv", { desc = "toggle comment", remap = true }) -- reselect comment
 
+--- [ GIT :: Telescope | GitBlame  ] ---
+map("n", "<leader>gco", "<cmd>Telescope git_commits<CR>", { desc = "telescope git commits" })
+map("n", "<leader>gst", "<cmd>Telescope git_status<CR>", { desc = "telescope git status" })
+map("n", "<leader>gbo", "<cmd>GitBlameOpenCommitURL<CR>", { desc = "GitBlame open commit URL" })
+map("n", "<leader>gbc", "<cmd>GitBlameCopySHA<CR>", { desc = "GitBlame copy commit SHA" })
+
 --- [ Misc. ] ---
 map("n", "<leader>tgc", "<CMD>NvCheatsheet<CR>", { desc = "toggle nvcheatsheet" })
 map("n", "<leader>oc", "<CMD>lua require('obsidian').util.toggle_checkbox() <CR>")
 map("n", "<leader>fm", "<CMD>lua require('conform').format { lsp_fallback = true }<CR>", { desc = "format file" })
-map("n", "<leader>gc", "<cmd>Telescope git_commits<CR>", { desc = "telescope git commits" })
-map("n", "<leader>gst", "<cmd>Telescope git_status<CR>", { desc = "telescope git status" })
 map("n", "<leader>pt", "<cmd>Telescope terms<CR>", { desc = "telescope pick hidden term" })
 map("n", "<leader>wK", "<cmd>WhichKey <CR>", { desc = "whichkey all keymaps" })
 map("n", "<leader>wk", function()
@@ -180,7 +184,7 @@ map("v", "<C-f>", '"zy <CMD>Telescope live_grep <CR><C-r>z', { desc = "search se
 map("n", "<leader>fw", "<cmd>Telescope live_grep<CR>", { desc = "telescope live grep" })
 map("n", "<leader>fb", "<cmd>Telescope buffers<CR>", { desc = "telescope find buffers" })
 map("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { desc = "telescope help page" })
-map("n", "<leader>fm", "<cmd>Telescope marks<CR>", { desc = "telescope find marks" })
+-- map("n", "<leader>fm", "<cmd>Telescope marks<CR>", { desc = "telescope find marks" })
 map("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", { desc = "telescope find oldfiles" })
 map("n", "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "telescope find in current buffer" })
 map("n", "<leader>ft", "<CMD>Telescope tagstack<CR>")
@@ -190,7 +194,8 @@ map(
   "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>",
   { desc = "🔭 find all files" }
 )
-map("n", "<C-p>", "<leader>ff", { remap = true }) -- search file
+map("n", "<C-p>", "<cmd>Telescope find_files<CR>", { desc = "telescope find files" })
+map("n", "<leader>ff", "<cmd>Telescope find_files<CR>", { desc = "telescope find files" })
 
 --- [ NvimTree ] ---
 map("n", "<C-b>", "<cmd>NvimTreeToggle<CR>", { desc = "nvimtree toggle window" })

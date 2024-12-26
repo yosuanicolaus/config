@@ -1,8 +1,4 @@
--- require("telescope").setup {
--- }
-
--- update: actually... <C-u> is used for scrolling (along with <C-d>) ...
--- local options = {}
+local actions = require "telescope.actions"
 
 local options = {
   defaults = {
@@ -18,10 +14,22 @@ local options = {
       push_tagstack_on_edit = true,
     },
 
+    live_grep = {
+      mappings = {
+        -- center screen to cursor ("zz") after opening the result
+        i = {
+          ["<CR>"] = actions.select_default + actions.center,
+        },
+        n = {
+          ["<CR>"] = actions.select_default + actions.center,
+        },
+      },
+    },
+
     help_tags = {
       mappings = {
         i = {
-          ["<CR>"] = "select_vertical", -- open help result in vertical split
+          ["<CR>"] = actions.select_vertical, -- open help result in vertical split
         },
       },
     },

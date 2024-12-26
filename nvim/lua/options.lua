@@ -43,3 +43,30 @@ end
 -- if projectfile then
 --   vim.fn.serverstart "./godothost"
 -- end
+
+-- 241226 better "checkhealth" (don't create new tabs!)
+-- replace "checkhealth" automatically (when typing "che" / "checkhealth")
+vim.api.nvim_create_user_command("Checkhealth", function(args)
+  local cmd = "vert checkhealth " .. args.args
+  vim.cmd(cmd)
+  vim.opt_local.bufhidden = "wipe"
+  vim.opt_local.modifiable = false
+  vim.opt_local.buflisted = false
+  vim.opt_local.swapfile = false
+  vim.opt_local.cursorline = false
+  vim.opt_local.cursorcolumn = false
+  vim.opt_local.number = false
+  vim.opt_local.relativenumber = false
+  vim.opt_local.ruler = false
+  vim.opt_local.list = false
+  vim.opt_local.showmode = false
+  vim.opt_local.showcmd = false
+  vim.cmd("file " .. args.args .. "\\ health")
+end, {
+  nargs = "?",
+  complete = "checkhealth",
+})
+
+vim.cmd [[cnoreabbrev <expr> checkhealth getcmdtype() == ":" && getcmdline() == 'checkhealth' ? 'Checkhealth' : 'checkhealth']]
+vim.cmd [[cnoreabbrev <expr> che getcmdtype() == ":" && getcmdline() == 'che' ? 'Checkhealth' : 'che']]
+vim.cmd [[cnoreabbrev <expr> LspInfo getcmdtype() == ":" && getcmdline() == 'LspInfo' ? 'Checkhealth lspconfig' :'LspInfo']]

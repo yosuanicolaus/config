@@ -51,7 +51,7 @@ alias cnvk='~/.config/kitty/ && nvim kitty.conf'
 alias cnvrc='~/repos/config/ && nvim'
 alias cnvz='~ && nvim .zshrc'
 alias cnvrcph='~/.config/rust-competitive-helper/ && nvim rust-competitive-helper.toml'
-alias cnvw='~/.config/wezterm/ && nvim wezterm.lua'
+alias cnvw='~/.config/wezterm/ && nvim'
 alias cnvcr="~/codes/competitive-rust/ && nvim --listen localhost:3708"
 
 alias nvc='nvim ~/.config/nvim/lua/mappings.lua'
@@ -60,7 +60,6 @@ alias nvi='nvim ~/.ideavimrc'
 alias nvk='nvim ~/.config/kitty/kitty.conf'
 alias nvr='nvim --listen /tmp/nvim.pipe'
 alias nvz='nvim ~/.zshrc'
-alias nvw='nvim ~/.config/wezterm/wezterm.lua'
 alias nvrcph='nvim ~/.config/rust-competitive-helper/rust-competitive-helper.toml'
 alias nvcr="nvim --listen localhost:3708"
 

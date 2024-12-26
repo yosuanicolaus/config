@@ -88,6 +88,7 @@ return {
         "prettier",
         "ast-grep",
         "gdtoolkit",
+        "ruff",
       },
     },
   },
@@ -144,8 +145,8 @@ return {
     "xeluxee/competitest.nvim",
     dependencies = "MunifTanjim/nui.nvim",
     keys = {
-      { "<leader>cprp", "<cmd> CompetiTest receive problem <CR>" },
-      { "<leader>cprt", "<cmd> CompetiTest receive testcases <CR>" },
+      { "<leader>cpp", "<cmd> CompetiTest receive problem <CR>" },
+      { "<leader>cpt", "<cmd> CompetiTest receive testcases <CR>" },
     },
     config = function()
       require("competitest").setup {}
@@ -220,10 +221,6 @@ return {
     -- close all other buffers except current (:Bdelete other)
     "Asheq/close-buffers.vim",
     cmd = { "Bdelete" },
-    -- keys = {
-    --   { "<S-q>", "<cmd> Bdelete other <CR>" },
-    --   -- { "<leader>cprt", "<cmd> CompetiTest receive testcases <CR>" },
-    -- },
   },
 
   {
@@ -241,28 +238,13 @@ return {
     end,
   },
 
-  -- {
-  --   "NvChad/nvterm",
-  --   config = function()
-  --     require("nvterm").setup {
-  --       terminals = {
-  --         type_opts = {
-  --           float = {
-  --             width = 0.9,
-  --             height = 0.9,
-  --           },
-  --         },
-  --       },
-  --     }
-  --   end,
-  -- },
-
   -- 241224 Post Doom Emacs & Spacemacs trial
   -- Let's make nvim great
 
   {
     -- motions: I am speed, baby
-    -- <leader><leader>wa<leader><leader>f
+    -- <leader><leader>w
+    -- <leader><leader>s (char)
     "easymotion/vim-easymotion",
     lazy = false,
   },
