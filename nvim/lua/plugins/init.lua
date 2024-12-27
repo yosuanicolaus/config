@@ -80,7 +80,7 @@ return {
         "bash-language-server",
         "markdown-oxide",
         "rust-analyzer",
-        "pyright",
+        "basedpyright",
         "html-lsp",
         "css-lsp",
         "harper-ls",
@@ -144,12 +144,45 @@ return {
   {
     "xeluxee/competitest.nvim",
     dependencies = "MunifTanjim/nui.nvim",
-    keys = {
-      { "<leader>cpp", "<cmd> CompetiTest receive problem <CR>" },
-      { "<leader>cpt", "<cmd> CompetiTest receive testcases <CR>" },
-    },
+    cmd = { "CompetiTest" },
     config = function()
-      require("competitest").setup {}
+      local base_dir = "/home/yosuanicolaus/codes/competitive-rust"
+      require("competitest").setup {
+        editor_ui = {
+          show_rnu = true,
+          normal_mode_mappings = {
+            switch_window = { "<C-i>", "<CR>", "<S-CR>" },
+          },
+          insert_mode_mappings = {
+            switch_window = { "<C-i>" },
+            save_and_close = "<C-s>",
+            cancel = "<C-q>",
+          },
+        },
+        popup_ui = {
+          layout = {
+            { 2, { { 1, "si" }, { 1, "tc" } } },
+            { 4, { { 1, { { 1, "so" }, { 1, "eo" } } }, { 1, "se" } } },
+          },
+        },
+        compile_command = {
+          rust = {
+            exec = "rustc",
+            args = {
+              "--edition=2021",
+              "-o",
+              base_dir .. "/target/debug/competitest",
+              base_dir .. "/main/src/main.rs",
+            },
+          },
+        },
+        run_command = {
+          rust = { exec = base_dir .. "/target/debug/competitest" },
+        },
+        testcases_directory = "../tests/",
+        testcases_input_file_format = "$(TCNUM).in",
+        testcases_output_file_format = "$(TCNUM).out",
+      }
     end,
   },
 
@@ -264,17 +297,6 @@ return {
     },
   },
 
-  -- {
-  --   -- git blame line
-  --   "NeogitOrg/neogit",
-  --   dependencies = {
-  --     "nvim-lua/plenary.nvim", -- required
-  --     "sindrets/diffview.nvim", -- optional - Diff integration
-  --     "nvim-telescope/telescope.nvim", -- optional
-  --   },
-  --   config = true,
-  -- },
-
   {
     -- tab out in insert mode
     "kawre/neotab.nvim",
@@ -290,9 +312,10 @@ return {
     event = "VeryLazy",
     opts = {
       message_template = "<author> • <date> • <summary> • <<sha>>", -- template for the blame message, check the Message template section for more options
-      date_format = "%d-%B-%Y", -- template for the date, check Date format section for more options
+      date_format = "%d %B %Y", -- template for the date, check Date format section for more options
       virtual_text_column = 110, -- virtual text start column, check Start virtual text at column section for more options
       delay = 100,
+      message_when_not_committed = "",
     },
   },
 }

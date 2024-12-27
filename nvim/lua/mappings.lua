@@ -178,6 +178,13 @@ map("n", "<leader>wk", function()
   vim.cmd("WhichKey " .. vim.fn.input "WhichKey: ")
 end, { desc = "whichkey query lookup" })
 
+--- [ CompetiTest ] ---
+map("n", "<leader>cpr", "<cmd>CompetiTest run<CR>", { desc = "CompetiTest run" })
+map("n", "<leader>cps", "<cmd>CompetiTest show_ui<CR>", { desc = "CompetiTest show_ui" })
+map("n", "<leader>cpa", "<cmd>CompetiTest add_testcase<CR>", { desc = "CompetiTest add_testcase" })
+map("n", "<leader>cpe", "<cmd>CompetiTest edit_testcase<CR>", { desc = "CompetiTest edit_testcase" })
+map("n", "<leader>cpd", "<cmd>CompetiTest delete_testcase<CR>", { desc = "CompetiTest delete_testcase" })
+
 --- [ Telescope Find ] ---
 map("n", "<C-f>", "<CMD>Telescope live_grep<CR>", { desc = "telescope live grep" })
 map("v", "<C-f>", '"zy <CMD>Telescope live_grep <CR><C-r>z', { desc = "search selection in all files" })
