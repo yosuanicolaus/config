@@ -61,13 +61,15 @@ matches:
   - trigger: ":lenny"
     replace: "( ͡° ͜ʖ ͡°)"
   - trigger: ":shrug"
-    replace : "¯\\_(ツ)_/¯"
+    replace: "¯\\_(ツ)_/¯"
   - trigger: ":tableflip"
-    replace : "(ノ ゜Д゜)ノ ︵ ┻━┻"
+    replace: "(ノ ゜Д゜)ノ ︵ ┻━┻"
   - trigger: ":tears"
-    replace : "(ಥ﹏ಥ)"
+    replace: "(ಥ﹏ಥ)"
   - trigger: ":disapproval"
-    replace : "ಠ_ಠ"
+    replace: "ಠ_ಠ"
+  - trigger: ":party"
+    replace: "🥳"
 
   # NOTE: espanso uses YAML to define matches, so pay attention to the indentation!
 

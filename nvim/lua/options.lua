@@ -1,8 +1,62 @@
-require "nvchad.options"
+local opt = vim.opt
+local o = vim.o
+local g = vim.g
+
+-------------------------------------- options ------------------------------------------
+o.laststatus = 3
+o.showmode = false
+
+o.clipboard = "unnamedplus"
+o.cursorline = true
+o.cursorlineopt = "number"
+
+-- Indenting
+o.expandtab = true
+o.shiftwidth = 2
+o.smartindent = true
+o.tabstop = 2
+o.softtabstop = 2
+
+opt.fillchars = { eob = " " }
+o.ignorecase = true
+o.smartcase = true
+o.mouse = "a"
+
+-- Numbers
+o.number = true
+o.numberwidth = 2
+o.ruler = false
+
+-- disable nvim intro
+opt.shortmess:append "sI"
+
+o.signcolumn = "yes"
+o.splitbelow = true
+o.splitright = true
+o.timeoutlen = 400
+o.undofile = true
+
+-- interval for writing swap file to disk, also used by gitsigns
+o.updatetime = 250
+
+-- go to previous/next line with h,l,left arrow and right arrow
+-- when cursor reaches end/beginning of line
+opt.whichwrap:append "<>[]hl"
+
+-- disable some default providers
+g.loaded_node_provider = 0
+g.loaded_python3_provider = 0
+g.loaded_perl_provider = 0
+g.loaded_ruby_provider = 0
+
+-- add binaries installed by mason.nvim to path
+local is_windows = vim.fn.has "win32" ~= 0
+local sep = is_windows and "\\" or "/"
+local delim = is_windows and ";" or ":"
+vim.env.PATH = table.concat({ vim.fn.stdpath "data", "mason", "bin" }, sep) .. delim .. vim.env.PATH
 
 -- add yours here!
 
-local o = vim.opt
 o.cursorlineopt = "both" -- to enable cursorline!
 
 ---------------------------------------------------------
@@ -15,7 +69,7 @@ o.linebreak = true
 vim.lsp.inlay_hint.enable()
 
 -- 241221 allow reopening closed buffer with C-o (last cursor position)
-o.jumpoptions:remove "clean"
+o.jumpoptions = "stack,view"
 
 -- 2024-02-04 for obsidian.nvim
 if vim.fn.getcwd() == "/home/yosuanicolaus/codes/obsidian" then
@@ -32,9 +86,9 @@ end
 
 -- 240825 Neovide
 if vim.g.neovide then
-  vim.o.guifont = "JetBrainsMono Nerd Font Mono:h10"
-  vim.g.neovide_scroll_animation_length = 0
-  vim.g.neovide_cursor_animation_length = 0
+  o.guifont = "JetBrainsMono Nerd Font Mono:h10"
+  g.neovide_scroll_animation_length = 0
+  g.neovide_cursor_animation_length = 0
   -- vim.g.neovide_transparency = 0.9
 end
 

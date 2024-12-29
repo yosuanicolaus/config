@@ -1,92 +1,202 @@
-local nvchad_plugins = require "nvchad.plugins"
-
-local custom_plugins = {
+return {
   --------------------------------------------------------------------------------
-  ----- Overrides NvChad's plugins -----
+  --- NvChad stuffs ---
   --------------------------------------------------------------------------------
   {
+    "NvChad/NvChad",
+    lazy = false,
+    branch = "v2.5",
+    config = function()
+      require "options"
+    end,
+  },
+
+  "nvim-lua/plenary.nvim",
+
+  {
+    "nvchad/base46",
+    build = function()
+      require("base46").load_all_highlights()
+    end,
+  },
+
+  {
+    "nvchad/ui",
+    lazy = false,
+    config = function()
+      require "nvchad"
+    end,
+  },
+
+  "nvzone/volt",
+
+  "nvzone/menu",
+
+  { "nvzone/minty", cmd = { "Huefy", "Shades" } },
+
+  {
+    "nvim-tree/nvim-web-devicons",
+    opts = function()
+      dofile(vim.g.base46_cache .. "devicons")
+      return { override = require "nvchad.icons.devicons" }
+    end,
+  },
+
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    event = "User FilePost",
+    opts = {
+      indent = { char = "│", highlight = "IblChar" },
+      scope = { char = "│", highlight = "IblScopeChar" },
+    },
+    config = function(_, opts)
+      dofile(vim.g.base46_cache .. "blankline")
+
+      local hooks = require "ibl.hooks"
+      hooks.register(hooks.type.WHITESPACE, hooks.builtin.hide_first_space_indent_level)
+      require("ibl").setup(opts)
+
+      dofile(vim.g.base46_cache .. "blankline")
+    end,
+  },
+
+  -- file managing , picker etc
+  {
+    "nvim-tree/nvim-tree.lua",
+    cmd = { "NvimTreeToggle", "NvimTreeFocus" },
+    opts = function()
+      return require "configs.nvimtree"
+    end,
+  },
+
+  {
+    "folke/which-key.nvim",
+    keys = { "<leader>", "<c-w>", '"', "'", "`", "c", "v", "g" },
+    cmd = "WhichKey",
+    opts = function()
+      dofile(vim.g.base46_cache .. "whichkey")
+      return {}
+    end,
+  },
+
+  {
+    -- formatting!
     "stevearc/conform.nvim",
-    event = "BufWritePre", -- uncomment for format on save
+    event = "BufWritePre", -- for format on save
+    opts = {
+      formatters_by_ft = { lua = { "stylua" } },
+    },
     config = function()
       require "configs.conform"
     end,
   },
+
   {
-    "neovim/nvim-lspconfig",
-    config = function()
-      require("nvchad.configs.lspconfig").defaults()
-      require "configs.lspconfig"
+    -- git stuff
+    "lewis6991/gitsigns.nvim",
+    event = "User FilePost",
+    opts = function()
+      return require "configs.gitsigns"
     end,
   },
+
   {
     "nvim-telescope/telescope.nvim",
+    cmd = "Telescope",
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
-      -- {
-      --   "nvim-telescope/telescope-live-grep-args.nvim",
-      --   -- This will not install any breaking changes.
-      --   -- For major updates, this must be adjusted manually.
-      --   version = "^1.0.0",
-      -- },
+      {
+        "nvim-telescope/telescope-live-grep-args.nvim",
+        -- This will not install any breaking changes.
+        -- For major updates, this must be adjusted manually.
+        version = "^1.0.0",
+      },
     },
     opts = function()
       return require "configs.telescope"
     end,
   },
+
   {
     "hrsh7th/nvim-cmp",
+    event = "InsertEnter", -- load luasnips + cmp related in insert mode only
+    dependencies = {
+      {
+        -- snippet plugin
+        "L3MON4D3/LuaSnip",
+        dependencies = "rafamadriz/friendly-snippets",
+        opts = { history = true, updateevents = "TextChanged,TextChangedI" },
+        config = function(_, opts)
+          require("luasnip").config.set_config(opts)
+          require "configs.luasnip"
+        end,
+      },
+
+      {
+        -- autopairing of (){}[] etc
+        "windwp/nvim-autopairs",
+        opts = {
+          fast_wrap = {},
+          disable_filetype = { "TelescopePrompt", "vim" },
+        },
+        config = function(_, opts)
+          require("nvim-autopairs").setup(opts)
+
+          -- setup cmp for autopairs
+          local cmp_autopairs = require "nvim-autopairs.completion.cmp"
+          require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
+        end,
+      },
+
+      -- cmp sources plugins
+      {
+        "saadparwaiz1/cmp_luasnip",
+        "hrsh7th/cmp-nvim-lua",
+        "hrsh7th/cmp-nvim-lsp",
+        "hrsh7th/cmp-buffer",
+        "hrsh7th/cmp-path",
+      },
+    },
     opts = function()
       return require "configs.cmp"
     end,
   },
+
   {
+    -- lsp stuff
     "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = {
-        "lua-language-server",
-        "bash-language-server",
-        "markdown-oxide",
-        "rust-analyzer",
-        "basedpyright",
-        "html-lsp",
-        "css-lsp",
-        "harper-ls",
-        "stylua",
-        "prettier",
-        "ast-grep",
-        "gdtoolkit",
-        "ruff",
-      },
-    },
+    cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUpdate" },
+    opts = function()
+      return require "configs.mason"
+    end,
   },
+
+  {
+    "neovim/nvim-lspconfig",
+    event = "User FilePost",
+    config = function()
+      require("configs.lspconfig").defaults()
+    end,
+  },
+
   {
     "nvim-treesitter/nvim-treesitter",
+    event = { "BufReadPost", "BufNewFile" },
+    cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
+    build = ":TSUpdate",
     lazy = false,
-    opts = {
-      ensure_installed = {
-        "vim",
-        "lua",
-        "vimdoc",
-        "html",
-        "css",
-        "rust",
-        "python",
-        "bash",
-        "gdscript",
-        "gdshader",
-        "godot_resource",
-      },
-    },
+    opts = function()
+      return require "configs.treesitter"
+    end,
+    config = function(_, opts)
+      require("nvim-treesitter.configs").setup(opts)
+    end,
   },
-  --------------------------------------------------------------------------------
-  ------ Overrides end -----
-  --------------------------------------------------------------------------------
 
   --------------------------------------------------------------------------------
   --------------------------------------------------------------------------------
 
   {
-    -- 2023-08-04
     "kylechui/nvim-surround",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
@@ -96,6 +206,7 @@ local custom_plugins = {
   },
 
   {
+    -- multiple cursor
     "mg979/vim-visual-multi",
     lazy = false,
   },
@@ -110,8 +221,8 @@ local custom_plugins = {
     end,
   },
 
-  -- 2024-01-31 competitive programming problem parser
   {
+    -- competitive programming test runner
     "xeluxee/competitest.nvim",
     dependencies = "MunifTanjim/nui.nvim",
     cmd = { "CompetiTest" },
@@ -227,13 +338,6 @@ local custom_plugins = {
   },
 
   {
-    "nvchad/ui",
-    config = function()
-      require "nvchad"
-    end,
-  },
-
-  {
     "nvchad/base46",
     lazy = true,
     build = function()
@@ -241,11 +345,8 @@ local custom_plugins = {
     end,
   },
 
-  -- 241224 Post Doom Emacs & Spacemacs trial
-  -- Let's make nvim great
-
   {
-    -- motions: I am speed, baby
+    -- fast vim navigation (like vimium)
     -- <leader><leader>w
     -- <leader><leader>s (char)
     "easymotion/vim-easymotion",
@@ -289,37 +390,3 @@ local custom_plugins = {
     },
   },
 }
-
---------------------------------------------------------------------------------
---------------------------------------------------------------------------------
-
---- Merge table from custom_plugins to nvchad_plugins if the first key matches
-
-local nvchad_clean = {}
-for _, nvchad_setting in ipairs(nvchad_plugins) do
-  if type(nvchad_setting) == "string" then
-    nvchad_setting = { nvchad_setting }
-  end
-  nvchad_clean[nvchad_setting[1]] = nvchad_setting
-end
-local custom_clean = {}
-for _, custom_setting in ipairs(custom_plugins) do
-  custom_clean[custom_setting[1]] = custom_setting
-end
-
-local final_plugins = {}
-
-for nvchad_key, nvchad_setting in pairs(nvchad_clean) do
-  if custom_clean[nvchad_key] ~= nil then
-    nvchad_setting = vim.tbl_deep_extend("force", nvchad_setting, custom_clean[nvchad_key])
-  end
-  table.insert(final_plugins, nvchad_setting)
-end
-
-for custom_key, custom_setting in pairs(custom_clean) do
-  if nvchad_clean[custom_key] == nil then
-    table.insert(final_plugins, custom_setting)
-  end
-end
-
-return final_plugins

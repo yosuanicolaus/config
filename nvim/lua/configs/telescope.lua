@@ -1,13 +1,28 @@
+dofile(vim.g.base46_cache .. "telescope")
+
 local actions = require "telescope.actions"
 
-local options = {
+return {
   defaults = {
-    mappings = {
-      i = {
-        -- ["<C-u>"] = false, -- allow removing line with <C-u>
+    prompt_prefix = "   ",
+    selection_caret = " ",
+    entry_prefix = " ",
+    sorting_strategy = "ascending",
+    layout_config = {
+      horizontal = {
+        prompt_position = "top",
+        preview_width = 0.55,
       },
+      width = 0.87,
+      height = 0.80,
+    },
+    mappings = {
+      n = { ["q"] = require("telescope.actions").close },
     },
   },
+
+  extensions_list = { "themes", "terms" },
+  extensions = {},
 
   pickers = {
     find_files = {
@@ -37,5 +52,3 @@ local options = {
     },
   },
 }
-
-return vim.tbl_deep_extend("force", require "nvchad.configs.telescope", options)

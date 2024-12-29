@@ -4,7 +4,7 @@
 ---@type ChadrcConfig
 local M = {
   base46 = {
-    theme = "chadracula-evondev",
+    theme = "monekai",
     transparency = true,
   },
 }
