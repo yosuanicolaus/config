@@ -1,4 +1,9 @@
-return {
+local nvchad_plugins = require "nvchad.plugins"
+
+local custom_plugins = {
+  --------------------------------------------------------------------------------
+  ----- Overrides NvChad's plugins -----
+  --------------------------------------------------------------------------------
   {
     "stevearc/conform.nvim",
     event = "BufWritePre", -- uncomment for format on save
@@ -6,7 +11,6 @@ return {
       require "configs.conform"
     end,
   },
-
   {
     "neovim/nvim-lspconfig",
     config = function()
@@ -14,64 +18,27 @@ return {
       require "configs.lspconfig"
     end,
   },
-
   {
-    -- overrides NvChad
     "nvim-telescope/telescope.nvim",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
-    cmd = "Telescope",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      -- {
+      --   "nvim-telescope/telescope-live-grep-args.nvim",
+      --   -- This will not install any breaking changes.
+      --   -- For major updates, this must be adjusted manually.
+      --   version = "^1.0.0",
+      -- },
+    },
     opts = function()
       return require "configs.telescope"
     end,
   },
-
   {
-    -- overrides NvChad
-    -- load luasnips + cmp related in insert mode only
     "hrsh7th/nvim-cmp",
-    event = "InsertEnter",
-    dependencies = {
-      {
-        -- snippet plugin
-        "L3MON4D3/LuaSnip",
-        dependencies = "rafamadriz/friendly-snippets",
-        opts = { history = true, updateevents = "TextChanged,TextChangedI" },
-        config = function(_, opts)
-          require("luasnip").config.set_config(opts)
-          require "nvchad.configs.luasnip"
-        end,
-      },
-
-      -- autopairing of (){}[] etc
-      {
-        "windwp/nvim-autopairs",
-        opts = {
-          fast_wrap = {},
-          disable_filetype = { "TelescopePrompt", "vim" },
-        },
-        config = function(_, opts)
-          require("nvim-autopairs").setup(opts)
-
-          -- setup cmp for autopairs
-          local cmp_autopairs = require "nvim-autopairs.completion.cmp"
-          require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
-        end,
-      },
-
-      -- cmp sources plugins
-      {
-        "saadparwaiz1/cmp_luasnip",
-        "hrsh7th/cmp-nvim-lua",
-        "hrsh7th/cmp-nvim-lsp",
-        "hrsh7th/cmp-buffer",
-        "hrsh7th/cmp-path",
-      },
-    },
     opts = function()
       return require "configs.cmp"
     end,
   },
-
   {
     "williamboman/mason.nvim",
     opts = {
@@ -92,7 +59,6 @@ return {
       },
     },
   },
-
   {
     "nvim-treesitter/nvim-treesitter",
     lazy = false,
@@ -112,16 +78,20 @@ return {
       },
     },
   },
+  --------------------------------------------------------------------------------
+  ------ Overrides end -----
+  --------------------------------------------------------------------------------
 
-  -- 2023-08-04
+  --------------------------------------------------------------------------------
+  --------------------------------------------------------------------------------
+
   {
+    -- 2023-08-04
     "kylechui/nvim-surround",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
     config = function()
-      require("nvim-surround").setup {
-        -- Configuration here, or leave empty to use defaults
-      }
+      require("nvim-surround").setup {}
     end,
   },
 
@@ -130,8 +100,8 @@ return {
     lazy = false,
   },
 
-  -- 2023-11-13 markdown preview in browser
   {
+    -- 2023-11-13 markdown preview in browser
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     ft = { "markdown" },
@@ -186,8 +156,8 @@ return {
     end,
   },
 
-  -- 2024-02-04 Obsidian
   {
+    -- 2024-02-04 Obsidian
     "epwalsh/obsidian.nvim",
     version = "*", -- recommended, use latest release instead of latest commit
     lazy = true,
@@ -244,8 +214,8 @@ return {
     },
   },
 
-  -- 240524 Write in sudo
   {
+    -- Write in sudo mode
     "lambdalisue/vim-suda",
     cmd = { "SudaRead", "SudaWrite" },
   },
@@ -319,3 +289,37 @@ return {
     },
   },
 }
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
+--- Merge table from custom_plugins to nvchad_plugins if the first key matches
+
+local nvchad_clean = {}
+for _, nvchad_setting in ipairs(nvchad_plugins) do
+  if type(nvchad_setting) == "string" then
+    nvchad_setting = { nvchad_setting }
+  end
+  nvchad_clean[nvchad_setting[1]] = nvchad_setting
+end
+local custom_clean = {}
+for _, custom_setting in ipairs(custom_plugins) do
+  custom_clean[custom_setting[1]] = custom_setting
+end
+
+local final_plugins = {}
+
+for nvchad_key, nvchad_setting in pairs(nvchad_clean) do
+  if custom_clean[nvchad_key] ~= nil then
+    nvchad_setting = vim.tbl_deep_extend("force", nvchad_setting, custom_clean[nvchad_key])
+  end
+  table.insert(final_plugins, nvchad_setting)
+end
+
+for custom_key, custom_setting in pairs(custom_clean) do
+  if nvchad_clean[custom_key] == nil then
+    table.insert(final_plugins, custom_setting)
+  end
+end
+
+return final_plugins

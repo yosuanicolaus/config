@@ -19,9 +19,11 @@ local options = {
         -- center screen to cursor ("zz") after opening the result
         i = {
           ["<CR>"] = actions.select_default + actions.center,
+          ["<S-CR>"] = actions.select_vertical + actions.center,
         },
         n = {
           ["<CR>"] = actions.select_default + actions.center,
+          ["<S-CR>"] = actions.select_vertical + actions.center,
         },
       },
     },
