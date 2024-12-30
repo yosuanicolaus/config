@@ -16,7 +16,7 @@ return {
     "bash-language-server",
     "markdown-oxide",
     "rust-analyzer",
-    "basedpyright",
+    "pyright",
     "html-lsp",
     "css-lsp",
     "harper-ls",

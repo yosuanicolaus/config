@@ -80,23 +80,26 @@ return {
   },
 
   {
-    -- formatting!
-    "stevearc/conform.nvim",
-    event = "BufWritePre", -- for format on save
-    opts = {
-      formatters_by_ft = { lua = { "stylua" } },
-    },
-    config = function()
-      require "configs.conform"
-    end,
-  },
-
-  {
     -- git stuff
     "lewis6991/gitsigns.nvim",
     event = "User FilePost",
     opts = function()
       return require "configs.gitsigns"
+    end,
+  },
+
+  {
+    -- formatting!
+    "stevearc/conform.nvim",
+    event = "BufWritePre", -- for format on save
+    opts = {
+      formatters_by_ft = {
+        lua = { "stylua" },
+        python = { "ruff-lsp" },
+      },
+    },
+    config = function()
+      require "configs.conform"
     end,
   },
 
@@ -116,6 +119,12 @@ return {
       return require "configs.telescope"
     end,
   },
+  {
+    "nvim-telescope/telescope-project.nvim",
+    dependencies = {
+      "nvim-telescope/telescope.nvim",
+    },
+  },
 
   {
     "hrsh7th/nvim-cmp",
@@ -124,10 +133,14 @@ return {
       {
         -- snippet plugin
         "L3MON4D3/LuaSnip",
-        dependencies = "rafamadriz/friendly-snippets",
+        dependencies = {
+          "rafamadriz/friendly-snippets",
+          "mstuttgart/vscode-odoo-snippets",
+        },
         opts = { history = true, updateevents = "TextChanged,TextChangedI" },
         config = function(_, opts)
           require("luasnip").config.set_config(opts)
+          require("luasnip.loaders.from_vscode").lazy_load()
           require "configs.luasnip"
         end,
       },
@@ -389,4 +402,14 @@ return {
       message_when_not_committed = "",
     },
   },
+
+  {
+    -- odoo stuffs
+    "mstuttgart/vscode-odoo-snippets",
+    event = "InsertEnter",
+  },
+  {
+    "Desdaemon/odoo-lsp",
+    cond = vim.fn.getcwd() == vim.fn.expand("~/work/odoo") or vim.fn.getcwd() == vim.fn.expand("~/work/enterprise"),
+  }
 }

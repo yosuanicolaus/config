@@ -13,7 +13,8 @@
 " Other > Select Opened File && Select File in Project View <C-S-o>
 " Search 'Reformat code' <C-S-i>
 " Search <Alt+0> -> <C-S-g>
-"
+" Search <C-w> Close Tab -> <C-q>
+
 " Actions on Save
 " format
 
@@ -62,32 +63,41 @@ sethandler <C-d> i:ide   " select multiple cursor from insert mode (unused)
 sethandler <C-n> v:ide   " select multiple cursor (set manually)
 sethandler <C-S-e> a:ide " select file tree
 sethandler <C-b> a:ide   " hide file tree
-sethandler <C-f> a:vim   " 
 sethandler <C-h> n:ide   " also select file tree (set manually)
 sethandler <C-l> n:ide   " also select file tree (set manually) 240502
+
+"sethandler <C-w> n-v:vim " close tab with <C-q>
+"sethandler <C-v> i:vim   " paste in insert mode
+sethandler <C-f> a:ide   " 
+sethandler <C-q> a:ide   " close tab, instead of <C-w>
 
 " -------------------------------------------------------------------------
 
 " Built-in IDE Actions
 
-map <C-o> <Action>(Back)
-map <C-i> <Action>(Forward)
-map <C-j> <Action>(PreviousTab)
-map <C-k> <Action>(NextTab)
+nmap <C-o> <Action>(Back)
+nmap <C-i> <Action>(Forward)
+nmap <C-j> <Action>(PreviousTab)
+nmap <C-k> <Action>(NextTab)
 map <C-S-Tab> <Action>(PreviousTab)
 map <C-Tab> <Action>(NextTab)
 map <C-S-n> <Action>(NewFile)
 map <C-S-p> <Action>(GotoFile)
-map <C-f> <ESC><C-S-f>
+map <C-p> <Action>(GotoFile)
+"vmap <C-f> <C-S-f>
 
 map <C-S-.> :e ~/.ideavimrc<CR>
 map <leader>r <Action>(IdeaVim.ReloadVimRc.reload)
 map <leader>f <Action>(AceAction)
 map <C-S-k> <Action>(ShowErrorDescription)
 
+nmap Q :tabo<CR>
+
 " -------------------------------------------------------------------------
 " -------------------------------------------------------------------------
 " -------------------------------------------------------------------------
+
+map <C-v> <C-r>+
 
 " Normal mode
 
@@ -97,16 +107,25 @@ nnoremap dH d^
 nnoremap dL d$
 nnoremap cH c^
 nnoremap cL c$
-nnoremap <C-d> <C-d>zz
-nnoremap <C-u> <C-u>zz
-nnoremap J mzJ`z
+nnoremap D cc<ESC>
+
 nnoremap n nzzzv
 nnoremap N Nzzzv
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+"nnoremap <C-o> <C-o>zz
+"nnoremap <C-i> <C-i>zz
+nnoremap <C-t> <C-t>zz
+nnoremap <CR> <CR>zz
+nnoremap <S-CR> kzz
 nnoremap <ESC> <ESC>:noh<CR>
 nnoremap > >>
 nnoremap < <<
 nnoremap zh 40zh
 nnoremap zl 40zl
+nnoremap zO zR
+nnoremap zC zM
+nnoremap J mzJ`z
 
 " -------------------------
 
@@ -124,10 +143,10 @@ inoremap <C-l> <ESC>A
 
 vnoremap H ^
 vnoremap L $
-vnoremap / y /<C-r>+<CR>zz
-vnoremap ? y ?<C-r>+<CR>zz
-vnoremap n y /<C-r>+<CR>zz
-vnoremap N y ?<C-r>+<CR>zz
+vnoremap / "vy /<C-r>v<CR>zz
+vnoremap ? "vy ?<C-r>v<CR>zz
+vnoremap n "vy /<C-r>v<CR>zz
+vnoremap N "vy ?<C-r>v<CR>zz
 vnoremap J mzJ`z
 vnoremap <C-d> <C-d>zz
 vnoremap <C-u> <C-u>zz
@@ -136,8 +155,8 @@ vnoremap > >gv
 vnoremap p pgvy
 
 " TODO - doesn't work now, change or remove it?
-vnoremap <A-j> :m '>+1<CR>gv=gv
-vnoremap <A-k> :m '<-2<CR>gv=gv
+vnoremap <C-j> :m '>+1<CR>gv=gv
+vnoremap <C-k> :m '<-2<CR>gv=gv
 
 " -------------------------
 
@@ -147,9 +166,6 @@ map <C-a> <ESC>GVgg
 map <C-s> <ESC>:w<CR>
 cnoremap <C-v> <C-r>+
 
-" 240222
-map zO zR
-map zC zM
 
 " unused anymore
 " nnoremap <C-s> <ESC>:w<CR>

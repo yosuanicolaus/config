@@ -10,8 +10,9 @@ return {
     update_root = false,
   },
   view = {
-    width = 30,
+    width = 37,
     preserve_window_proportions = true,
+    relativenumber = true,
   },
   renderer = {
     root_folder_label = false,

@@ -205,10 +205,12 @@ map(
   "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>",
   { desc = "🔭 find all files" }
 )
--- local live_grep_args_shortcuts = require "telescope-live-grep-args.shortcuts"
--- map("n", "<leader>fg", live_grep_args_shortcuts.grep_word_under_cursor)
--- map("v", "<leader>fg", live_grep_args_shortcuts.grep_visual_selection)
--- map("n", "<leader>fg", live_grep_args_shortcuts.grep_word_under_cursor)
+local live_grep_args_shortcuts = require "telescope-live-grep-args.shortcuts"
+map("n", "<leader>fg", live_grep_args_shortcuts.grep_word_under_cursor)
+map("v", "<leader>f", live_grep_args_shortcuts.grep_visual_selection)
+
+-- Telescope Project extension
+map("n", "<leader>fp", ":lua require'telescope'.extensions.project.project{}<CR>")
 
 -- // in the nvimtree `setup` { key = '<C-f>', action = '', action_cb = grep_at, mode = 'n' },
 

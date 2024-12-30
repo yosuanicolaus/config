@@ -90,8 +90,8 @@ local servers = {
   "html",
   "cssls",
   "rust_analyzer",
+  "pyright",
   "ruff",
-  "basedpyright",
   "gdscript",
   "ts_ls",
   "clangd",
@@ -105,6 +105,22 @@ for _, lsp in ipairs(servers) do
     capabilities = M.capabilities,
   }
 end
+
+-- lspconfig.ruff.setup {
+--   init_options = {
+--     settings = {
+--       -- Ruff language server settings go here
+--     },
+--   },
+-- }
+
+-- if vim.fn.getcwd() == vim.fn.expand("~/work/odoo") or vim.fn.getcwd() == vim.fn.expand("~/work/enterprise") then
+--   lspconfig["odoo-lsp"].setup {
+--     on_attach = M.on_attach,
+--     on_init = M.on_init,
+--     capabilities = M.capabilities,
+--   }
+-- end
 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
