@@ -410,6 +410,16 @@ return {
   },
   {
     "Desdaemon/odoo-lsp",
-    cond = vim.fn.getcwd() == vim.fn.expand("~/work/odoo") or vim.fn.getcwd() == vim.fn.expand("~/work/enterprise"),
-  }
+    cond = vim.fn.getcwd() == vim.fn.expand "~/work/odoo" or vim.fn.getcwd() == vim.fn.expand "~/work/enterprise",
+  },
+
+  {
+    "lervag/vimtex",
+    lazy = false, -- we don't want to lazy load VimTeX
+    -- tag = "v2.15", -- uncomment to pin to a specific release
+    init = function()
+      -- VimTeX configuration goes here, e.g.
+      vim.g.vimtex_view_method = "zathura"
+    end,
+  },
 }

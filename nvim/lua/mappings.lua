@@ -174,12 +174,15 @@ map("n", "<leader>gbc", "<cmd>GitBlameCopySHA<CR>", { desc = "GitBlame copy comm
 --- [ Misc. ] ---
 map("n", "<leader>tgc", "<CMD>NvCheatsheet<CR>", { desc = "toggle nvcheatsheet" })
 map("n", "<leader>oc", "<CMD>lua require('obsidian').util.toggle_checkbox() <CR>")
-map("n", "<leader>fm", "<CMD>lua require('conform').format { lsp_fallback = true }<CR>", { desc = "format file" })
 map("n", "<leader>pt", "<cmd>Telescope terms<CR>", { desc = "telescope pick hidden term" })
 map("n", "<leader>wK", "<cmd>WhichKey <CR>", { desc = "whichkey all keymaps" })
 map("n", "<leader>wk", function()
   vim.cmd("WhichKey " .. vim.fn.input "WhichKey: ")
 end, { desc = "whichkey query lookup" })
+
+--- [ Formatting ] ---
+map("n", "<leader>mf", "<CMD>lua require('conform').format { lsp_fallback = true }<CR>", { desc = "format file" })
+map("n", "<leader>md", "<CMD>lua require('helper').format_hunks()<CR>", { desc = "format changed lines" })
 
 --- [ CompetiTest ] ---
 map("n", "<leader>cpr", "<cmd>CompetiTest run<CR>", { desc = "CompetiTest run" })
@@ -194,7 +197,7 @@ map("v", "<C-f>", '"zy <CMD>Telescope live_grep <CR><C-r>z', { desc = "search se
 map("n", "<leader>fw", "<cmd>Telescope live_grep<CR>", { desc = "telescope live grep" })
 map("n", "<leader>fb", "<cmd>Telescope buffers<CR>", { desc = "telescope find buffers" })
 map("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { desc = "telescope help page" })
--- map("n", "<leader>fm", "<cmd>Telescope marks<CR>", { desc = "telescope find marks" })
+map("n", "<leader>fm", "<cmd>Telescope marks<CR>", { desc = "telescope find marks" })
 map("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", { desc = "telescope find oldfiles" })
 map("n", "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "telescope find in current buffer" })
 map("n", "<leader>ft", "<CMD>Telescope tagstack<CR>")
