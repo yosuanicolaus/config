@@ -203,6 +203,14 @@ return {
     end,
     config = function(_, opts)
       require("nvim-treesitter.configs").setup(opts)
+      require("nvim-treesitter.configs").setup {
+        ensure_installed = { "markdown" },
+        highlight = {
+          enable = true,
+          disable = { "latex" },
+          additional_vim_regex_highlighting = { "latex", "markdown" },
+        },
+      }
     end,
   },
 
@@ -414,12 +422,41 @@ return {
   },
 
   {
+    -- LaTeX !
     "lervag/vimtex",
     lazy = false, -- we don't want to lazy load VimTeX
     -- tag = "v2.15", -- uncomment to pin to a specific release
     init = function()
       -- VimTeX configuration goes here, e.g.
-      vim.g.vimtex_view_method = "zathura"
+      local o = vim.o
+      local g = vim.g
+
+      g.tex_flavor = "latex"
+      g.vimtex_view_method = "zathura"
+      g.vimtex_quickfix_mode = 0
+      o.conceallevel = 1
+      g.tex_conceal = "abdmg"
+      g.vimtex_compiler_latexmk = {
+        out_dir = vim.fn.getcwd() .. "/build",
+      }
     end,
+  },
+
+  {
+    --LaTeX snippets from Gilles Castel
+    "iurimateus/luasnip-latex-snippets.nvim",
+    -- vimtex isn't required if using treesitter
+    ft = { "tex" },
+    requires = { "L3MON4D3/LuaSnip", "lervag/vimtex" },
+    config = function()
+      require("luasnip-latex-snippets").setup()
+      -- or setup({ use_treesitter = true })
+      require("luasnip").config.setup { enable_autosnippets = true }
+      require "configs.luasnip-latex-snippets"
+    end,
+  },
+
+  {
+    "jbyuki/nabla.nvim",
   },
 }

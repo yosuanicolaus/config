@@ -95,6 +95,7 @@ local servers = {
   "gdscript",
   "ts_ls",
   "clangd",
+  "texlab",
 }
 
 -- lsps with default config

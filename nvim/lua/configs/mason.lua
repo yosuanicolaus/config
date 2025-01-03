@@ -25,6 +25,7 @@ return {
     "ast-grep",
     "gdtoolkit",
     "ruff",
+    "texlab",
   },
 
   max_concurrent_installers = 10,

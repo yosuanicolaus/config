@@ -223,3 +223,6 @@ map("n", "<leader>ff", "<cmd>Telescope find_files<CR>", { desc = "telescope find
 --- [ NvimTree ] ---
 map("n", "<C-b>", "<cmd>NvimTreeToggle<CR>", { desc = "nvimtree toggle window" })
 -- map("n", "<C-h>", "<leader>e", { remap = true }) -- focus file explorer if at the leftmost window and explorer is closed TODO: if condition check?
+
+-- Tex stuff
+map("n", "<leader>rs", ":lua require('nabla').popup()<CR>")

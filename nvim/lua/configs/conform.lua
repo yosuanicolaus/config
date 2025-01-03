@@ -20,6 +20,17 @@ local options = {
     gdscript = { "gdformat" }, -- [240609] cmd to format using gdtoolkit
     -- css = { "prettier" },
     -- html = { "prettier" },
+    tex = { "latexindent" },
+  },
+
+  formatters = {
+    latexindent = {
+      command = "latexindent",
+      stdin = true,
+      append_args = function()
+        return { "-m" }
+      end,
+    },
   },
 
   format_on_save = function()
