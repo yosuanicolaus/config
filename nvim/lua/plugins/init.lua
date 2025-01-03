@@ -434,8 +434,8 @@ return {
       g.tex_flavor = "latex"
       g.vimtex_view_method = "zathura"
       g.vimtex_quickfix_mode = 0
-      o.conceallevel = 1
-      g.tex_conceal = "abdmg"
+      o.conceallevel = 2
+      g.tex_conceal = "abdmgs"
       g.vimtex_compiler_latexmk = {
         out_dir = vim.fn.getcwd() .. "/build",
       }
