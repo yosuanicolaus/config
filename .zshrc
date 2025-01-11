@@ -156,6 +156,7 @@ l2='--limit-time-real=99999999'
 l3='--limit-memory-soft=17179869184'
 l4='--limit-memory-hard=17179869184'
 addons="--addons-path=$ODOO_ROOT/odoo/addons,$ODOO_ROOT/enterprise"
+addons_iap="--addons-path=$ODOO_ROOT/odoo15/addons,$ODOO_ROOT/enterprise15/,$ODOO_ROOT/iap-apps/iap_services/,$ODOO_ROOT/iap-apps/iap_common/"
 addons_with_fin="--addons-path=$ODOO_ROOT/odoo/addons,$ODOO_ROOT/enterprise,$ODOO_ROOT/odoofin"
 addons_with_upgrade="--addons-path=$ODOO_ROOT/odoo/addons,$ODOO_ROOT/enterprise,$ODOO_ROOT/upgrade,$ODOO_ROOT/upgrade-util"
 dev='--dev=xml,reload'
@@ -164,6 +165,9 @@ param_fin_2="--unaccent"
 
 alias tobin='db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin -d $db $l1 $l2 $l3 $l4 $dev --addons-path=$ODOO_ROOT/odoo/addons,$ODOO_ROOT/enterprise,$ODOO_ROOT/tutorials'
 alias obin='db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin -d $db $l1 $l2 $l3 $l4 $addons $dev'
+
+alias ibin='$ODOO_ROOT/odoo15/odoo-bin -d peppol-iap-db $l1 $l2 $l3 $l4 $addons_iap $dev -p 8070'
+alias ishell='$ODOO_ROOT/odoo15/odoo-bin shell --shell-interface=ipython -d peppol-iap-db $addons_iap'
 
 # odoofin legacy
 alias ofbin='db=odoofin; [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin -d $db $l1 $l2 $l3 $l4 $addons_with_fin $dev $param_fin_1 $param_fin_2'
@@ -230,6 +234,12 @@ ougit() {
     cd "$current_dir" || return 1
 }
 
+oigit() {
+    local current_dir=$(pwd)
+    ogit "$@" && echo '\n---- iap-apps -----' && cd ~/work/iap-apps/ && git "$@"
+    cd "$current_dir" || return 1
+}
+
 otest() { obin --stop-after-init --test-tags="$1" "${@:2}" }
 oftest() { ofbin --stop-after-init --test-tags="$1" "${@:2}" }
 
@@ -257,6 +267,9 @@ ougb() { ougit branch "$1" }
 ougrb() { [ -z "$1" ] && ougit rebase || ougit rebase "$1"; }
 ougpf() { ougit push --force-with-lease --force-if-includes }
 ougst() { ougit status }
+
+# 250110 include iap-apps with 'oig*'
+oigst() { oigit status }
 
 # ----------------------------------------------------------------------------------------------------------------------------------------
 # Work Aliases END -----------------------------------------------------------------------------------------------------------------------

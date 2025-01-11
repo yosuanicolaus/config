@@ -168,6 +168,7 @@ return {
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
+        "micangl/cmp-vimtex",
       },
     },
     opts = function()
@@ -444,15 +445,13 @@ return {
 
   {
     --LaTeX snippets from Gilles Castel
-    "iurimateus/luasnip-latex-snippets.nvim",
+    "yosuanicolaus/luasnip-latex-snippets.nvim",
     -- vimtex isn't required if using treesitter
     ft = { "tex" },
     requires = { "L3MON4D3/LuaSnip", "lervag/vimtex" },
     config = function()
-      require("luasnip-latex-snippets").setup()
-      -- or setup({ use_treesitter = true })
+      require("luasnip-latex-snippets").setup { use_treesitter = true }
       require("luasnip").config.setup { enable_autosnippets = true }
-      require "configs.luasnip-latex-snippets"
     end,
   },
 

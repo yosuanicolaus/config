@@ -14,8 +14,8 @@ return {
   mapping = {
     ["<C-p>"] = cmp.mapping.select_prev_item(),
     ["<C-n>"] = cmp.mapping.select_next_item(),
-    ["<Down>"] = cmp.mapping.select_prev_item(),
-    ["<Up>"] = cmp.mapping.select_next_item(),
+    ["<Down>"] = cmp.mapping.select_next_item(),
+    ["<Up>"] = cmp.mapping.select_prev_item(),
     ["<C-d>"] = cmp.mapping.scroll_docs(-4),
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
     ["<C-Space>"] = cmp.mapping.complete(),
@@ -26,8 +26,8 @@ return {
     },
 
     ["<Tab>"] = cmp.mapping(function(fallback)
-      if require("luasnip").expand_or_jumpable() then
-        require("luasnip").expand_or_jump()
+      if require("luasnip").jumpable(1) then
+        require("luasnip").jump(1)
       else
         fallback()
       end
@@ -48,5 +48,6 @@ return {
     { name = "buffer" },
     { name = "nvim_lua" },
     { name = "path" },
+    { name = "vimtex" },
   },
 }
