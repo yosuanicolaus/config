@@ -450,7 +450,7 @@ return {
     ft = { "tex" },
     requires = { "L3MON4D3/LuaSnip", "lervag/vimtex" },
     config = function()
-      require("luasnip-latex-snippets").setup { use_treesitter = true }
+      require("luasnip-latex-snippets").setup { use_treesitter = false }
       require("luasnip").config.setup { enable_autosnippets = true }
     end,
   },

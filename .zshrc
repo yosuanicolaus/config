@@ -42,6 +42,7 @@ alias cdd='cd ~/Downloads/'
 alias cg='cd ~/codes/godot/'
 alias ct='cd ~/codes/obsidian/'
 alias ccr='cd ~/codes/competitive-rust/'
+alias cu='cd ~/codes/university/'
 
 alias cnvc='~/.config/nvim/ && nvim'
 alias cnvd='~/codes/obsidian/diary/ && nvim'
