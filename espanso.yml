@@ -12,16 +12,6 @@ matches:
     # competitive programming
   - trigger: ":aoc"
     replace: "advent-of-code"
-  - trigger: ":v;"
-    replace: "vec![];"
-  - trigger: ":ir;"
-    replace: "input.read();"
-  - trigger: ":irs"
-    replace: "input.read_size()"
-  - trigger: ":iri"
-    replace: "input.read_int()"
-  - trigger: ":irl"
-    replace: "input.read_long()"
 
   # neovim
   - trigger: ":vh"

@@ -242,6 +242,7 @@ oigit() {
 }
 
 otest() { obin --stop-after-init --test-tags="$1" "${@:2}" }
+itest() { ibin --stop-after-init --test-tags="$1" "${@:2}" }
 oftest() { ofbin --stop-after-init --test-tags="$1" "${@:2}" }
 
 # 240215

@@ -8,7 +8,9 @@ require("luasnip.loaders.from_snipmate").lazy_load { paths = vim.g.snipmate_snip
 
 -- lua format
 require("luasnip.loaders.from_lua").load()
-require("luasnip.loaders.from_lua").lazy_load { paths = vim.g.lua_snippets_path or "" }
+require("luasnip.loaders.from_lua").lazy_load { paths = vim.fn.stdpath "config" .. "/lua/snippets" }
+
+require("luasnip").config.setup { enable_autosnippets = true }
 
 vim.api.nvim_create_autocmd("InsertLeave", {
   callback = function()
