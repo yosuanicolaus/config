@@ -62,7 +62,13 @@ alias nvk='nvim ~/.config/kitty/kitty.conf'
 alias nvr='nvim --listen /tmp/nvim.pipe'
 alias nvz='nvim ~/.zshrc'
 alias nvrcph='nvim ~/.config/rust-competitive-helper/rust-competitive-helper.toml'
-alias nvcr="nvim --listen localhost:3708"
+
+# To differentiate multiple nvim instances in wezterm tab name
+alias nvimcr="nvim --listen localhost:3708"
+alias nvimpeppol="nvim"
+alias nvimiap="nvim"
+alias nvimodoo="nvim"
+alias nviment="nvim"
 
 alias gfap='git fetch --all --prune'
 alias grhm='git reset HEAD~1'    # "git reset head minus"

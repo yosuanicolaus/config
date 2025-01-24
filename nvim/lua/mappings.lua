@@ -165,6 +165,9 @@ map("n", "<leader>bn", "<cmd>enew<CR>", { desc = "buffer new" })
 map({ "n", "i" }, "<C-/>", "<esc>gcc", { desc = "toggle comment", remap = true })
 map("v", "<C-/>", "gcgv", { desc = "toggle comment", remap = true }) -- reselect comment
 
+--- [ Gitsigns ] ---
+map("n", "<C-S-u>", "<cmd>lua require('gitsigns').reset_hunk()<CR>")
+
 --- [ GIT :: Telescope | GitBlame  ] ---
 map("n", "<leader>gco", "<cmd>Telescope git_commits<CR>", { desc = "telescope git commits" })
 map("n", "<leader>gst", "<cmd>Telescope git_status<CR>", { desc = "telescope git status" })

@@ -1,3 +1,6 @@
+local conform = require "conform"
+local gitsigns = require "gitsigns"
+
 local function format_hunks()
   local ignore_filetypes = { "lua" }
   if vim.tbl_contains(ignore_filetypes, vim.bo.filetype) then
@@ -5,12 +8,10 @@ local function format_hunks()
     return
   end
 
-  local hunks = require("gitsigns").get_hunks()
+  local hunks = gitsigns.get_hunks()
   if hunks == nil then
     return
   end
-
-  local format = require("conform").format
 
   local function format_range()
     if next(hunks) == nil then
@@ -28,7 +29,7 @@ local function format_hunks()
       -- nvim_buf_get_lines uses zero-based indexing -> subtract from last
       local last_hunk_line = vim.api.nvim_buf_get_lines(0, last - 2, last - 1, true)[1]
       local range = { start = { start, 0 }, ["end"] = { last - 1, last_hunk_line:len() } }
-      format({ range = range, async = true, lsp_fallback = true }, function()
+      conform.format({ range = range, timeout_ms = 500, lsp_fallback = true }, function()
         vim.defer_fn(function()
           format_range()
         end, 1)

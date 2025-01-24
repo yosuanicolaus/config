@@ -5,7 +5,7 @@
 local M = {
   base46 = {
     theme = "monekai",
-    transparency = true,
+    transparency = false,
   },
 }
 
