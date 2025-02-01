@@ -31,7 +31,22 @@ local ls = require "luasnip"
 local ps = ls.parser.parse_snippet
 local is_math = utils.is_math
 local not_math = utils.not_math
+local pipe = utils.pipe
+
+local ps_nm = ls.extend_decorator.apply(ps, { condition = pipe { not_math } }) --[[@as function]]
+local ps_im = ls.extend_decorator.apply(ps, { condition = pipe { is_math } }) --[[@as function]]
 
 -- Let's do this later...
 
-return {}
+return {
+  ps_nm({ trig = "bq" }, "\\begin{question}\n\t$0\n\\end{question}"),
+  ps_nm({ trig = "qp" }, "\\qpart $0"),
+  ps_nm({ trig = "qsp" }, "\\qsubpart $0"),
+
+  ps_nm({ trig = "s*" }, "\\section*{$1}$0"),
+  ps_nm({ trig = "s*r" }, "\\section*{Reading Notes}\n\n$0"),
+  ps_nm({ trig = "s*a" }, "\\section*{Activities}\n\n\\begin{question}[1]\n\t$0\n\\end{question}"),
+  ps_nm({ trig = "s*e" }, "\\section*{Excercises}\n\n\\begin{question}[1]\n\t$0\n\\end{question}"),
+}, {
+  ps_im({ trig = ";" }, "\\,"),
+}

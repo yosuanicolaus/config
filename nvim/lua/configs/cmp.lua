@@ -49,5 +49,6 @@ return {
     { name = "nvim_lua" },
     { name = "path" },
     { name = "vimtex" },
+    { name = "rpncalc" },
   },
 }

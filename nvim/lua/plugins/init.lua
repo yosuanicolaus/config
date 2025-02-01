@@ -169,6 +169,7 @@ return {
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
         "micangl/cmp-vimtex",
+        "PhilRunninger/cmp-rpncalc",
       },
     },
     opts = function()
@@ -435,6 +436,9 @@ return {
       g.tex_flavor = "latex"
       g.vimtex_view_method = "zathura"
       g.vimtex_quickfix_mode = 0
+      g.vimtex_syntax_conceal = {
+        math_bounds = 0,
+      }
       o.conceallevel = 2
       g.tex_conceal = "abdmgs"
       g.vimtex_compiler_latexmk = {

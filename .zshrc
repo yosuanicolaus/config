@@ -113,8 +113,12 @@ obranchcom() {
     echo $(git --git-dir=$ODOO_ROOT/odoo/.git branch --show-current)
 }
 
-obranchfin() {
+ofbranch() {
     echo $(git --git-dir=$ODOO_ROOT/odoofin/.git branch --show-current)
+}
+
+ibranch() {
+    echo $(git --git-dir=$ODOO_ROOT/iap-apps/.git branch --show-current)
 }
 
 odel() {

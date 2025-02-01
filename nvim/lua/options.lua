@@ -71,6 +71,8 @@ vim.lsp.inlay_hint.enable()
 -- 241221 allow reopening closed buffer with C-o (last cursor position)
 o.jumpoptions = "stack,view"
 
+o.scroll = 0
+
 -- 2024-02-04 for obsidian.nvim
 if vim.fn.getcwd() == "/home/yosuanicolaus/codes/obsidian" then
   vim.opt_local.conceallevel = 1
