@@ -169,7 +169,7 @@ return {
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
         "micangl/cmp-vimtex",
-        "PhilRunninger/cmp-rpncalc",
+        "yosuanicolaus/cmp-rpncalc",
       },
     },
     opts = function()
@@ -413,15 +413,39 @@ return {
     },
   },
 
-  {
-    -- odoo stuffs
-    "mstuttgart/vscode-odoo-snippets",
-    event = "InsertEnter",
-  },
-  {
-    "Desdaemon/odoo-lsp",
-    cond = vim.fn.getcwd() == vim.fn.expand "~/work/odoo" or vim.fn.getcwd() == vim.fn.expand "~/work/enterprise",
-  },
+  -- odoo stuffs
+  -- {
+  --   "mstuttgart/vscode-odoo-snippets",
+  --   event = "InsertEnter",
+  -- },
+  -- {
+  --   "Desdaemon/odoo-lsp",
+  --   cond = vim.fn.getcwd() == vim.fn.expand "~/work/odoo" or vim.fn.getcwd() == vim.fn.expand "~/work/enterprise",
+  -- },
+  -- {
+  --   "whenrow/odoo-ls.nvim",
+  --   dependencies = { "neovim/nvim-lspconfig" },
+  --   -- lazy = false,
+  --   init = function()
+  --     local h = os.getenv "HOME"
+  --     require("odools").setup {
+  --       -- mandatory
+  --       odoo_path = h .. "/work/odoo/",
+  --       python_path = "/usr/bin/python3",
+  --       server_path = h .. "/.local/bin/odoo_ls_server",
+  --
+  --       -- optional
+  --       -- addons = { h .. "/work/enterprise/" },
+  --       -- additional_stubs = { h .. "/repos/typeshed/stubs/" },
+  --       -- root_dir = h .. "/work/", -- working directory, odoo_path if empty
+  --       -- settings = {
+  --       --   autoRefresh = true,
+  --       --   autoRefreshDelay = nil,
+  --       --   diagMissingImportLevel = "none",
+  --       -- },
+  --     }
+  --   end,
+  -- },
 
   {
     -- LaTeX !

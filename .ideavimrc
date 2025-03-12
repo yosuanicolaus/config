@@ -158,12 +158,18 @@ vnoremap p pgvy
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 
+"vnoremap <C-s> y/\V<C-R>=escape(@",'/\')<CR><CR>Ncgn
+"simpler version...
+vnoremap <C-s> y/<C-R>"<CR>Ncgn
+
 " -------------------------
+"  nnoremap nnoremap nnoremap nnoremap
 
 " All / Others
 
 map <C-a> <ESC>GVgg
-map <C-s> <ESC>:w<CR>
+nnoremap <C-S-s> <ESC>:set scroll=0<CR>
+nnoremap <C-s> <ESC>:w<CR>
 cnoremap <C-v> <C-r>+
 
 

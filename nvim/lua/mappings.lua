@@ -46,6 +46,7 @@ map("n", "zC", "zM")
 -- generalization | quality of life essentials
 map("n", "<C-a>", "GVgg", { desc = "general select all" })
 map("n", "<C-s>", "<CMD>w<CR>", { desc = "general save file" })
+map("n", "<C-S-s>", "<CMD>set scroll=0<CR>", { desc = "reset half page scroll length" })
 map("n", "<Esc>", "<CMD>noh<CR>", { desc = "general clear highlights" })
 
 -- toggles
@@ -88,6 +89,9 @@ map("v", "J", "mzJ`z") -- save cursor position after joining lines
 map("v", "/", '"vy /<C-r>v<CR>zz')
 map("v", "?", '"vy ?<C-r>v<CR>zz')
 
+-- script: search & replace selected
+map("v", "<C-s>", [[y/\V<C-R>=escape(@",'/\')<CR><CR>Ncgn]], { desc = "Search & Replace" })
+
 -- QoL: reselect selection
 map("v", "<", "<gv")
 map("v", ">", ">gv")
@@ -95,7 +99,7 @@ map("v", "p", "pgvy") -- re-copy the pasted text
 
 -- generalization
 map("v", "<C-a>", "<ESC>GVgg")
-map("v", "<C-s>", "<CMD>w<CR>")
+-- map("v", "<C-s>", "<CMD>w<CR>")
 
 -- auto recenter after scroll
 map("v", "<C-d>", "<C-d>zz")

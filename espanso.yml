@@ -38,6 +38,8 @@ matches:
     replace: "from rich.pretty import pprint"
   - trigger: ":ipdb"
     replace: "import ipdb; ipdb.set_trace()"
+  - trigger: ":pl"
+    replace: "pprint(locals())"
   
   # common symbols
   - trigger: ":eur"

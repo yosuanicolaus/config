@@ -29,34 +29,36 @@ vim.cmd [[cnoreabbrev <expr> LspInfo getcmdtype() == ":" && getcmdline() == 'Lsp
 -- See conform.lua - format_on_save function for more details
 
 vim.api.nvim_create_user_command("FormatDisable", function()
-  vim.b.custom_autoformat_disable = true
-end, {
-  desc = "Disable autoformat-on-save on current file",
-})
-
+  vim.b.custom_autoformat_setting = "disable"
+end, { desc = "Disable autoformat-on-save on current file" })
 vim.api.nvim_create_user_command("FormatDisableAll", function()
-  vim.g.custom_autoformat_disable = true
+  vim.g.custom_autoformat_setting = "disable"
 end, {
-  desc = "Disable autoformat-on-save on all file",
+  desc = "Disable autoformat-on-save on all files",
 })
-
 vim.api.nvim_create_user_command("FormatChanged", function()
-  vim.b.custom_autoformat_changed = true
+  vim.b.custom_autoformat_setting = "changed"
 end, {
   desc = "Only autoformat-on-save on changed lines for the current file",
 })
-
 vim.api.nvim_create_user_command("FormatChangedAll", function()
-  vim.g.custom_autoformat_changed = true
+  vim.g.custom_autoformat_setting = "changed"
 end, {
-  desc = "Only autoformat-on-save on changed lines on all file",
+  desc = "Only autoformat-on-save on changed lines on all files",
 })
-
 vim.api.nvim_create_user_command("FormatEnable", function()
-  vim.b.custom_autoformat_disable = false
-  vim.g.custom_autoformat_disable = false
-  vim.b.custom_autoformat_changed = false
-  vim.g.custom_autoformat_changed = false
+  vim.b.custom_autoformat_setting = "enable"
 end, {
-  desc = "Re-enable autoformat-on-save",
+  desc = "Enable autoformat-on-save on current file",
+})
+vim.api.nvim_create_user_command("FormatEnableAll", function()
+  vim.g.custom_autoformat_setting = "enable"
+end, {
+  desc = "Enable autoformat-on-save on all files",
+})
+vim.api.nvim_create_user_command("FormatClearSetting", function()
+  vim.b.custom_autoformat_setting = nil
+  vim.g.custom_autoformat_setting = nil
+end, {
+  desc = "Clear autoformat setting & re-enable default directory behavior",
 })

@@ -54,6 +54,7 @@ alias cnvz='~ && nvim .zshrc'
 alias cnvrcph='~/.config/rust-competitive-helper/ && nvim rust-competitive-helper.toml'
 alias cnvw='~/.config/wezterm/ && nvim'
 alias cnvcr="~/codes/competitive-rust/ && nvim --listen localhost:3708"
+alias note='nvim ~' # for quick note taking
 
 alias nvc='nvim ~/.config/nvim/lua/mappings.lua'
 alias nve='nvim ~/.config/espanso/match/base.yml'
@@ -167,7 +168,7 @@ l2='--limit-time-real=99999999'
 l3='--limit-memory-soft=17179869184'
 l4='--limit-memory-hard=17179869184'
 addons="--addons-path=$ODOO_ROOT/odoo/addons,$ODOO_ROOT/enterprise"
-addons_iap="--addons-path=$ODOO_ROOT/odoo15/addons,$ODOO_ROOT/enterprise15/,$ODOO_ROOT/iap-apps/iap_services/,$ODOO_ROOT/iap-apps/iap_common/"
+addons_iap="--addons-path=$ODOO_ROOT/18odoo/addons,$ODOO_ROOT/18enterprise/,$ODOO_ROOT/iap-apps/iap_services/,$ODOO_ROOT/iap-apps/iap_common/"
 addons_with_fin="--addons-path=$ODOO_ROOT/odoo/addons,$ODOO_ROOT/enterprise,$ODOO_ROOT/odoofin"
 addons_with_upgrade="--addons-path=$ODOO_ROOT/odoo/addons,$ODOO_ROOT/enterprise,$ODOO_ROOT/upgrade,$ODOO_ROOT/upgrade-util"
 dev='--dev=xml,reload'
@@ -177,8 +178,8 @@ param_fin_2="--unaccent"
 alias tobin='db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin -d $db $l1 $l2 $l3 $l4 $dev --addons-path=$ODOO_ROOT/odoo/addons,$ODOO_ROOT/enterprise,$ODOO_ROOT/tutorials'
 alias obin='db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin -d $db $l1 $l2 $l3 $l4 $addons $dev'
 
-alias ibin='$ODOO_ROOT/odoo15/odoo-bin -d peppol-iap-db $l1 $l2 $l3 $l4 $addons_iap $dev -p 8070'
-alias ishell='$ODOO_ROOT/odoo15/odoo-bin shell --shell-interface=ipython -d peppol-iap-db $addons_iap'
+alias ibin='db=$(ibranch); [[ $db != 1  ]] && $ODOO_ROOT/18odoo/odoo-bin -d $db $l1 $l2 $l3 $l4 $addons_iap $dev -p 8070'
+alias ishell='db=$(ibranch); [[ $db != 1  ]] && $ODOO_ROOT/18odoo/odoo-bin shell --shell-interface=ipython -d $db $addons_iap'
 
 # odoofin legacy
 alias ofbin='db=odoofin; [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin -d $db $l1 $l2 $l3 $l4 $addons_with_fin $dev $param_fin_1 $param_fin_2'
@@ -255,8 +256,9 @@ otest() { obin --stop-after-init --test-tags="$1" "${@:2}" }
 itest() { ibin --stop-after-init --test-tags="$1" "${@:2}" }
 oftest() { ofbin --stop-after-init --test-tags="$1" "${@:2}" }
 
-# 240215
+# 240215, 250203
 ogfa() { ogit fetch --all --prune }
+ogfoob() { ogit fetch origin $(obranch) }
 ogco() { ogit checkout "$1" }
 ogb() { ogit branch "$1" }
 ogrb() { [ -z "$1" ] && ogit rebase || ogit rebase "$1"; }

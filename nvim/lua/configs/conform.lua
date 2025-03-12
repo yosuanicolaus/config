@@ -1,18 +1,26 @@
 local directories_format_changed = {
-  --- for all directories listed here, auto format only the changed lines
+  --- for all directories listed here, auto format only the changed lines by default
   "~/work/odoo",
   "~/work/enterprise",
   "~/work/iap-apps",
+  "~/repos/cmp-rpncalc",
+}
+local directories_format_disable = {
+  --- for all directories listed here, disable auto-format by default
 }
 
-local function is_in_directories_format_changed()
+local function get_default_directory_format()
   for _, dir_format_chg in ipairs(directories_format_changed) do
     if vim.fn.getcwd() == vim.fn.expand(dir_format_chg) then
-      return true
+      return "changed"
     end
   end
-
-  return false
+  for _, dir_format_chg in ipairs(directories_format_disable) do
+    if vim.fn.getcwd() == vim.fn.expand(dir_format_chg) then
+      return "disable"
+    end
+  end
+  return ""
 end
 
 local options = {
@@ -42,15 +50,26 @@ local options = {
   },
 
   format_on_save = function(bufnr)
-    if vim.g.custom_autoformat_disable or vim.b[bufnr].custom_autoformat_disable then
+    local buffer_setting = vim.b[bufnr].custom_autoformat_setting
+    local global_setting = vim.g.custom_autoformat_setting
+    local default_setting = get_default_directory_format()
+    local final_setting = "enable"
+
+    if default_setting ~= nil then
+      final_setting = default_setting -- by default: format on save
+    end
+    if global_setting ~= nil then
+      final_setting = global_setting
+    end
+    if buffer_setting ~= nil then
+      final_setting = buffer_setting
+    end
+
+    if final_setting == "disable" then
       return
-    elseif
-      vim.g.custom_autoformat_changed
-      or vim.b[bufnr].custom_autoformat_changed
-      or is_in_directories_format_changed()
-    then
+    elseif final_setting == "changed" then
       require("helper").format_hunks()
-    else
+    elseif final_setting == "enable" then
       require("conform").format {
         timeout_ms = 500,
         lsp_fallback = true,

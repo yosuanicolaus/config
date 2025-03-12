@@ -49,4 +49,6 @@ return {
   ps_nm({ trig = "s*e" }, "\\section*{Excercises}\n\n\\begin{question}[1]\n\t$0\n\\end{question}"),
 }, {
   ps_im({ trig = ";" }, "\\,"),
+  ps_nm({ trig = "ii" }, "\\item"),
+  ps_nm({ trig = "sii" }, "\\subitem"),
 }
