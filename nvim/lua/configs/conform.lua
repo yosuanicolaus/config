@@ -55,26 +55,32 @@ local options = {
     local default_setting = get_default_directory_format()
     local final_setting = "enable"
 
-    if default_setting ~= nil then
+    if default_setting ~= "" then
+      vim.notify("default setting " .. default_setting)
       final_setting = default_setting -- by default: format on save
     end
     if global_setting ~= nil then
+      vim.notify("global setting " .. global_setting)
       final_setting = global_setting
     end
     if buffer_setting ~= nil then
+      vim.notify("buffer setting " .. buffer_setting)
       final_setting = buffer_setting
     end
+    -- print(final_setting)
 
     if final_setting == "disable" then
       return
     elseif final_setting == "changed" then
       require("helper").format_hunks()
-    elseif final_setting == "enable" then
+    -- elseif final_setting == "enable" then
+    else
       require("conform").format {
         timeout_ms = 500,
         lsp_fallback = true,
       }
     end
+    -- vim.notify("all settings is: " .. final_setting .. " and " .. buffer_setting .." and " ..  global_setting .. " and " .. default_setting)
   end,
 }
 

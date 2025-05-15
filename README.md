@@ -11,3 +11,10 @@ Google Chrome, Remmina, VLC, DeepL, XMind
 The name and location for each real file from here can be traced from the 
 `file_counterpart_locations` in `update.py`
 
+### About Keymapping
+
+There's 2 important softwares that are working together:
+
+- Linux Mint default Shortcut app (from "Keyboard")
+- Input Remapper
+

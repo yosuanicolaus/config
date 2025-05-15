@@ -29,6 +29,8 @@ alias cdob='~/codes/obsidian/'
 alias cnvo='~/codes/obsidian/ && nvim README.md'
 alias obsync='~/codes/obsidian/ && git add . && git commit -m "obsidian update" && git push'
 
+alias playobn='~/repos/OpenNetBattle/build/ && ./BattleNetwork -s'
+
 alias irust=evcxr
 alias icpp=termic++
 alias rcph="RUST_BACKTRACE=1 cargo run --manifest-path ~/repos/rust-competitive-helper/Cargo.toml"
@@ -43,6 +45,7 @@ alias cg='cd ~/codes/godot/'
 alias ct='cd ~/codes/obsidian/'
 alias ccr='cd ~/codes/competitive-rust/'
 alias cu='cd ~/codes/university/'
+alias cswap='cd ~/.local/state/nvim/swap/'
 
 alias cnvc='~/.config/nvim/ && nvim'
 alias cnvd='~/codes/obsidian/diary/ && nvim'
@@ -134,6 +137,10 @@ odel() {
     dropdb "$br"
 }
 
+odeldup() {
+    odel $("obranch")-dup
+}
+
 ofdel() {
     odel $(obranchfin)
 }
@@ -159,6 +166,12 @@ otask() {
     fi
 }
 
+oblo() { xdg-open "https://github.com/odoo/odoo/commit/$1" }
+
+oble() { xdg-open "https://github.com/odoo/enterprise/commit/$1" }
+
+obli() { xdg-open "https://github.com/odoo/iap-apps/commit/$1" }
+
 oexpire() {
     psql -d "$('obranch')" -c "update ir_config_parameter set value='2060-05-05' where key='database.expiration_date';"
 }
@@ -177,6 +190,9 @@ param_fin_2="--unaccent"
 
 alias tobin='db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin -d $db $l1 $l2 $l3 $l4 $dev --addons-path=$ODOO_ROOT/odoo/addons,$ODOO_ROOT/enterprise,$ODOO_ROOT/tutorials'
 alias obin='db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin -d $db $l1 $l2 $l3 $l4 $addons $dev'
+alias obinwd='db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin -d $db $l1 $l2 $l3 $l4 $addons $dev --without-demo=0'
+alias obindbg='db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin -d $db $l1 $l2 $l3 $l4 $addons'  # without $dev (auto reload, annoying for debugging)
+alias obindup='db=$("obranch")-dup; [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin -d $db $l1 $l2 $l3 $l4 $addons $dev'
 
 alias ibin='db=$(ibranch); [[ $db != 1  ]] && $ODOO_ROOT/18odoo/odoo-bin -d $db $l1 $l2 $l3 $l4 $addons_iap $dev -p 8070'
 alias ishell='db=$(ibranch); [[ $db != 1  ]] && $ODOO_ROOT/18odoo/odoo-bin shell --shell-interface=ipython -d $db $addons_iap'

@@ -49,21 +49,20 @@ for config_file, real_file in file_counterpart_locations.items():
 
 folder_counterpart_locations = {
     # [config folder name]: [real folder name]
-    "/home/yosuanicolaus/repos/config/nvim/": "/home/yosuanicolaus/.config/nvim/",
-    "/home/yosuanicolaus/repos/config/wezterm/": "/home/yosuanicolaus/.config/wezterm/",
+    "nvim": "/home/yosuanicolaus/.config/nvim/",
+    "wezterm": "/home/yosuanicolaus/.config/wezterm/",
+    "input-remapper-2": "/home/yosuanicolaus/.config/input-remapper-2/",
 }
 
-for config_folder_loc, real_folder_loc in folder_counterpart_locations.items():
+for config_folder_name, real_folder_loc in folder_counterpart_locations.items():
+    config_folder_loc = f"/home/yosuanicolaus/repos/config/{config_folder_name}/"
+
     try:
         # remove existing config folder
         shutil.rmtree(config_folder_loc, ignore_errors=True)
         # copy content from real folder to config folder
-        shutil.copytree(
-            real_folder_loc, config_folder_loc, ignore=shutil.ignore_patterns("*.git*")
-        )
-        print(
-            f"[FOLDER] Successfully updated {config_folder_loc} from {real_folder_loc}"
-        )
+        shutil.copytree(real_folder_loc, config_folder_loc, ignore=shutil.ignore_patterns("*.git*"))
+        print(f"[FOLDER] Successfully updated {config_folder_loc} from {real_folder_loc}")
 
     except Exception as e:
         print(f"[ERROR] - Error when updating {config_folder_loc} folder: {str(e)}")

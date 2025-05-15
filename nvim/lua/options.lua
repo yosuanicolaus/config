@@ -73,6 +73,8 @@ o.jumpoptions = "stack,view"
 
 o.scroll = 0
 
+o.wrap = false
+
 -- 2024-02-04 for obsidian.nvim
 if vim.fn.getcwd() == "/home/yosuanicolaus/codes/obsidian" then
   vim.opt_local.conceallevel = 1

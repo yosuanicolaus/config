@@ -50,6 +50,8 @@ matches:
     replace: "∑"
   - trigger: ":pi"
     replace: "π"
+  - trigger: ":deg"
+    replace: "°"
 
   # emojis
   - trigger: ":lenny"
@@ -64,6 +66,8 @@ matches:
     replace: "ಠ_ಠ"
   - trigger: ":party"
     replace: "🥳"
+  - trigger: ":think"
+    replace: "🤔"
 
   # NOTE: espanso uses YAML to define matches, so pay attention to the indentation!
 

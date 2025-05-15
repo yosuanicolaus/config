@@ -1,5 +1,9 @@
 local map = vim.keymap.set
 
+local function echo(message)
+  return "<CMD>lua vim.notify('" .. message .. "')<CR>"
+end
+
 ----------------------------------------------------------------------------------
 ---*[ NORMAL MODE ]*--------------------------------------------------------------
 ----------------------------------------------------------------------------------
@@ -38,15 +42,15 @@ map("n", ">", ">>", { nowait = true })
 map("n", "J", "mzJ`z") -- save cursor position after joining lines
 
 -- "z" commands: scroll horizontal faster | open/fold
-map("n", "zh", "20zh")
-map("n", "zl", "20zl")
+map("n", "zh", "40zh")
+map("n", "zl", "40zl")
 map("n", "zO", "zR")
 map("n", "zC", "zM")
 
 -- generalization | quality of life essentials
 map("n", "<C-a>", "GVgg", { desc = "general select all" })
 map("n", "<C-s>", "<CMD>w<CR>", { desc = "general save file" })
-map("n", "<C-S-s>", "<CMD>set scroll=0<CR>", { desc = "reset half page scroll length" })
+map("n", "<C-S-s>", "<CMD>set scroll=0<CR>" .. echo "resetted scroll length")
 map("n", "<Esc>", "<CMD>noh<CR>", { desc = "general clear highlights" })
 
 -- toggles
@@ -86,10 +90,10 @@ map("v", "<C-k>", ":m '<-2<CR>gv=gv")
 map("v", "J", "mzJ`z") -- save cursor position after joining lines
 
 -- script: search selected selection
-map("v", "/", '"vy /<C-r>v<CR>zz')
-map("v", "?", '"vy ?<C-r>v<CR>zz')
+map("v", "/", [[y/\V<C-R>=escape(@",'/\')<CR><CR>]])
+map("v", "?", [[y?\V<C-R>=escape(@",'/\')<CR><CR>]])
 
--- script: search & replace selected
+-- script: search & replace selected (vim-style "multi-cursor")
 map("v", "<C-s>", [[y/\V<C-R>=escape(@",'/\')<CR><CR>Ncgn]], { desc = "Search & Replace" })
 
 -- QoL: reselect selection
@@ -99,7 +103,6 @@ map("v", "p", "pgvy") -- re-copy the pasted text
 
 -- generalization
 map("v", "<C-a>", "<ESC>GVgg")
--- map("v", "<C-s>", "<CMD>w<CR>")
 
 -- auto recenter after scroll
 map("v", "<C-d>", "<C-d>zz")
