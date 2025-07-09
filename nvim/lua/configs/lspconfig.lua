@@ -96,6 +96,7 @@ local servers = {
   "ts_ls",
   "clangd",
   "texlab",
+  "svelte",
 }
 
 -- lsps with default config

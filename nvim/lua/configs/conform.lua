@@ -4,6 +4,7 @@ local directories_format_changed = {
   "~/work/enterprise",
   "~/work/iap-apps",
   "~/repos/cmp-rpncalc",
+  "~/repos/rps-mmo/",
 }
 local directories_format_disable = {
   --- for all directories listed here, disable auto-format by default
@@ -26,7 +27,7 @@ end
 local options = {
   formatters_by_ft = {
     lua = { "stylua" },
-    gdscript = { "gdformat" }, -- [240609] cmd to format using gdtoolkit
+    -- gdscript = { "gdformat" }, -- [240609] cmd to format using gdtoolkit
     -- css = { "prettier" },
     -- html = { "prettier" },
     tex = { "latexindent" },

@@ -5,4 +5,5 @@ return {
   -- to add here
 }, {
   ps({ trig = "ist" }, "ipdb.set_trace()"),
+  ps({ trig = "ppp" }, 'print(f"{$0=}")'),
 }

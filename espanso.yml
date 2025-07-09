@@ -52,6 +52,28 @@ matches:
     replace: "π"
   - trigger: ":deg"
     replace: "°"
+  - trigger: ":elem"
+    replace: "∈"
+
+  # math stuffs
+  - trigger: ":sub0"
+    replace: "₀"
+  - trigger: ":sub1"
+    replace: "₁"
+  - trigger: ":h0"
+    replace: "H₀"
+  - trigger: ":h1"
+    replace: "H₁"
+  - trigger: ":mu"
+    replace: "μ"
+  - trigger: ":neq"
+    replace: "≠"
+  - trigger: ":barx"
+    replace: "x̄"
+  - trigger: ":bary"
+    replace: "ȳ"
+  - trigger: ":^2"
+    replace: "²"
 
   # emojis
   - trigger: ":lenny"

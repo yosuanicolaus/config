@@ -40,8 +40,9 @@ local ps_im = ls.extend_decorator.apply(ps, { condition = pipe { is_math } }) --
 
 return {
   ps_nm({ trig = "bq" }, "\\begin{question}\n\t$0\n\\end{question}"),
-  ps_nm({ trig = "qp" }, "\\qpart $0"),
-  ps_nm({ trig = "qsp" }, "\\qsubpart $0"),
+  ps_nm({ trig = "qp" }, "\\qpart\n$0"),
+  ps_nm({ trig = "qsp" }, "\\qsubpart\n$0"),
+  ps_nm({ trig = "np" }, "\\newpage\n$0"),
 
   ps_nm({ trig = "s*" }, "\\section*{$1}$0"),
   ps_nm({ trig = "s*r" }, "\\section*{Reading Notes}\n\n$0"),
@@ -49,6 +50,11 @@ return {
   ps_nm({ trig = "s*e" }, "\\section*{Excercises}\n\n\\begin{question}[1]\n\t$0\n\\end{question}"),
 }, {
   ps_im({ trig = ";" }, "\\,"),
+  ps_im({ trig = "angle" }, "\\angle"),
+  ps_im({ trig = "degsym" }, "^{\\circ}"),
   ps_nm({ trig = "ii" }, "\\item"),
   ps_nm({ trig = "sii" }, "\\subitem"),
+  ps_nm({ trig = ":np" }, "\\newpage"),
+  ps_nm({ trig = ":qp" }, "\\qpart"),
+  ps_nm({ trig = ":qsp" }, "\\qsubpart"),
 }

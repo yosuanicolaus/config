@@ -16,7 +16,7 @@ alias c=clear
 alias t=touch
 alias sz='source ~/.zshrc'
 alias code=code-insiders
-alias py=python3
+alias py=ipython3
 alias ipy=ipython3
 alias kittyupdate='curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin'
 alias wezterm='flatpak run org.wezfurlong.wezterm'
@@ -145,6 +145,10 @@ ofdel() {
     odel $(obranchfin)
 }
 
+idel() {
+    odel $(ibranch)
+}
+
 odup() {
     if [ "$#" -ne 2  ]; then
         echo "Illegal number of parameters"
@@ -189,10 +193,24 @@ param_fin_1="--http-port="6969""
 param_fin_2="--unaccent"
 
 alias tobin='db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin -d $db $l1 $l2 $l3 $l4 $dev --addons-path=$ODOO_ROOT/odoo/addons,$ODOO_ROOT/enterprise,$ODOO_ROOT/tutorials'
-alias obin='db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin -d $db $l1 $l2 $l3 $l4 $addons $dev'
-alias obinwd='db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin -d $db $l1 $l2 $l3 $l4 $addons $dev --without-demo=0'
+alias obin-old='db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin -d $db $l1 $l2 $l3 $l4 $addons $dev'
+alias obin-new='db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin -d $db $l1 $l2 $l3 $l4 $addons $dev --without-demo=0'
 alias obindbg='db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin -d $db $l1 $l2 $l3 $l4 $addons'  # without $dev (auto reload, annoying for debugging)
 alias obindup='db=$("obranch")-dup; [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin -d $db $l1 $l2 $l3 $l4 $addons $dev'
+
+obin() {
+    db=$(obranch)
+    case "$db" in
+        "18.0"* | "saas-18.1"* | "saas-18.2"* | "17.0"* | "16.0"*)
+            echo "Running $db with obin-old (no without-demo)"
+            obin-old "$@"
+            ;;
+        *)
+            echo "Running $db with obin-new (without-demo=0)"
+            obin-new "$@"
+            ;;
+    esac
+}
 
 alias ibin='db=$(ibranch); [[ $db != 1  ]] && $ODOO_ROOT/18odoo/odoo-bin -d $db $l1 $l2 $l3 $l4 $addons_iap $dev -p 8070'
 alias ishell='db=$(ibranch); [[ $db != 1  ]] && $ODOO_ROOT/18odoo/odoo-bin shell --shell-interface=ipython -d $db $addons_iap'
@@ -269,6 +287,8 @@ oigit() {
 }
 
 otest() { obin --stop-after-init --test-tags="$1" "${@:2}" }
+# otestext() { obin --stop-after-init --test-tags="$1" "${@:2}" }
+testotest() { "hello $1 ${@:2}" }
 itest() { ibin --stop-after-init --test-tags="$1" "${@:2}" }
 oftest() { ofbin --stop-after-init --test-tags="$1" "${@:2}" }
 
@@ -348,7 +368,18 @@ export PATH=$PATH:/usr/local/go/bin
 export PATH="$HOME/.emacs.d/bin:$PATH"
 # alias emacs="emacsclient -c -a 'emacs'"
 
+# 250515 For Logan's game enine
+export VULKAN_SDK="/home/yosuanicolaus/app/vulkan-1.4.313.0"
+export VULKAN_LIBRARY="/home/yosuanicolaus/app/vulkan-1.4.313.0"
+
+# 250603 For godot-rust
+export GODOT4_BIN="/home/yosuanicolaus/app/godot/godot.x86_64"
+
 # 240911 ensure xmodmap run as often as possible
 xmodmap ~/.Xmodmap
 # update 241210; found input remapper (prebuilt mint app), the GOAT for this! ... update: nvm
 # xmodmap -e "keycode 64 = Mode_switch"
+
+# 250703 keyboard repeat delay & rate
+xset r rate 350 25
+
