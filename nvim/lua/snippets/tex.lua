@@ -51,7 +51,7 @@ return {
 }, {
   ps_im({ trig = ";" }, "\\,"),
   ps_im({ trig = "angle" }, "\\angle"),
-  ps_im({ trig = "degsym" }, "^{\\circ}"),
+  ps_im({ trig = "degs" }, "^{\\circ}"),
   ps_nm({ trig = "ii" }, "\\item"),
   ps_nm({ trig = "sii" }, "\\subitem"),
   ps_nm({ trig = ":np" }, "\\newpage"),

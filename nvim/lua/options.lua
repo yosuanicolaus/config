@@ -96,6 +96,13 @@ if vim.g.neovide then
   -- vim.g.neovide_transparency = 0.9
 end
 
+-- 250729 detect *.sch filetype as xml files
+vim.filetype.add {
+  extension = {
+    sch = "xml",
+  },
+}
+
 ------------------------------------------------------------------------
 
 -- 240609 for godot | Update 250518 https://simondalvai.org/blog/godot-neovim

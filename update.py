@@ -52,6 +52,7 @@ folder_counterpart_locations = {
     "nvim": "/home/yosuanicolaus/.config/nvim/",
     "wezterm": "/home/yosuanicolaus/.config/wezterm/",
     "input-remapper-2": "/home/yosuanicolaus/.config/input-remapper-2/",
+    "sioyek": "/home/yosuanicolaus/.config/sioyek/",
 }
 
 for config_folder_name, real_folder_loc in folder_counterpart_locations.items():

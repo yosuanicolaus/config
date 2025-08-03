@@ -56,6 +56,7 @@ alias cnvrc='~/repos/config/ && nvim'
 alias cnvz='~ && nvim .zshrc'
 alias cnvrcph='~/.config/rust-competitive-helper/ && nvim rust-competitive-helper.toml'
 alias cnvw='~/.config/wezterm/ && nvim'
+alias cnvs='~/.config/sioyek/ && nvim'
 alias cnvcr="~/codes/competitive-rust/ && nvim --listen localhost:3708"
 alias note='nvim ~' # for quick note taking
 
@@ -381,5 +382,5 @@ xmodmap ~/.Xmodmap
 # xmodmap -e "keycode 64 = Mode_switch"
 
 # 250703 keyboard repeat delay & rate
-xset r rate 350 25
+xset r rate 280 25
 
