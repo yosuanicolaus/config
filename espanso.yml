@@ -18,6 +18,10 @@ matches:
     replace: ":vert h "
   - trigger: ":lorem"
     replace: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+  - trigger: ":abc"
+    replace: "abcdefghijklmnopqrstuvwxyz"
+  - trigger: ":ABC"
+    replace: "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
   # github review
   - trigger: ":sug"
@@ -33,11 +37,13 @@ matches:
 
     # python breakpoint
   - trigger: ":bp"
-    replace: "from rich.pretty import pprint; import ipdb; ipdb.set_trace()"
+    replace: "from rich.pretty import pprint; pprint(locals()); import ipdb; ipdb.set_trace()"
   - trigger: ":pp"
     replace: "from rich.pretty import pprint"
   - trigger: ":ipdb"
     replace: "import ipdb; ipdb.set_trace()"
+  - trigger: ":pudb"
+    replace: "import pudb; pudb.set_trace()"
   - trigger: ":pl"
     replace: "pprint(locals())"
   
@@ -46,6 +52,8 @@ matches:
     replace: "€"
   - trigger: ":gbp"
     replace: "£"
+  - trigger: ":jpy"
+    replace: "¥"
   - trigger: ":sum"
     replace: "∑"
   - trigger: ":pi"
@@ -90,6 +98,30 @@ matches:
     replace: "🥳"
   - trigger: ":think"
     replace: "🤔"
+  - trigger: ":check"
+    replace: "✅"
+
+  # GTA Wanted Star 1~5
+  - trigger: ":star5"
+    replace: "★ ★ ★ ★ ★"
+  - trigger: ":star4"
+    replace: "★ ★ ★ ★ ☆"
+  - trigger: ":star3"
+    replace: "★ ★ ★ ☆ ☆"
+  - trigger: ":star2"
+    replace: "★ ★ ☆ ☆ ☆"
+  - trigger: ":star1"
+    replace: "★ ☆ ☆ ☆ ☆"
+  - trigger: ":rstar5"
+    replace: "Ready for final review ★ ★ ★ ★ ★"
+  - trigger: ":rstar4"
+    replace: "Ready for final review ★ ★ ★ ★ ☆"
+  - trigger: ":rstar3"
+    replace: "Ready for final review ★ ★ ★ ☆ ☆"
+  - trigger: ":rstar2"
+    replace: "Ready for final review ★ ★ ☆ ☆ ☆"
+  - trigger: ":rstar1"
+    replace: "Ready for final review ★ ☆ ☆ ☆ ☆"
 
   # NOTE: espanso uses YAML to define matches, so pay attention to the indentation!
 
@@ -103,6 +135,15 @@ matches:
         type: date
         params:
           format: "%y%m%d"
+
+  # 251108 Print the current time
+  - trigger: ":time"
+    replace: "{{mytime}}"
+    vars:
+      - name: mytime
+        type: date
+        params:
+          format: "%_H:%M"
 
   # Print the output of a shell command
   - trigger: ":shell"

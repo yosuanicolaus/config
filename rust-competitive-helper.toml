@@ -5,11 +5,11 @@ open_task_command = [
     # '$FILE',
 
     # for nvim:
-    '/usr/bin/nvim',
-    '--server',
-    'localhost:3708',
-    '--remote-send',
-    '"<ESC><ESC>:n $FILE<CR>:call cursor($LINE, $COLUMN)<CR>"',
+    # '/usr/bin/nvim',
+    # '--server',
+    # 'localhost:3708',
+    # '--remote-send',
+    # '"<ESC><ESC>:n $FILE<CR>:call cursor($LINE, $COLUMN)<CR>"',
     
     # for vscode:
     # '/usr/bin/code-insiders',

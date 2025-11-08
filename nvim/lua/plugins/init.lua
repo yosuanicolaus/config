@@ -486,4 +486,6 @@ return {
   {
     "jbyuki/nabla.nvim",
   },
+
+  -- { import = "nvchad.blink.lazyspec" },
 }

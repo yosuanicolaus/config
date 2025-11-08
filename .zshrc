@@ -57,6 +57,7 @@ alias cnvz='~ && nvim .zshrc'
 alias cnvrcph='~/.config/rust-competitive-helper/ && nvim rust-competitive-helper.toml'
 alias cnvw='~/.config/wezterm/ && nvim'
 alias cnvs='~/.config/sioyek/ && nvim'
+alias cnvx='/var/lib/flatpak/app/com.github.xournalpp.xournalpp/x86_64/stable/active/files/share/xournalpp/ && nvim'
 alias cnvcr="~/codes/competitive-rust/ && nvim --listen localhost:3708"
 alias note='nvim ~' # for quick note taking
 
@@ -177,6 +178,8 @@ oble() { xdg-open "https://github.com/odoo/enterprise/commit/$1" }
 
 obli() { xdg-open "https://github.com/odoo/iap-apps/commit/$1" }
 
+oblu() { xdg-open "https://github.com/odoo/upgrade/commit/$1" }
+
 oexpire() {
     psql -d "$('obranch')" -c "update ir_config_parameter set value='2060-05-05' where key='database.expiration_date';"
 }
@@ -189,7 +192,7 @@ addons="--addons-path=$ODOO_ROOT/odoo/addons,$ODOO_ROOT/enterprise"
 addons_iap="--addons-path=$ODOO_ROOT/18odoo/addons,$ODOO_ROOT/18enterprise/,$ODOO_ROOT/iap-apps/iap_services/,$ODOO_ROOT/iap-apps/iap_common/"
 addons_with_fin="--addons-path=$ODOO_ROOT/odoo/addons,$ODOO_ROOT/enterprise,$ODOO_ROOT/odoofin"
 addons_with_upgrade="--addons-path=$ODOO_ROOT/odoo/addons,$ODOO_ROOT/enterprise,$ODOO_ROOT/upgrade,$ODOO_ROOT/upgrade-util"
-dev='--dev=xml,reload'
+dev='--dev=all'
 param_fin_1="--http-port="6969""
 param_fin_2="--unaccent"
 
@@ -229,6 +232,7 @@ alias obackup='odup $("obranch") $("obranch")-dup'
 alias oreset='odel $("obranch") && odup $("obranch")-dup $("obranch")'
 alias opopulate='db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin populate -d $db --addons-path="$ODOO_ROOT/odoo/addons,$ODOO_ROOT/enterprise"'
 
+alias ostart='xdg-open "https://mail.google.com/mail/u/2/#inbox" && xdg-open "https://runbot.odoo.com/runbot/r-d-1?search=-yoni" && xdg-open "https://www.odoo.com/odoo/project/967/tasks" && ogfa'
 alias otab='xdg-open "http://localhost:8069"'
 alias omail='xdg-open "https://mail.google.com/mail/u/2/#inbox"'
 alias otime='xdg-open "https://www.odoo.com/web#action=4528&model=hr.leave.report.calendar&view_type=gantt&cids=1&menu_id=6279"'
@@ -320,6 +324,7 @@ ougpf() { ougit push --force-with-lease --force-if-includes }
 ougst() { ougit status }
 
 # 250110 include iap-apps with 'oig*'
+oigfa() { oigit fetch --all --prune }
 oigst() { oigit status }
 
 # ----------------------------------------------------------------------------------------------------------------------------------------
@@ -376,11 +381,20 @@ export VULKAN_LIBRARY="/home/yosuanicolaus/app/vulkan-1.4.313.0"
 # 250603 For godot-rust
 export GODOT4_BIN="/home/yosuanicolaus/app/godot/godot.x86_64"
 
-# 240911 ensure xmodmap run as often as possible
+# 240911 ensure xmodmap run as often as possible (for laptop keyboard)
 xmodmap ~/.Xmodmap
 # update 241210; found input remapper (prebuilt mint app), the GOAT for this! ... update: nvm
 # xmodmap -e "keycode 64 = Mode_switch"
 
 # 250703 keyboard repeat delay & rate
-xset r rate 280 25
+xset r rate 250 30
 
+# 251013 pyenv to install python 3.12 (for odoo)
+# https://forums.linuxmint.com/viewtopic.php?t=362499
+# export PYENV_ROOT="$HOME/.pyenv"
+# command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init --path)"
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
+pyenv shell 3.12.12

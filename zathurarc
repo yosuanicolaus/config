@@ -54,3 +54,15 @@ set recolor-darkcolor           rgba(248,248,242,1)   # Foreground
 #
 set adjust-open width
 # set recolor true
+
+# 250804 better keybindings
+map d scroll half-down
+map u scroll half-up
+map <C-PageDown> navigate next
+map <C-PageUp> navigate previous
+map <C-Space> navigate next
+# map <C-S-Space> navigate previous (doesn't work)
+
+map <Space> scroll half-down
+map <S-Space> scroll half-up
+
