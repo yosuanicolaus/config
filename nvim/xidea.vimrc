@@ -1,4 +1,4 @@
-" ©yosuanicolaus 2023-2024
+" ©yosuanicolaus 2023-2024-2025
 " .ideavimrc setup
 " file locations:
 " ~/.ideavimrc (real file)

@@ -1,3 +1,7 @@
+aoc_select_year_idx = 7
+
+aoc_select_day_idx = 1
+
 open_task_command = [
     # for nvid (new window):
     # '/home/yosuanicolaus/app/bin/nvid',
@@ -16,4 +20,12 @@ open_task_command = [
     # '-r',
     # '--goto',
     # '$FILE:$LINE:$COLUMN',
+
+    # for RustRover:
+    "/home/yosuanicolaus/.local/share/JetBrains/Toolbox/apps/rustrover/bin/rustrover",
+    "--line",
+    "$LINE",
+    "--column",
+    "$COLUMN",
+    "$FILE",
 ]

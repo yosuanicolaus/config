@@ -25,7 +25,7 @@ alias lg=lazygit
 alias diary='export DIARY_FILE="$(date +'%y%m%d').md" && cd ~/codes/obsidian/ && touch diary/$DIARY_FILE && nvim diary/$DIARY_FILE'
 alias buffer='export BUFFER_FILE="b$(date +'%y%m%d').md" && cd ~/codes/obsidian/ && touch buffer/$BUFFER_FILE && nvim buffer/$BUFFER_FILE'
 alias cdiary='~/codes/obsidian/diary/'
-alias cdob='~/codes/obsidian/'
+alias co='~/codes/obsidian/'
 alias cnvo='~/codes/obsidian/ && nvim README.md'
 alias obsync='~/codes/obsidian/ && git add . && git commit -m "obsidian update" && git push'
 
@@ -270,6 +270,13 @@ ogit() {
     local current_dir=$(pwd)
     echo '------ odoo ------' && cd ~/work/odoo/ && git "$@" &&
       echo '\n--- enterprise ---' && cd ~/work/enterprise/ && git "$@"
+    cd "$current_dir" || return 1
+}
+
+ogwip() {
+    local current_dir=$(pwd)
+    echo '------ odoo ------' && cd ~/work/odoo/ && git add . && git commit -m "[IMP] WIP/to-squash: $*" &&
+      echo '\n--- enterprise ---' && cd ~/work/enterprise/ && git add . && git commit -m "[IMP] WIP/to-squash: $*"
     cd "$current_dir" || return 1
 }
 
