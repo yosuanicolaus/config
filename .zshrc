@@ -345,6 +345,10 @@ oigst() { oigit status }
 # (2023-08-03 not sure it's necessary with the pycharm extension)
 export PYTHONPATH=${PYTHONPATH}:${HOME}/work/odoo/
 
+# 260202 python call `breakpoint()` to use `pudb` / `web-pdb`.
+export PYTHONBREAKPOINT="pudb.set_trace"
+# export PYTHONBREAKPOINT="web_pdb.set_trace"
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
@@ -366,8 +370,9 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 eval "$(zoxide init --cmd cd zsh)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# 230806 autocomplete with Tab, update 240215
-bindkey '^I' autosuggest-accept
+# 230806 autocomplete with Tab, update 240215, [260202] maybe not. we can do arrow keys easily nowadays
+# bindkey '^I' autosuggest-accept
+
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 

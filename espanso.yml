@@ -1,12 +1,8 @@
-# espanso match file
+# QUICK COPY [260202]
+# from rich.pretty import pprint; pprint(locals()); import ipdb; ipdb.set_trace()
 
 # For a complete introduction, visit the official docs at: https://espanso.org/docs/
 
-# You can use this file to define the base matches (aka snippets)
-# that will be available in every application when using espanso.
-
-# Matches are substitution rules: when you type the "trigger" string
-# it gets replaced by the "replace" string.
 matches:
 
     # competitive programming
@@ -43,8 +39,8 @@ matches:
   # python breakpoint
   # - trigger: ":bp"
   #   replace: "from rich.pretty import pprint; pprint(locals()); import ipdb; ipdb.set_trace()"
-  # - trigger: ":pp"
-  #   replace: "from rich.pretty import pprint"
+  - trigger: ":pp"
+    replace: "from rich.pretty import pprint"
   # - trigger: ":ipdb"
   #   replace: "import ipdb; ipdb.set_trace()"
   # - trigger: ":pudb"
