@@ -23,6 +23,11 @@ matches:
   - trigger: ":ABC"
     replace: "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
+  - trigger: ":rch"
+    replace: "R.E.A.C.H."
+  - trigger: ":tdrm"
+    replace: "TODO remove this later"
+
   # github review
   - trigger: ":sug"
     replace: "```suggestion\n"
@@ -35,17 +40,17 @@ matches:
   - trigger: ":16 "
     replace: "                "
 
-    # python breakpoint
-  - trigger: ":bp"
-    replace: "from rich.pretty import pprint; pprint(locals()); import ipdb; ipdb.set_trace()"
-  - trigger: ":pp"
-    replace: "from rich.pretty import pprint"
-  - trigger: ":ipdb"
-    replace: "import ipdb; ipdb.set_trace()"
-  - trigger: ":pudb"
-    replace: "import pudb; pudb.set_trace()"
-  - trigger: ":pl"
-    replace: "pprint(locals())"
+  # python breakpoint
+  # - trigger: ":bp"
+  #   replace: "from rich.pretty import pprint; pprint(locals()); import ipdb; ipdb.set_trace()"
+  # - trigger: ":pp"
+  #   replace: "from rich.pretty import pprint"
+  # - trigger: ":ipdb"
+  #   replace: "import ipdb; ipdb.set_trace()"
+  # - trigger: ":pudb"
+  #   replace: "import pudb; pudb.set_trace()"
+  # - trigger: ":pl"
+  #   replace: "pprint(locals())"
   
   # common symbols
   - trigger: ":eur"
@@ -62,6 +67,8 @@ matches:
     replace: "°"
   - trigger: ":elem"
     replace: "∈"
+  - trigger: ":~"
+    replace: "〜"
 
   # math stuffs
   - trigger: ":sub0"
@@ -105,31 +112,45 @@ matches:
   - trigger: ":inprg"
     replace: "🔄"
   - trigger: ":soon"
-    replace: "🔜"
+    replace: "▶️"
 
-  # GTA Wanted Star 1~5
+  # Stars 1~5
   - trigger: ":star5"
-    replace: "★ ★ ★ ★ ★"
+    replace: "★ ★ ★ ★ ★ "
   - trigger: ":star4"
-    replace: "★ ★ ★ ★ ☆"
+    replace: "★ ★ ★ ★ ☆ "
   - trigger: ":star3"
-    replace: "★ ★ ★ ☆ ☆"
+    replace: "★ ★ ★ ☆ ☆ "
   - trigger: ":star2"
-    replace: "★ ★ ☆ ☆ ☆"
+    replace: "★ ★ ☆ ☆ ☆ "
   - trigger: ":star1"
-    replace: "★ ☆ ☆ ☆ ☆"
+    replace: "★ ☆ ☆ ☆ ☆ "
   - trigger: ":star0"
-    replace: "☆ ☆ ☆ ☆ ☆"
-  - trigger: ":rstar5"
-    replace: "Ready for final review ★ ★ ★ ★ ★"
-  - trigger: ":rstar4"
-    replace: "Ready for final review ★ ★ ★ ★ ☆"
-  - trigger: ":rstar3"
-    replace: "Ready for final review ★ ★ ★ ☆ ☆"
-  - trigger: ":rstar2"
-    replace: "Ready for final review ★ ★ ☆ ☆ ☆"
-  - trigger: ":rstar1"
-    replace: "Ready for final review ★ ☆ ☆ ☆ ☆"
+    replace: "☆ ☆ ☆ ☆ ☆ "
+  - trigger: ":jstar5"
+    replace: "・★★★★★ "
+  - trigger: ":jstar4"
+    replace: "・★★★★☆ "
+  - trigger: ":jstar3"
+    replace: "・★★★☆☆ "
+  - trigger: ":jstar2"
+    replace: "・★★☆☆☆ "
+  - trigger: ":jstar1"
+    replace: "・★☆☆☆☆ "
+  - trigger: ":jstar0"
+    replace: "・☆☆☆☆☆ "
+  - trigger: ":jestar5"
+    replace: "・★ ★ ★ ★ ★ "
+  - trigger: ":jestar4"
+    replace: "・★ ★ ★ ★ ☆ "
+  - trigger: ":jestar3"
+    replace: "・★ ★ ★ ☆ ☆ "
+  - trigger: ":jestar2"
+    replace: "・★ ★ ☆ ☆ ☆ "
+  - trigger: ":jestar1"
+    replace: "・★ ☆ ☆ ☆ ☆ "
+  - trigger: ":jestar0"
+    replace: "・☆ ☆ ☆ ☆ ☆ "
 
   # NOTE: espanso uses YAML to define matches, so pay attention to the indentation!
 
@@ -138,6 +159,14 @@ matches:
   # Print the current date
   - trigger: ":date"
     replace: "{{mydate}}"
+    vars:
+      - name: mydate
+        type: date
+        params:
+          format: "%y%m%d"
+
+  - trigger: ":sdate"
+    replace: "[{{mydate}}]"
     vars:
       - name: mydate
         type: date

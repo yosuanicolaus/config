@@ -75,7 +75,6 @@
     "editor.insertSpaces": false,
     "editor.defaultFormatter": "geequlim.godot-tools"
   },
-  "workbench.iconTheme": "material-icon-theme",
   "editor.inlineSuggest.enabled": true,
   "github.copilot.enable": {
     "*": false,
@@ -337,9 +336,10 @@
   "godotTools.lsp.serverPort": 6005,
   "dotnet.codeLens.enableReferencesCodeLens": false,
   "vim.commandLineModeKeyBindings": [],
-  "workbench.colorTheme": "One Dark Pro Monokai Darker",
   "window.customTitleBarVisibility": "auto",
   "window.commandCenter": false,
   "workbench.layoutControl.enabled": false,
   "editor.fontSize": 12,
+  "chat.mcp.gallery.enabled": true,
+  "editor.formatOnPaste": true,
 }

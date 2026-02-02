@@ -6,11 +6,11 @@
 ! to make it work on PyCharm, turn on the "Use national layout for shortcut" option
 ! TODO: alt+<anything> shortcut doesn't work now. In particulart alt+Up & alt+Down for discord switching channel
 
-keycode 64 = Mode_switch
-keycode 43 = h H Left H
-keycode 44 = j J Down J
-keycode 45 = k K Up K
-keycode 46 = l L Right L
+! keycode 64 = Mode_switch
+! keycode 43 = h H Left H
+! keycode 44 = j J Down J
+! keycode 45 = k K Up K
+! keycode 46 = l L Right L
 
 ! update 241210: found "Input Remapper", prebuilt app for Linux Mint! use this for everything!
 

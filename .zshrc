@@ -38,6 +38,9 @@ alias rcph="RUST_BACKTRACE=1 cargo run --manifest-path ~/repos/rust-competitive-
 alias setclip="xclip -selection c"
 alias getclip="xclip -selection c -o"
 
+# [260130] laptop's keyboard `ctrl-u` / `ctrl-d` key sometimes doesn't work on Pycharm. Run this to fix
+alias fixkbd='input-remapper-control --command start --device "AT Translated Set 2 keyboard" --preset "De Schildpad" && input-remapper-control --command start --device "foostan Corne" --preset "R2G"'
+
 alias ccn='cd ~/.config/nvim/'
 alias cda='cd ~/app/'
 alias cdd='cd ~/Downloads/'
@@ -389,9 +392,11 @@ export VULKAN_LIBRARY="/home/yosuanicolaus/app/vulkan-1.4.313.0"
 export GODOT4_BIN="/home/yosuanicolaus/app/godot/godot.x86_64"
 
 # 240911 ensure xmodmap run as often as possible (for laptop keyboard)
-xmodmap ~/.Xmodmap
+# xmodmap ~/.Xmodmap
 # update 241210; found input remapper (prebuilt mint app), the GOAT for this! ... update: nvm
 # xmodmap -e "keycode 64 = Mode_switch"
+# update 251230: ALWAYS use Input Remapper. It's the actual GOAT. bye xmodmap.
+# (because xmodmap conflicts with mozc japanese keyboard)
 
 # 250703 keyboard repeat delay & rate
 xset r rate 250 30

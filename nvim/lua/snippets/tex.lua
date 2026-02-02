@@ -62,6 +62,7 @@ local ps_im = ls.extend_decorator.apply(ps, { condition = pipe { is_math } }) --
 -- Let's do this later...
 
 return {
+  -- PROMPT OUTSIDE MATH MODE
   ps_nm({ trig = "bq" }, "\\begin{question}\n\t$0\n\\end{question}"),
   ps_nm({ trig = "qp" }, "\\qpart\n$0"),
   ps_nm({ trig = "qsp" }, "\\qsubpart\n$0"),
@@ -79,11 +80,22 @@ return {
   ps_nm({ trig = "temptma" }, template_string "/template/tma_real.tex"),
   ps_nm({ trig = "template" }, template_string "/template/tma_natural.tex"),
 }, {
+  -- INSTANT INSIDE MATH MODE
   ps_im({ trig = ",," }, "\\,"),
   ps_im({ trig = "angle" }, "\\angle"),
   ps_im({ trig = "degs" }, "^{\\circ}"),
+  ps_im({ trig = ":-1" }, " ^{-1}"),
+  ps_im({ trig = "ddd" }, "\\frac{\\dd ${1:y}}{\\dd ${2:x}}$0"),
+  ps_im({ trig = "ddx" }, "\\dd x"),
+  ps_im({ trig = "ddy" }, "\\dd y"),
+  ps_im({ trig = "ddu" }, "\\dd u"),
+  ps_im({ trig = "pm" }, "\\pm"),
+
+  -- INSTANT OUTSIDE MATH MODE
+  ps_nm({ trig = ":-1" }, "$^{-1}$"),
   ps_nm({ trig = "ii" }, "\\item"),
   ps_nm({ trig = "sii" }, "\\subitem"),
+
   ps_nm({ trig = ":np" }, "\\newpage %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"),
   ps_nm({ trig = ":qp" }, "\\qpart"),
   ps_nm({ trig = ":qsp" }, "\\qsubpart"),
