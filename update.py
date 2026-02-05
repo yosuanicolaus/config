@@ -15,7 +15,7 @@ file_counterpart_locations = {
     ".Xmodmap": "~/.Xmodmap",
     ".ideavimrc": "~/.ideavimrc",
     "kitty.conf": "~/.config/kitty/kitty.conf",
-    "espanso.yml": "~/.config/espanso/match/base.yml",
+    # "espanso.yml": "~/.config/espanso/match/base.yml",
     "rust-competitive-helper.toml": "~/.config/rust-competitive-helper/rust-competitive-helper.toml",
     "vscode_keybindings.json": "~/.config/Code/User/keybindings.json",
     "vscode_settings.json": "~/.config/Code/User/settings.json",
@@ -53,6 +53,7 @@ folder_counterpart_locations = {
     "wezterm": "/home/yosuanicolaus/.config/wezterm/",
     "input-remapper-2": "/home/yosuanicolaus/.config/input-remapper-2/",
     "sioyek": "/home/yosuanicolaus/.config/sioyek/",
+    "espanso": "/home/yosuanicolaus/.config/espanso/",
 }
 
 for config_folder_name, real_folder_loc in folder_counterpart_locations.items():

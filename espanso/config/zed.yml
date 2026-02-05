@@ -1,0 +1,5 @@
+# 241120 - https://github.com/zed-industries/zed/discussions/15869
+# compatibility with zed editor
+filter_class: ^dev\.zed\.Zed$
+key_delay: 4
+backend: clipboard

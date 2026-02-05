@@ -15,7 +15,7 @@ alias ls=exa  # https://the.exa.website/ "modern replacement for ls"
 alias c=clear
 alias t=touch
 alias sz='source ~/.zshrc'
-alias code=code-insiders
+# alias code=code
 alias py=ipython3
 alias ipy=ipython3
 alias kittyupdate='curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin'
@@ -50,7 +50,8 @@ alias ccr='cd ~/codes/competitive-rust/'
 alias cu='cd ~/codes/university/'
 alias cswap='cd ~/.local/state/nvim/swap/'
 
-alias cnvc='~/.config/nvim/ && nvim'
+alias cnv='~/.config/nvim/ && nvim'
+alias cnvc='echo "use \"cnv\" for neovim config" && sleep 1 && cnv'
 alias cnvd='~/codes/obsidian/diary/ && nvim'
 alias cnve='~/.config/espanso/ && nvim match/base.yml'
 alias cnvi='~ && nvim ~/.ideavimrc'
@@ -253,7 +254,7 @@ alias cwi=~/work/iap-apps/
 # alias nvn='db=$(obranch); [[ $db != 1  ]] && touch "~/work/notes/$db.md" && nvim "~/work/notes/$db.md" '
 alias cnvn='db=$(obranch); [[ $db != 1  ]] && ~/work/notes/ && nvim "$db.md"'
 alias cnvnx='db=$(obranch); [[ $db != 1  ]] && ~/work/notes/ && touch "$db.md" && nvim "$db.md" '
-alias codoo='code-insiders ~/work/odoo.code-workspace'
+# alias codoo='code ~/work/odoo.code-workspace'
 
 # alias orun="~/work/odoo/odoo-bin $addons $dev"
 # alias oruncdb='db="db$(date +'%y%m%d%H%M%S')" && ~/work/odoo/odoo-bin --addons=~/work/odoo/addons,~/work/enterprise --dev=xml,reload -d $db'

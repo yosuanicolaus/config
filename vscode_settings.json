@@ -325,7 +325,6 @@
   "editor.fontFamily": "'JetBrainsMono Nerd Font', 'Droid Sans Mono', 'monospace', monospace",
   "cph.language.cpp.Args": "-DLOCAL -std=c++17 -pedantic -Wall -Wextra -Werror -Wshadow -Wconversion -Wunreachable-code -O2 -I /home/yosuanicolaus/codes/competitive-programming/template/",
   "leetcode.endpoint": "leetcode",
-  "vim.scroll": 20,
   "workbench.sideBar.location": "right",
   "editor.wordWrap": "off",
   "editor.formatOnSaveMode": "modificationsIfAvailable",

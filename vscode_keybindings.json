@@ -248,4 +248,8 @@
     "command": "-editor.action.startFindReplaceAction",
     "when": "editorFocus || editorIsOpen"
   },
+  {
+    "key": "shift+q",
+    "command": "workbench.action.closeOtherEditors"
+  },
 ]

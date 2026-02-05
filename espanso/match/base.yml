@@ -3,6 +3,17 @@
 
 # For a complete introduction, visit the official docs at: https://espanso.org/docs/
 
+global_vars:
+  - name: my_date
+    type: date
+    params:
+      format: "%y%m%d"
+
+  - name: my_jp_date
+    type: shell
+    params:
+      cmd: "python3 -c \"print('{{my_date}}'.translate(str.maketrans('0123456789', '０１２３４５６７８９')))\""
+
 matches:
 
     # competitive programming
@@ -14,6 +25,7 @@ matches:
     replace: ":vert h "
   - trigger: ":lorem"
     replace: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    force_clipboard: true
   - trigger: ":abc"
     replace: "abcdefghijklmnopqrstuvwxyz"
   - trigger: ":ABC"
@@ -23,6 +35,7 @@ matches:
     replace: "R.E.A.C.H."
   - trigger: ":tdrm"
     replace: "TODO remove this later"
+    force_clipboard: true
 
   # github review
   - trigger: ":sug"
@@ -37,16 +50,21 @@ matches:
     replace: "                "
 
   # python breakpoint
-  # - trigger: ":bp"
-  #   replace: "from rich.pretty import pprint; pprint(locals()); import ipdb; ipdb.set_trace()"
+  - trigger: ":bp"
+    replace: "from rich.pretty import pprint; pprint(locals()); import ipdb; ipdb.set_trace()"
+    force_clipboard: true
   - trigger: ":pp"
     replace: "from rich.pretty import pprint"
-  # - trigger: ":ipdb"
-  #   replace: "import ipdb; ipdb.set_trace()"
-  # - trigger: ":pudb"
-  #   replace: "import pudb; pudb.set_trace()"
-  # - trigger: ":pl"
-  #   replace: "pprint(locals())"
+    force_clipboard: true
+  - trigger: ":ipdb"
+    replace: "import ipdb; ipdb.set_trace()"
+    force_clipboard: true
+  - trigger: ":pudb"
+    replace: "import pudb; pudb.set_trace()"
+    force_clipboard: true
+  - trigger: ":pl"
+    replace: "pprint(locals())"
+    force_clipboard: true
   
   # common symbols
   - trigger: ":eur"
@@ -135,17 +153,17 @@ matches:
     replace: "・★☆☆☆☆ "
   - trigger: ":jstar0"
     replace: "・☆☆☆☆☆ "
-  - trigger: ":jestar5"
+  - trigger: ":jpstar5"
     replace: "・★ ★ ★ ★ ★ "
-  - trigger: ":jestar4"
+  - trigger: ":jpstar4"
     replace: "・★ ★ ★ ★ ☆ "
-  - trigger: ":jestar3"
+  - trigger: ":jpstar3"
     replace: "・★ ★ ★ ☆ ☆ "
-  - trigger: ":jestar2"
+  - trigger: ":jpstar2"
     replace: "・★ ★ ☆ ☆ ☆ "
-  - trigger: ":jestar1"
+  - trigger: ":jpstar1"
     replace: "・★ ☆ ☆ ☆ ☆ "
-  - trigger: ":jestar0"
+  - trigger: ":jpstar0"
     replace: "・☆ ☆ ☆ ☆ ☆ "
 
   # NOTE: espanso uses YAML to define matches, so pay attention to the indentation!
@@ -154,20 +172,14 @@ matches:
 
   # Print the current date
   - trigger: ":date"
-    replace: "{{mydate}}"
-    vars:
-      - name: mydate
-        type: date
-        params:
-          format: "%y%m%d"
-
+    replace: "{{my_date}}"
   - trigger: ":sdate"
-    replace: "[{{mydate}}]"
-    vars:
-      - name: mydate
-        type: date
-        params:
-          format: "%y%m%d"
+    replace: "[{{my_date}}] "
+  - trigger: ":jdate"
+    replace: "「{{my_date}}」"
+  - trigger: ":jpdate"
+    replace: "「{{my_jp_date}}」"
+    force_clipboard: true
 
   # 251108 Print the current time
   - trigger: ":time"
