@@ -1,0 +1,9 @@
+# 260213
+# https://docs.bpython-interpreter.org/en/latest/configuration.html#general
+# https://docs.bpython-interpreter.org/en/latest/themes.html
+# set autocomplete suggestion to be gray (default is black, too dark to read)
+
+[syntax]
+
+[interface]
+right_arrow_suggestion = w

@@ -54,6 +54,7 @@ folder_counterpart_locations = {
     "input-remapper-2": "/home/yosuanicolaus/.config/input-remapper-2/",
     "sioyek": "/home/yosuanicolaus/.config/sioyek/",
     "espanso": "/home/yosuanicolaus/.config/espanso/",
+    "bpython": "/home/yosuanicolaus/.config/bpython/",
 }
 
 for config_folder_name, real_folder_loc in folder_counterpart_locations.items():

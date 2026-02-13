@@ -47,5 +47,5 @@ search_shortcut: off
 # 260205
 # espanso in kitty terminal
 # https://github.com/kovidgoyal/kitty/issues/4487
-disable_x11_fast_inject: true
+# disable_x11_fast_inject: true
 

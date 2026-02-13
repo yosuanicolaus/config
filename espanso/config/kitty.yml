@@ -1,0 +1,6 @@
+# 260206
+# for kitty terminal
+# but not discord!
+filter_class: kitty
+disable_x11_fast_inject: true
+

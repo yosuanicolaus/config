@@ -341,4 +341,5 @@
   "editor.fontSize": 12,
   "chat.mcp.gallery.enabled": true,
   "editor.formatOnPaste": true,
+  "github.copilot.nextEditSuggestions.enabled": true,
 }

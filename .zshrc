@@ -10,14 +10,17 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
 eval $(thefuck --alias)
+EDITOR=/usr/bin/nvim
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=244'
 
 alias ls=exa  # https://the.exa.website/ "modern replacement for ls"
 alias c=clear
 alias t=touch
 alias sz='source ~/.zshrc'
 # alias code=code
-alias py=ipython3
+alias py=python3
 alias ipy=ipython3
+alias bpy=bpython
 alias kittyupdate='curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin'
 alias wezterm='flatpak run org.wezfurlong.wezterm'
 alias lg=lazygit
