@@ -44,7 +44,8 @@ alias getclip="xclip -selection c -o"
 # [260130] laptop's keyboard `ctrl-u` / `ctrl-d` key sometimes doesn't work on Pycharm. Run this to fix
 alias fixkbd='input-remapper-control --command start --device "AT Translated Set 2 keyboard" --preset "De Schildpad" && input-remapper-control --command start --device "foostan Corne" --preset "R2G"'
 
-alias ccn='cd ~/.config/nvim/'
+alias cdn='cd ~/.config/nvim/'
+alias cdc='cd ~/.config/'
 alias cda='cd ~/app/'
 alias cdd='cd ~/Downloads/'
 alias cg='cd ~/codes/godot/'
@@ -54,6 +55,7 @@ alias cu='cd ~/codes/university/'
 alias cswap='cd ~/.local/state/nvim/swap/'
 
 alias cnv='~/.config/nvim/ && nvim'
+alias cnf='~/.config/ && nvim'
 alias cnvc='echo "use \"cnv\" for neovim config" && sleep 1 && cnv'
 alias cnvd='~/codes/obsidian/diary/ && nvim'
 alias cnve='~/.config/espanso/ && nvim match/base.yml'

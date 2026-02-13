@@ -1,17 +1,15 @@
 # config
 
-All my configs for setting up Linux Mint laptop
+Laptop & OS history:
 
-All other heavy folders are copied via harddisk instead of pushing them here
+- [2101] Brian's silver HP, Surabaya, Windows -> Ubuntu
+- [2211] Bella's silver ASUS, Sydney, Linux Mint
+- [2309] Odoo's Lenovo Thinkpad, Belgium, Linux Mint
+- [2603] Macbook Air M4, Japan, Mac OS
 
-installed apps from new laptop (to be rewritten): Geary, Joplin, RustDesk,
-Discord, ONLYOFFICE desktop edition, Whatsdesk (whatsapp desktop) OBS Studio,
-Google Chrome, Remmina, VLC, DeepL, XMind
+Heavy folders are copied via harddisk instead of pushing them here
 
-The name and location for each real file from here can be traced from the 
-`file_counterpart_locations` in `update.py`
-
-### About Keymapping
+### Linux Mint Keymapping
 
 There's 2 important softwares that are working together:
 
@@ -20,46 +18,27 @@ There's 2 important softwares that are working together:
 
 ---
 
-<!-- TODO: what is this? let's remove it later (from startup.md) -->
-
-List of all commands used in Startup Applications
-
-- CapsLock as Escape on short press
-
-```
-xcape -e 'Control_L=Escape'
-```
-
-- kitty
-
-```
-kitty
-```
-
-- Microsoft Edge
-
-```
-/usr/bin/microsoft-edge-stable %U
-```
-
-- xbindkeys
-
-```
-xbindkeys_autostart
-```
-
----
-
 ### [260213] For config files in home (`~`)
 
 Run these if they already exist (removes them)
 
-```rm ~/.zshrc```
+```
+rm ~/.ideavimrc
+rm ~/.zshrc
+```
 
-```rm ~/.xbindkeysrc```
+Run these to make the symlink
 
-```rm ~/.Xmodmap```
+```
+ln -s ~/.config/yosuanicolaus/.ideavimrc ~/.ideavimrc
+ln -s ~/.config/yosuanicolaus/.zshrc ~/.zshrc
+```
 
-```rm ~/.ideavimrc```
+---
 
+### To do
+
+- Research about writing math on markdown
+  - neovim MarkdownPreview allows instant update & scroll sync
+- Make neovim great again (at least for editing basic files)
 
