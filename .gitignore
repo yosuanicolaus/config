@@ -1,0 +1,45 @@
+# Ignore everything
+/*
+.*
+
+# Allow the .gitignore itself
+!.gitignore
+
+# Whitelist  folders (the trailing / is important)
+!nvim/
+!wezterm/
+!input-remapper-2/
+!sioyek/
+!espanso/
+!bpython/
+!zathura/
+!zed/
+!rust-competitive-helper/
+!yosuanicolaus/
+
+!kitty/
+/kitty/kitty-themes/
+
+!Code/
+/Code/*
+!/Code/User/
+/Code/User/*
+!/Code/User/settings.json
+!/Code/User/keybindings.json
+!/Code/User/snippets/
+
+# Whitelist specific files in the home directory
+!.zshrc
+!.xbindkeysrc
+!.Xmodmap
+!.ideavimrc
+
+# Re-ignore heavy/junk files inside whitelisted folders
+**/.git/
+**/node_modules/
+**/*.log
+
+/zathura/.git/
+/zathura/.github/
+/zathura/.gitignore
+

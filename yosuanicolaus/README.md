@@ -18,3 +18,48 @@ There's 2 important softwares that are working together:
 - Linux Mint default Shortcut app (from "Keyboard")
 - Input Remapper
 
+---
+
+<!-- TODO: what is this? let's remove it later (from startup.md) -->
+
+List of all commands used in Startup Applications
+
+- CapsLock as Escape on short press
+
+```
+xcape -e 'Control_L=Escape'
+```
+
+- kitty
+
+```
+kitty
+```
+
+- Microsoft Edge
+
+```
+/usr/bin/microsoft-edge-stable %U
+```
+
+- xbindkeys
+
+```
+xbindkeys_autostart
+```
+
+---
+
+### [260213] For config files in home (`~`)
+
+Run these if they already exist (removes them)
+
+```rm ~/.zshrc```
+
+```rm ~/.xbindkeysrc```
+
+```rm ~/.Xmodmap```
+
+```rm ~/.ideavimrc```
+
+

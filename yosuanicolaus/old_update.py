@@ -2,6 +2,8 @@
 # made for my linux mint system
 # reads all config files from various locations and updates the matching counterpart here
 
+# /!\ AS OF 260213, THIS FILE IS NOT NEEDED AND MUST NOT BE RUN
+
 import shutil
 
 ################################################################################
