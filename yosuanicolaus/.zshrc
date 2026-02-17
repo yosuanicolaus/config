@@ -226,7 +226,7 @@ obin() {
 }
 
 alias ibin='db=$(ibranch); [[ $db != 1  ]] && $ODOO_ROOT/18odoo/odoo-bin -d $db $l1 $l2 $l3 $l4 $addons_iap $dev -p 8070'
-alias ishell='db=$(ibranch); [[ $db != 1  ]] && $ODOO_ROOT/18odoo/odoo-bin shell --shell-interface=ipython -d $db $addons_iap'
+alias ishell='db=$(ibranch); [[ $db != 1  ]] && $ODOO_ROOT/18odoo/odoo-bin shell --shell-interface=bpython -d $db $addons_iap'
 
 # odoofin legacy
 alias ofbin='db=odoofin; [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin -d $db $l1 $l2 $l3 $l4 $addons_with_fin $dev $param_fin_1 $param_fin_2'
@@ -234,8 +234,8 @@ alias obinf='db=$(obranchfin); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin -d $d
 # odoofin docker 
 alias ofin='db=$(obranchfin); [[ $db != 1  ]] && $ODOO_ROOT/odoofin/odoofin -d $db $l1 $l2 $l3 $l4 $dev $param_fin_1 $param_fin_2'
  
-alias oshell='db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin shell --shell-interface=ipython -d $db $addons'
-alias oshellupg='db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin shell --shell-interface=ipython -d $db $addons_with_upgrade'
+alias oshell='db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin shell --shell-interface=bpython -d $db $addons'
+alias oshellupg='db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin shell --shell-interface=bpython -d $db $addons_with_upgrade'
 alias obincom='$ODOO_ROOT/odoo/odoo-bin -d $(obranchcom) --addons-path=$ODOO_ROOT/odoo/addons'
 alias obackup='odup $("obranch") $("obranch")-dup'
 alias oreset='odel $("obranch") && odup $("obranch")-dup $("obranch")'
