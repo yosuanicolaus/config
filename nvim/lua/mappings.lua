@@ -65,9 +65,9 @@ map("n", "<C-g>", "<CMD>call setreg('+', expand('%'))<CR><C-g>")
 ----------------------------------------------------------------------------------
 
 -- move cursor to beginning/end of line
-map("i", "<C-b>", "<ESC>^i", { desc = "move beginning of line" })
+map("i", "<C-a>", "<Home>", { desc = "move beginning of line" })
 map("i", "<C-e>", "<End>", { desc = "move end of line" })
-map("i", "<C-h>", "<ESC>^i", { desc = "move beginning of line" })
+map("i", "<C-h>", "<Home>", { desc = "move beginning of line" })
 map("i", "<C-l>", "<End>", { desc = "move end of line" })
 
 -- enter to next/previous line
@@ -77,7 +77,7 @@ map("i", "<S-CR>", "<ESC>O")
 -- generalization | quality of life improvements
 map("i", "<C-BS>", "<C-w>")
 map("i", "<C-v>", "<C-r>+")
-map("i", "<C-a>", "<ESC>GVgg")
+-- map("i", "<C-a>", "<ESC>GVgg")
 map("i", "<C-s>", "<CMD>w<CR>")
 
 ----------------------------------------------------------------------------------
