@@ -64,11 +64,12 @@ map("n", "<C-g>", "<CMD>call setreg('+', expand('%'))<CR><C-g>")
 ---*[ INSERT MODE ]*--------------------------------------------------------------
 ----------------------------------------------------------------------------------
 
--- move cursor to beginning/end of line
+-- Mac / Emacs like insert control key
 map("i", "<C-a>", "<Home>", { desc = "move beginning of line" })
 map("i", "<C-e>", "<End>", { desc = "move end of line" })
 map("i", "<C-h>", "<Home>", { desc = "move beginning of line" })
 map("i", "<C-l>", "<End>", { desc = "move end of line" })
+map("i", "<C-d>", "<Del>")
 
 -- enter to next/previous line
 map("i", "<C-CR>", "<End><CR>")

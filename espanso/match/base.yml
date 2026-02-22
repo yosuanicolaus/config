@@ -19,6 +19,11 @@ global_vars:
     params:
       cmd: "python3 -c \"print('{{my_date}}'.translate(str.maketrans('0123456789', '０１２３４５６７８９')))\""
 
+  - name: mytime
+    type: date
+    params:
+      format: "%H:%M"
+
 matches:
 
     # competitive programming
@@ -131,7 +136,7 @@ matches:
   - trigger: ":dog"
     replace: "U・ᴥ・U"
   - trigger: ":tatakae"
-    replace: "(ಠ o ಠ)¤=[]:::::&gt;"
+    replace: "(ಠ o ಠ)¤=[]:::::>"
   - trigger: ":party"
     replace: "ヾ(⌐■_■)ノ♪"
   - trigger: ":party"
@@ -160,18 +165,28 @@ matches:
   # Stars script (0~5)
   # :s[0~5] prints close stars (★★★★★)
   # :ss[0~5] prints distant stars (★ ★ ★ ★ ★ )
-  # :S~ / :SS~ prints on 10 stars system
-  - regex: ":(?P<whole_match>((s|ss)[0-5]|(S|SS)[0-9]|ST|SST))"
-    replace: "{{output}}"
+  # :S~ / :SS~ prints on 10 stars system (ST/SST for full 10 star)
+  # :-s[0~5] (or other type of s) appends "- " at the start
+  - regex: ":(?P<trigger>((-|j)?((s|ss)[0-5]|(S|SS)[0-9]|ST|SST)))"
+    replace: "{{output}} "
     force_clipboard: true
     vars:
       - name: output
         type: shell
         params:
-          cmd: "python3 \"{{SCRIPT}}/stars.py\" {{whole_match}}"
+          cmd: "python3 \"{{SCRIPT}}/stars.py\" {{trigger}}"
 
   - trigger: ":j-"
     replace: "・"
+
+  - regex: ":ou(?P<trigger>([1-3][1-4][0-1][1-9]))"
+    replace: "{{output}} "
+    force_clipboard: true
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "python3 \"{{SCRIPT}}/ou.py\" {{trigger}}"
 
   # NOTE: espanso uses YAML to define matches, so pay attention to the indentation!
 
@@ -181,7 +196,7 @@ matches:
   - trigger: ":date"
     replace: "{{my_date}}"
   - trigger: ":sdate"
-    replace: "[{{my_date}}] "
+    replace: "[{{my_date}}]"
   - trigger: ":jdate"
     replace: "「{{my_date}}」"
   - trigger: ":jpdate"
@@ -191,11 +206,9 @@ matches:
   # 251108 Print the current time
   - trigger: ":time"
     replace: "{{mytime}}"
-    vars:
-      - name: mytime
-        type: date
-        params:
-          format: "%_H:%M"
+
+  - trigger: ":stime"
+    replace: "[{{mytime}}]"
 
   # Print the output of a shell command
   - trigger: ":shell"
