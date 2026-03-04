@@ -5,9 +5,9 @@
 
 global_vars:
   - name: SCRIPT
-    type: echo
+    type: shell
     params:
-      echo: "/home/$USER/.config/espanso/scripts"
+      cmd: "echo ~/.config/espanso/scripts"
 
   - name: my_date
     type: date
