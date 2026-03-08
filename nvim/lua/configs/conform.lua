@@ -1,7 +1,5 @@
 local directories_format_changed = {
   --- for all directories listed here, auto format only the changed lines by default
-  "~/work/odoo",
-  "~/work/enterprise",
   "~/work/iap-apps",
   "~/repos/cmp-rpncalc",
   "~/repos/rps-mmo/",
@@ -74,7 +72,7 @@ local options = {
       return
     elseif final_setting == "changed" then
       require("helper").format_hunks()
-    -- elseif final_setting == "enable" then
+      -- elseif final_setting == "enable" then
     else
       require("conform").format {
         timeout_ms = 500,

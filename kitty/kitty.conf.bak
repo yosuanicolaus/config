@@ -13,6 +13,7 @@ map f5 load_config_file
 
 # allow passing to neovim :)
 map ctrl+shift+s no_op
+map ctrl+shift+u no_op
 map ctrl+enter no_op
 
 # 2023-08-02 - allow ctrl+shift+f for search all in nvim
@@ -41,6 +42,9 @@ scrollback_pager nvim --noplugin -u ~/.config/kitty/scrollback-pager/nvim/init.v
 # Show clicked command output in nvim
 # mouse_map kitty_mod+right press ungrabbed combine : mouse_select_command_output : kitty_scrollback_nvim --config ksb_builtin_last_visited_cmd_output
 
+# [260213] mint - change the bell sound
+bell_path /usr/share/sounds/freedesktop/stereo/dialog-error.oga
+
 #: Fonts {{{
 
 #: kitty has very powerful font management. You can configure
@@ -66,8 +70,8 @@ bold_italic_font auto
 #:     italic_font      Operator Mono Book Italic
 #:     bold_italic_font Operator Mono Medium Italic
 
-font_size 9
-# font_size 11
+# font_size 9
+font_size 11
 
 #: Font size (in pts)
 
@@ -1523,6 +1527,6 @@ map kitty_mod+minus     change_font_size all -1.0
 
 
 # BEGIN_KITTY_THEME
-# 1984 Orwellian
+# Apprentice
 include current-theme.conf
 # END_KITTY_THEME
