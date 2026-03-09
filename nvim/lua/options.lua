@@ -90,7 +90,7 @@ end
 
 -- 240825 Neovide
 if vim.g.neovide then
-  o.guifont = "JetBrainsMono Nerd Font Mono:h9"
+  o.guifont = "JetBrainsMono Nerd Font Mono:h11"
   g.neovide_scroll_animation_length = 0
   g.neovide_cursor_animation_length = 0
   -- vim.g.neovide_transparency = 0.9

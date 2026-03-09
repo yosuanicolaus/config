@@ -314,26 +314,66 @@
                         ]
                     },
                     {
-                        "description": "Both Cmd Keys: Hold for Cmd, Double-Tap-Hold for Option",
+                        "description": "New Rule (change left_shift+caps_lock to page_down, right_shift+caps_lock to left_command+mission_control)",
                         "manipulators": [
                             {
-                                "conditions": [
+                                "from": {
+                                    "key_code": "caps_lock",
+                                    "modifiers": {
+                                        "mandatory": ["left_shift"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [
                                     {
-                                        "name": "lcmd_double_tap",
-                                        "type": "variable_if",
-                                        "value": 1
+                                        "key_code": "page_down",
+                                        "modifiers": []
                                     }
                                 ],
-                                "description": "Left Cmd: Double-Tap-Hold Logic",
+                                "type": "basic"
+                            },
+                            {
                                 "from": {
-                                    "key_code": "left_command",
+                                    "key_code": "caps_lock",
+                                    "modifiers": {
+                                        "mandatory": ["right_shift"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "apple_vendor_keyboard_key_code": "mission_control",
+                                        "modifiers": ["left_command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Instant Space + 1/2/3/4",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "spacebar",
                                     "modifiers": { "optional": ["any"] }
                                 },
-                                "to": [{ "key_code": "left_option" }],
+                                "to": [
+                                    {
+                                        "set_variable": {
+                                            "name": "space_mode",
+                                            "value": 1
+                                        }
+                                    },
+                                    {
+                                        "key_code": "spacebar",
+                                        "repeat": false
+                                    }
+                                ],
                                 "to_after_key_up": [
                                     {
                                         "set_variable": {
-                                            "name": "lcmd_double_tap",
+                                            "name": "space_mode",
                                             "value": 0
                                         }
                                     }
@@ -341,62 +381,82 @@
                                 "type": "basic"
                             },
                             {
-                                "description": "Left Cmd: Normal Hold / Prime Double-Tap",
+                                "conditions": [
+                                    {
+                                        "name": "space_mode",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "description": "Space + 1: Chrome (with auto-backspace)",
                                 "from": {
-                                    "key_code": "left_command",
+                                    "key_code": "1",
                                     "modifiers": { "optional": ["any"] }
                                 },
-                                "parameters": { "basic.to_if_alone_timeout_milliseconds": 300 },
-                                "to": [{ "key_code": "left_command" }],
-                                "to_if_alone": [
-                                    {
-                                        "set_variable": {
-                                            "name": "lcmd_double_tap",
-                                            "value": 1
-                                        }
-                                    }
+                                "to": [
+                                    { "key_code": "escape" },
+                                    { "key_code": "delete_or_backspace" },
+                                    { "shell_command": "open -a 'Google Chrome'" }
                                 ],
                                 "type": "basic"
                             },
                             {
                                 "conditions": [
                                     {
-                                        "name": "rcmd_double_tap",
+                                        "name": "space_mode",
                                         "type": "variable_if",
                                         "value": 1
                                     }
                                 ],
-                                "description": "Right Cmd: Double-Tap-Hold Logic",
+                                "description": "Space + 2: Kitty",
                                 "from": {
-                                    "key_code": "right_command",
+                                    "key_code": "2",
                                     "modifiers": { "optional": ["any"] }
                                 },
-                                "to": [{ "key_code": "right_option" }],
-                                "to_after_key_up": [
-                                    {
-                                        "set_variable": {
-                                            "name": "rcmd_double_tap",
-                                            "value": 0
-                                        }
-                                    }
+                                "to": [
+                                    { "key_code": "escape" },
+                                    { "key_code": "delete_or_backspace" },
+                                    { "shell_command": "open -a 'kitty'" }
                                 ],
                                 "type": "basic"
                             },
                             {
-                                "description": "Right Cmd: Normal Hold / Prime Double-Tap",
+                                "conditions": [
+                                    {
+                                        "name": "space_mode",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "description": "Space + 3: Finder",
                                 "from": {
-                                    "key_code": "right_command",
+                                    "key_code": "3",
                                     "modifiers": { "optional": ["any"] }
                                 },
-                                "parameters": { "basic.to_if_alone_timeout_milliseconds": 300 },
-                                "to": [{ "key_code": "right_command" }],
-                                "to_if_alone": [
+                                "to": [
+                                    { "key_code": "escape" },
+                                    { "key_code": "delete_or_backspace" },
+                                    { "shell_command": "open -a 'Finder'" }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
                                     {
-                                        "set_variable": {
-                                            "name": "rcmd_double_tap",
-                                            "value": 1
-                                        }
+                                        "name": "space_mode",
+                                        "type": "variable_if",
+                                        "value": 1
                                     }
+                                ],
+                                "description": "Space + 4: Discord",
+                                "from": {
+                                    "key_code": "4",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [
+                                    { "key_code": "escape" },
+                                    { "key_code": "delete_or_backspace" },
+                                    { "shell_command": "open -a 'Discord'" }
                                 ],
                                 "type": "basic"
                             }
@@ -460,20 +520,9 @@
                         ]
                     },
                     {
-                        "description": "C-w delete word || C-u delete to line start from cursor (excludes kitty, neovide)",
+                        "description": "C-w delete word || C-u delete to line start from cursor",
                         "manipulators": [
                             {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^net\\.kovidgoyal\\.kitty$",
-                                            "^io\\.kovidgoyal\\.kitty$",
-                                            "^app\\.ritger\\.kitty$",
-                                            "com.neovide.neovide"
-                                        ],
-                                        "type": "frontmost_application_unless"
-                                    }
-                                ],
                                 "from": {
                                     "key_code": "w",
                                     "modifiers": {
@@ -495,8 +544,7 @@
                                         "bundle_identifiers": [
                                             "^net\\.kovidgoyal\\.kitty$",
                                             "^io\\.kovidgoyal\\.kitty$",
-                                            "^app\\.ritger\\.kitty$",
-                                            "com.neovide.neovide"
+                                            "^app\\.ritger\\.kitty$"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
