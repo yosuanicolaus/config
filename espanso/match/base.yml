@@ -61,20 +61,20 @@ matches:
 
   # python breakpoint
   - trigger: ":bp"
-    replace: "from rich.pretty import pprint as pp; pp(locals()); import ipdb; ipdb.set_trace()"
+    replace: "from rich.pretty import pprint as pp, pprint as print, pprint as p, install; install(); breakpoint()"
     force_clipboard: true
-  - trigger: ":pudb"
-    replace: "import pudb; pudb.set_trace()"
-    force_clipboard: true
-  - trigger: ":pp"
-    replace: "from rich.pretty import pprint as pp"
-    force_clipboard: true
-  - trigger: ":pri"
-    replace: "from rich import pretty; pretty.install()"
-    force_clipboard: true
-  - trigger: ":pxl"
-    replace: "from rich.pretty import pprint as pp; pp(locals())"
-    force_clipboard: true
+  # - trigger: ":pudb"
+  #   replace: "import pudb; pudb.set_trace()"
+  #   force_clipboard: true
+  # - trigger: ":pp"
+  #   replace: "from rich.pretty import pprint as pp"
+  #   force_clipboard: true
+  # - trigger: ":pri"
+  #   replace: "from rich import pretty; pretty.install()"
+  #   force_clipboard: true
+  # - trigger: ":pxl"
+  #   replace: "from rich.pretty import pprint as pp; pp(locals())"
+  #   force_clipboard: true
   
   # common symbols
   - trigger: ":eur"

@@ -23,7 +23,7 @@ end, {
 })
 vim.cmd [[cnoreabbrev <expr> checkhealth getcmdtype() == ":" && getcmdline() == 'checkhealth' ? 'Checkhealth' : 'checkhealth']]
 vim.cmd [[cnoreabbrev <expr> che getcmdtype() == ":" && getcmdline() == 'che' ? 'Checkhealth' : 'che']]
-vim.cmd [[cnoreabbrev <expr> LspInfo getcmdtype() == ":" && getcmdline() == 'LspInfo' ? 'Checkhealth lspconfig' :'LspInfo']]
+vim.cmd [[cnoreabbrev <expr> LspInfo getcmdtype() == ":" && getcmdline() == 'LspInfo' ? 'Checkhealth vim.lsp' :'LspInfo']]
 
 -- For temporary disable/only-changed/enable autoformat
 -- See conform.lua - format_on_save function for more details
