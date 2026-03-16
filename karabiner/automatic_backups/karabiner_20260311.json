@@ -529,7 +529,6 @@
                                             "^net\\.kovidgoyal\\.kitty$",
                                             "^io\\.kovidgoyal\\.kitty$",
                                             "^app\\.ritger\\.kitty$",
-                                            "com.google.antigravity",
                                             "com.neovide.neovide"
                                         ],
                                         "type": "frontmost_application_unless"
