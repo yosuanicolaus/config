@@ -49,7 +49,9 @@ map("n", "zC", "zM")
 
 -- generalization | quality of life essentials
 map("n", "<C-a>", "GVgg", { desc = "general select all" })
+map("n", "<D-a>", "GVgg", { desc = "general select all" })
 map("n", "<C-s>", "<CMD>w<CR>", { desc = "general save file" })
+map("n", "<D-s>", "<CMD>w<CR>", { desc = "general save file" })
 map("n", "<C-S-s>", "<CMD>set scroll=0<CR>" .. echo "resetted scroll length")
 map("n", "<Esc>", "<CMD>noh<CR>", { desc = "general clear highlights" })
 
@@ -78,8 +80,9 @@ map("i", "<S-CR>", "<ESC>O")
 -- generalization | quality of life improvements
 map("i", "<C-BS>", "<C-w>")
 map("i", "<C-v>", "<C-r>+")
--- map("i", "<C-a>", "<ESC>GVgg")
+map("i", "<D-a>", "<ESC>GVgg")
 map("i", "<C-s>", "<CMD>w<CR>")
+map("i", "<D-s>", "<CMD>w<CR>")
 
 ----------------------------------------------------------------------------------
 ---*[ VISUAL MODE ]*--------------------------------------------------------------

@@ -1,7 +1,4 @@
-# QUICK COPY [260202]
-# from rich.pretty import pprint; pprint(locals()); import ipdb; ipdb.set_trace()
-
-# For a complete introduction, visit the official docs at: https://espanso.org/docs/
+# OFFICIAL DOCS - https://espanso.org/docs/
 
 global_vars:
   - name: SCRIPT
@@ -59,22 +56,13 @@ matches:
   - trigger: ":16 "
     replace: "                "
 
-  # python breakpoint
+  # python breakpoints
   - trigger: ":bp"
-    replace: "from rich.pretty import pprint as pp, pprint as print, pprint as p, install; install(); breakpoint()"
+    replace: "from rich.pretty import install, pprint as print, pprint as pp, pprint as p; install(); breakpoint()"
     force_clipboard: true
-  # - trigger: ":pudb"
-  #   replace: "import pudb; pudb.set_trace()"
-  #   force_clipboard: true
-  # - trigger: ":pp"
-  #   replace: "from rich.pretty import pprint as pp"
-  #   force_clipboard: true
-  # - trigger: ":pri"
-  #   replace: "from rich import pretty; pretty.install()"
-  #   force_clipboard: true
-  # - trigger: ":pxl"
-  #   replace: "from rich.pretty import pprint as pp; pp(locals())"
-  #   force_clipboard: true
+  - trigger: ":pp"
+    replace: "from rich.pretty import install, pprint as print, pprint as pp, pprint as p; install()"
+    force_clipboard: true
   
   # common symbols
   - trigger: ":eur"
@@ -93,6 +81,8 @@ matches:
     replace: "∈"
   - trigger: ":~"
     replace: "〜"
+  - trigger: ":--"
+    replace: "—"
 
   # math stuffs
   - trigger: ":sub0"
@@ -161,6 +151,8 @@ matches:
     replace: "🔄"
   - trigger: ":soon"
     replace: "▶️"
+  - trigger: ":xx"
+    replace: "❌"
 
   # Stars script (0~5)
   # :s[0~5] prints close stars (★★★★★)
@@ -176,9 +168,6 @@ matches:
         params:
           cmd: "python3 \"{{SCRIPT}}/stars.py\" {{trigger}}"
 
-  - trigger: ":j-"
-    replace: "・"
-
   - regex: ":ou(?P<trigger>([1-3][1-4][0-1][1-9]))"
     replace: "{{output}} "
     force_clipboard: true
@@ -192,7 +181,7 @@ matches:
 
   # But matches can also be dynamic:
 
-  # Print the current date
+  # Date & Time (uses global variables)
   - trigger: ":date"
     replace: "{{my_date}}"
   - trigger: ":sdate"
@@ -202,21 +191,9 @@ matches:
   - trigger: ":jpdate"
     replace: "「{{my_jp_date}}」"
     force_clipboard: true
-
-  # 251108 Print the current time
   - trigger: ":time"
     replace: "{{mytime}}"
 
   - trigger: ":stime"
     replace: "[{{mytime}}]"
 
-  # Print the output of a shell command
-  - trigger: ":shell"
-    replace: "{{output}}"
-    vars:
-      - name: output
-        type: shell
-        params:
-          cmd: "echo 'Hello from your shell'"
-
-  # And much more! For more information, visit the docs: https://espanso.org/docs/
