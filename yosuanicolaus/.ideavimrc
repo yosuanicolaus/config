@@ -1,9 +1,8 @@
 " ©yosuanicolaus 2023-2024-2025-2026
 " .ideavimrc setup
 " file locations:
-" ~/.ideavimrc (real file)
-" ~/.config/nvim/xidea.vimrc (symlink file)
-" ~/repos/config/.ideavimrc (backup file)
+" ~/.ideavimrc (symlink file, pointing to)
+" ~/.config/yosuanicolaus/.ideavimrc (real file)
 
 " Manual configuration
 " download and set VSCode shortcut plugin in Keymap setting

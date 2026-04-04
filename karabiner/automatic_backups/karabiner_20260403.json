@@ -202,7 +202,7 @@
                             {
                                 "from": {
                                     "key_code": "j",
-                                    "modifiers": { "mandatory": ["left_control", "left_gui"] }
+                                    "modifiers": { "mandatory": ["left_control"] }
                                 },
                                 "to": [{ "shell_command": "open -a 'Google Chrome'" }],
                                 "type": "basic"
@@ -210,7 +210,7 @@
                             {
                                 "from": {
                                     "key_code": "1",
-                                    "modifiers": { "mandatory": ["left_control", "left_gui"] }
+                                    "modifiers": { "mandatory": ["left_control"] }
                                 },
                                 "to": [{ "shell_command": "open -a 'Google Chrome'" }],
                                 "type": "basic"
@@ -234,7 +234,7 @@
                             {
                                 "from": {
                                     "key_code": "k",
-                                    "modifiers": { "mandatory": ["left_control", "left_gui"] }
+                                    "modifiers": { "mandatory": ["left_control"] }
                                 },
                                 "to": [{ "shell_command": "open -a 'kitty'" }],
                                 "type": "basic"
@@ -242,7 +242,7 @@
                             {
                                 "from": {
                                     "key_code": "2",
-                                    "modifiers": { "mandatory": ["left_control", "left_gui"] }
+                                    "modifiers": { "mandatory": ["left_control"] }
                                 },
                                 "to": [{ "shell_command": "open -a 'kitty'" }],
                                 "type": "basic"
@@ -266,7 +266,7 @@
                             {
                                 "from": {
                                     "key_code": "l",
-                                    "modifiers": { "mandatory": ["left_control", "left_gui"] }
+                                    "modifiers": { "mandatory": ["left_control"] }
                                 },
                                 "to": [{ "shell_command": "open -a 'Finder'" }],
                                 "type": "basic"
@@ -274,7 +274,7 @@
                             {
                                 "from": {
                                     "key_code": "3",
-                                    "modifiers": { "mandatory": ["left_control", "left_gui"] }
+                                    "modifiers": { "mandatory": ["left_control"] }
                                 },
                                 "to": [{ "shell_command": "open -a 'Finder'" }],
                                 "type": "basic"
@@ -298,7 +298,7 @@
                             {
                                 "from": {
                                     "key_code": "semicolon",
-                                    "modifiers": { "mandatory": ["left_control", "left_gui"] }
+                                    "modifiers": { "mandatory": ["left_control"] }
                                 },
                                 "to": [{ "shell_command": "open -a 'Discord'" }],
                                 "type": "basic"
@@ -306,7 +306,7 @@
                             {
                                 "from": {
                                     "key_code": "4",
-                                    "modifiers": { "mandatory": ["left_control", "left_gui"] }
+                                    "modifiers": { "mandatory": ["left_control"] }
                                 },
                                 "to": [{ "shell_command": "open -a 'Discord'" }],
                                 "type": "basic"
@@ -330,7 +330,7 @@
                             {
                                 "from": {
                                     "key_code": "u",
-                                    "modifiers": { "mandatory": ["left_control", "left_gui"] }
+                                    "modifiers": { "mandatory": ["left_control"] }
                                 },
                                 "to": [{ "shell_command": "open -a 'sioyek'" }],
                                 "type": "basic"
@@ -338,7 +338,7 @@
                             {
                                 "from": {
                                     "key_code": "5",
-                                    "modifiers": { "mandatory": ["left_control", "left_gui"] }
+                                    "modifiers": { "mandatory": ["left_control"] }
                                 },
                                 "to": [{ "shell_command": "open -a 'sioyek'" }],
                                 "type": "basic"
@@ -492,7 +492,7 @@
                         ]
                     },
                     {
-                        "description": "C-w delete word || C-u delete to line start from cursor (excludes IDEs)",
+                        "description": "C-w delete word || C-u delete to line start from cursor (excludes kitty, neovide)",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -501,9 +501,7 @@
                                             "^net\\.kovidgoyal\\.kitty$",
                                             "^io\\.kovidgoyal\\.kitty$",
                                             "^app\\.ritger\\.kitty$",
-                                            "com.jetbrains.pycharm",
                                             "com.google.antigravity",
-                                            "com.google.Chrome.app.ohdpglnjenajbohgikjjdjobbbfkipak",
                                             "com.neovide.neovide"
                                         ],
                                         "type": "frontmost_application_unless"
@@ -531,9 +529,7 @@
                                             "^net\\.kovidgoyal\\.kitty$",
                                             "^io\\.kovidgoyal\\.kitty$",
                                             "^app\\.ritger\\.kitty$",
-                                            "com.jetbrains.pycharm",
                                             "com.google.antigravity",
-                                            "com.google.Chrome.app.ohdpglnjenajbohgikjjdjobbbfkipak",
                                             "com.neovide.neovide"
                                         ],
                                         "type": "frontmost_application_unless"

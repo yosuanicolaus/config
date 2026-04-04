@@ -492,7 +492,7 @@
                         ]
                     },
                     {
-                        "description": "C-w delete word || C-u delete to line start from cursor (excludes IDEs)",
+                        "description": "C-w delete word || C-u delete to line start from cursor (excludes kitty, neovide)",
                         "manipulators": [
                             {
                                 "conditions": [

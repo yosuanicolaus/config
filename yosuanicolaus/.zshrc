@@ -5,15 +5,14 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+export PATH="$HOME/.local/bin:$PATH"
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
 eval $(thefuck --alias)
-EDITOR=/usr/bin/nvim
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=244'
 
-alias ls=exa  # https://the.exa.website/ "modern replacement for ls"
+# alias ls=exa  # https://the.exa.website/ "modern replacement for ls"
 alias c=clear
 alias t=touch
 alias sz='source ~/.zshrc'
@@ -54,8 +53,8 @@ alias ccr='cd ~/codes/competitive-rust/'
 alias cu='cd ~/codes/university/'
 alias cswap='cd ~/.local/state/nvim/swap/'
 
+alias conf='~/.config/ && nvim'
 alias cnv='~/.config/nvim/ && nvim'
-alias cnf='~/.config/ && nvim'
 alias cnvc='echo "use \"cnv\" for neovim config" && sleep 1 && cnv'
 alias cnvd='~/codes/obsidian/diary/ && nvim'
 alias cnve='~/.config/espanso/ && nvim match/base.yml'
@@ -175,19 +174,19 @@ odebug() {
 
 otask() { 
     if [ -z "$1" ]; then
-        xdg-open "https://www.odoo.com/odoo/project/967/tasks?cids=1"
+        open "https://www.odoo.com/odoo/project/967/tasks?cids=1"
     else
-        xdg-open "https://www.odoo.com/odoo/project/967/tasks/$1?cids=1"
+        open "https://www.odoo.com/odoo/project/967/tasks/$1?cids=1"
     fi
 }
 
-oblo() { xdg-open "https://github.com/odoo/odoo/commit/$1" }
+oblo() { open "https://github.com/odoo/odoo/commit/$1" }
 
-oble() { xdg-open "https://github.com/odoo/enterprise/commit/$1" }
+oble() { open "https://github.com/odoo/enterprise/commit/$1" }
 
-obli() { xdg-open "https://github.com/odoo/iap-apps/commit/$1" }
+obli() { open "https://github.com/odoo/iap-apps/commit/$1" }
 
-oblu() { xdg-open "https://github.com/odoo/upgrade/commit/$1" }
+oblu() { open "https://github.com/odoo/upgrade/commit/$1" }
 
 oexpire() {
     psql -d "$('obranch')" -c "update ir_config_parameter set value='2060-05-05' where key='database.expiration_date';"
@@ -226,7 +225,7 @@ obin() {
 }
 
 alias ibin='db=$(ibranch); [[ $db != 1  ]] && $ODOO_ROOT/18odoo/odoo-bin -d $db $l1 $l2 $l3 $l4 $addons_iap $dev -p 8070'
-alias ishell='db=$(ibranch); [[ $db != 1  ]] && $ODOO_ROOT/18odoo/odoo-bin shell --shell-interface=bpython -d $db $addons_iap'
+alias ishell='db=$(ibranch); [[ $db != 1  ]] && $ODOO_ROOT/18odoo/odoo-bin shell --shell-interface=ipython -d $db $addons_iap'
 
 # odoofin legacy
 alias ofbin='db=odoofin; [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin -d $db $l1 $l2 $l3 $l4 $addons_with_fin $dev $param_fin_1 $param_fin_2'
@@ -234,17 +233,17 @@ alias obinf='db=$(obranchfin); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin -d $d
 # odoofin docker 
 alias ofin='db=$(obranchfin); [[ $db != 1  ]] && $ODOO_ROOT/odoofin/odoofin -d $db $l1 $l2 $l3 $l4 $dev $param_fin_1 $param_fin_2'
  
-alias oshell='db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin shell --shell-interface=bpython -d $db $addons'
-alias oshellupg='db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin shell --shell-interface=bpython -d $db $addons_with_upgrade'
+alias oshell='db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin shell --shell-interface=ipython -d $db $addons'
+alias oshellupg='db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin shell --shell-interface=ipython -d $db $addons_with_upgrade'
 alias obincom='$ODOO_ROOT/odoo/odoo-bin -d $(obranchcom) --addons-path=$ODOO_ROOT/odoo/addons'
 alias obackup='odup $("obranch") $("obranch")-dup'
 alias oreset='odel $("obranch") && odup $("obranch")-dup $("obranch")'
 alias opopulate='db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin populate -d $db --addons-path="$ODOO_ROOT/odoo/addons,$ODOO_ROOT/enterprise"'
 
-alias ostart='xdg-open "https://mail.google.com/mail/u/2/#inbox" && xdg-open "https://runbot.odoo.com/runbot/r-d-1?search=-yoni" && xdg-open "https://www.odoo.com/odoo/project/967/tasks" && ogfa'
-alias otab='xdg-open "http://localhost:8069"'
-alias omail='xdg-open "https://mail.google.com/mail/u/2/#inbox"'
-alias otime='xdg-open "https://www.odoo.com/web#action=4528&model=hr.leave.report.calendar&view_type=gantt&cids=1&menu_id=6279"'
+alias ostart='open "https://mail.google.com/mail/u/2/#inbox" && open "https://runbot.odoo.com/runbot/r-d-1?search=-yoni" && open "https://www.odoo.com/odoo/project/967/tasks" && ogfa'
+alias otab='open "http://localhost:8069"'
+alias omail='open "https://mail.google.com/mail/u/2/#inbox"'
+alias otime='open "https://www.odoo.com/web#action=4528&model=hr.leave.report.calendar&view_type=gantt&cids=1&menu_id=6279"'
 
 alias cw=~/work/
 alias cwo=~/work/odoo/
@@ -349,7 +348,7 @@ oigst() { oigit status }
 
 # 230514 -> set PYTHONPATH to odoo 
 # (2023-08-03 not sure it's necessary with the pycharm extension)
-export PYTHONPATH=${PYTHONPATH}:${HOME}/work/odoo/
+# export PYTHONPATH=${PYTHONPATH}:${HOME}/work/odoo/
 
 # 260202 python call `breakpoint()` to use `pudb` / `web-pdb`.
 export PYTHONBREAKPOINT="pudb.set_trace"
@@ -370,7 +369,7 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 # rust - 2023-11-12
-. "$HOME/.cargo/env"
+# . "$HOME/.cargo/env"
 
 # zoxide and fzf - 240215
 eval "$(zoxide init --cmd cd zsh)"
@@ -379,8 +378,8 @@ eval "$(zoxide init --cmd cd zsh)"
 # 230806 autocomplete with Tab, update 240215, [260202] maybe not. we can do arrow keys easily nowadays
 # bindkey '^I' autosuggest-accept
 
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+# export PATH="$HOME/.rbenv/bin:$PATH"
+# eval "$(rbenv init -)"
 
 # 240405 Kattis CLI - submit competitive programming problem to Kattis
 export PATH="$PATH:/home/yosuanicolaus/.kattis"
@@ -410,14 +409,27 @@ export GODOT4_BIN="/home/yosuanicolaus/app/godot/godot.x86_64"
 # (because xmodmap conflicts with mozc japanese keyboard)
 
 # 250703 keyboard repeat delay & rate
-xset r rate 250 30
+# xset r rate 250 30
 
 # 251013 pyenv to install python 3.12 (for odoo)
 # https://forums.linuxmint.com/viewtopic.php?t=362499
 # export PYENV_ROOT="$HOME/.pyenv"
 # command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 # eval "$(pyenv init --path)"
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - zsh)"
-pyenv shell 3.12.12
+# export PYENV_ROOT="$HOME/.pyenv"
+# [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init - zsh)"
+# pyenv shell 3.12.12
+
+# 260309 mac os python 3.14
+# export PATH="$HOME/Library/Python/3.14/bin:$PATH"
+# 260402 better python management with `uv`
+# Ensure uv is in your path (the installer usually does this)
+# export PATH="$HOME/.local/bin:$PATH"
+# Enable shell autocompletion for uv
+eval "$(uv generate-shell-completion zsh)"
+
+. "$HOME/.local/bin/env"
+
+# Added by Antigravity
+export PATH="/Users/yosuanicolaus/.antigravity/antigravity/bin:$PATH"

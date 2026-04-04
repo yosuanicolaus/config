@@ -19,7 +19,7 @@ rule_map = {
         )
         for modifier in (
             ["left_command", "right_command"],
-            ["left_control"],
+            ["left_control", "left_gui"],
         )
         for key_code in key_codes
     ],

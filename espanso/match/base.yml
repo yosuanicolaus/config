@@ -168,7 +168,7 @@ matches:
         params:
           cmd: "python3 \"{{SCRIPT}}/stars.py\" {{trigger}}"
 
-  - regex: ":ou(?P<trigger>([1-3][1-4][0-1][1-9]))"
+  - regex: ":ou(?P<trigger>([1-3][1-4][0-1][0-9]))"
     replace: "{{output}} "
     force_clipboard: true
     vars:
@@ -177,9 +177,21 @@ matches:
         params:
           cmd: "python3 \"{{SCRIPT}}/ou.py\" {{trigger}}"
 
-  # NOTE: espanso uses YAML to define matches, so pay attention to the indentation!
-
-  # But matches can also be dynamic:
+  # Japanese days
+  - trigger: ":getsu"
+    replace: "（月）"
+  - trigger: ":ka"
+    replace: "（火）"
+  - trigger: ":sui"
+    replace: "（水）"
+  - trigger: ":moku"
+    replace: "（木）"
+  - trigger: ":kin"
+    replace: "（金）"
+  - trigger: ":do"
+    replace: "（土）"
+  - trigger: ":nichi"
+    replace: "（日）"
 
   # Date & Time (uses global variables)
   - trigger: ":date"
