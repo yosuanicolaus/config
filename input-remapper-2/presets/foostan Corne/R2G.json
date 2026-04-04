@@ -284,47 +284,6 @@
         "input_combination": [
             {
                 "type": 1,
-                "code": 125,
-                "origin_hash": "c408393743706497aec9957a4234f8d9"
-            },
-            {
-                "type": 1,
-                "code": 42,
-                "origin_hash": "c408393743706497aec9957a4234f8d9"
-            },
-            {
-                "type": 1,
-                "code": 15,
-                "origin_hash": "c408393743706497aec9957a4234f8d9"
-            }
-        ],
-        "target_uinput": "keyboard",
-        "output_symbol": "Alt_R + Shift + KEY_TAB",
-        "name": "Super + Shift + Tab",
-        "mapping_type": "key_macro"
-    },
-    {
-        "input_combination": [
-            {
-                "type": 1,
-                "code": 125,
-                "origin_hash": "c408393743706497aec9957a4234f8d9"
-            },
-            {
-                "type": 1,
-                "code": 15,
-                "origin_hash": "c408393743706497aec9957a4234f8d9"
-            }
-        ],
-        "target_uinput": "keyboard",
-        "output_symbol": "Alt_R + KEY_TAB",
-        "name": "Super + Tab",
-        "mapping_type": "key_macro"
-    },
-    {
-        "input_combination": [
-            {
-                "type": 1,
                 "code": 29,
                 "origin_hash": "c408393743706497aec9957a4234f8d9"
             },
