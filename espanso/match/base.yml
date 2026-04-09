@@ -71,6 +71,8 @@ matches:
     replace: "£"
   - trigger: ":jpy"
     replace: "¥"
+  - trigger: ":yen"
+    replace: "円"
   - trigger: ":sum"
     replace: "∑"
   - trigger: ":pi"

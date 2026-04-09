@@ -32,6 +32,7 @@ Run these to make the symlink
 ```
 ln -s ~/.config/yosuanicolaus/.ideavimrc ~/.ideavimrc
 ln -s ~/.config/yosuanicolaus/.zshrc ~/.zshrc
+ln -s ~/.config/yosuanicolaus/obsidian.vimrc ~/Documents/Obsidian/Life/.obsidian/obsidian.vimrc
 ```
 
 ---

@@ -101,7 +101,7 @@ repos() { ~/repos/$1 }
 # PRODUCTIVE ALIASES FOR WORK @ ODOO
 # heavily inspired by wan's script https://gist.github.com/william-andre/5428d3e7dba179168016ca6211bdb07b
 
-ODOO_ROOT=/home/yosuanicolaus/work
+ODOO_ROOT=/Users/yosuanicolaus/work
 
 obranch() {
     com=$(git --git-dir=$ODOO_ROOT/odoo/.git branch --show-current)
@@ -225,7 +225,7 @@ obin() {
 }
 
 alias ibin='db=$(ibranch); [[ $db != 1  ]] && $ODOO_ROOT/18odoo/odoo-bin -d $db $l1 $l2 $l3 $l4 $addons_iap $dev -p 8070'
-alias ishell='db=$(ibranch); [[ $db != 1  ]] && $ODOO_ROOT/18odoo/odoo-bin shell --shell-interface=ipython -d $db $addons_iap'
+alias ishell='db=$(ibranch); [[ $db != 1  ]] && $ODOO_ROOT/18odoo/odoo-bin shell --shell-interface=bpython -d $db $addons_iap'
 
 # odoofin legacy
 alias ofbin='db=odoofin; [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin -d $db $l1 $l2 $l3 $l4 $addons_with_fin $dev $param_fin_1 $param_fin_2'
@@ -233,8 +233,8 @@ alias obinf='db=$(obranchfin); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin -d $d
 # odoofin docker 
 alias ofin='db=$(obranchfin); [[ $db != 1  ]] && $ODOO_ROOT/odoofin/odoofin -d $db $l1 $l2 $l3 $l4 $dev $param_fin_1 $param_fin_2'
  
-alias oshell='db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin shell --shell-interface=ipython -d $db $addons'
-alias oshellupg='db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin shell --shell-interface=ipython -d $db $addons_with_upgrade'
+alias oshell='db=$(obranch); [[ $db != 1  ]] && uv --project ~/work/odoo run python $ODOO_ROOT/odoo/odoo-bin shell --shell-interface=bpython -d $db $addons'
+alias oshellupg='db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin shell --shell-interface=bpython -d $db $addons_with_upgrade'
 alias obincom='$ODOO_ROOT/odoo/odoo-bin -d $(obranchcom) --addons-path=$ODOO_ROOT/odoo/addons'
 alias obackup='odup $("obranch") $("obranch")-dup'
 alias oreset='odel $("obranch") && odup $("obranch")-dup $("obranch")'
@@ -362,7 +362,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # bun completions
-[ -s "/home/yosuanicolaus/.bun/_bun" ] && source "/home/yosuanicolaus/.bun/_bun"
+[ -s "/Users/yosuanicolaus/.bun/_bun" ] && source "/Users/yosuanicolaus/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
@@ -395,11 +395,11 @@ export PATH="$HOME/.emacs.d/bin:$PATH"
 # alias emacs="emacsclient -c -a 'emacs'"
 
 # 250515 For Logan's game enine
-export VULKAN_SDK="/home/yosuanicolaus/app/vulkan-1.4.313.0"
-export VULKAN_LIBRARY="/home/yosuanicolaus/app/vulkan-1.4.313.0"
+export VULKAN_SDK="/Users/yosuanicolaus/app/vulkan-1.4.313.0"
+export VULKAN_LIBRARY="/Users/yosuanicolaus/app/vulkan-1.4.313.0"
 
 # 250603 For godot-rust
-export GODOT4_BIN="/home/yosuanicolaus/app/godot/godot.x86_64"
+export GODOT4_BIN="/Users/yosuanicolaus/app/godot/godot.x86_64"
 
 # 240911 ensure xmodmap run as often as possible (for laptop keyboard)
 # xmodmap ~/.Xmodmap
@@ -433,3 +433,10 @@ eval "$(uv generate-shell-completion zsh)"
 
 # Added by Antigravity
 export PATH="/Users/yosuanicolaus/.antigravity/antigravity/bin:$PATH"
+
+# 260409 for latex in mac, basictex, latexmk
+export PATH="/Library/TeX/texbin:$PATH"
+
+# 260409 PSQL for mac
+export PATH="/Library/PostgreSQL/18/bin:$PATH"
+

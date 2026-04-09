@@ -16,6 +16,8 @@ rule_map = {
             [["l", "3"], "Finder"],
             [["semicolon", "4"], "Discord"],
             [["u", "5"], "sioyek"],
+            [["i", "6"], "pycharm"],  # change to IDE later? and only when IDE is open?
+            [["o", "7"], "obsidian"],
         )
         for modifier in (
             ["left_command", "right_command"],

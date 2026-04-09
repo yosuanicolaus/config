@@ -61,6 +61,10 @@ o.cursorlineopt = "both" -- to enable cursorline!
 
 ---------------------------------------------------------
 
+--- 260409 latexmk for vimtex
+
+vim.env.PATH = vim.env.PATH .. ":/Library/TeX/texbin"
+
 -- 240522 convert nvchad to 2.5
 o.relativenumber = true
 o.linebreak = true

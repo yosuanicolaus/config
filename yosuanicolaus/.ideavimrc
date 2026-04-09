@@ -5,14 +5,15 @@
 " ~/.config/yosuanicolaus/.ideavimrc (real file)
 
 " Manual configuration
+" move project and commit view to the right
 " download and set VSCode shortcut plugin in Keymap setting
 " Searh <C-d>, Add Selection for Next Occurrence <Ctrl+N>
-" Searh <C-S-e>, Tool Windows > Project <C-h>
-" Editor Actions > Focus Editor <C-l>
+" Searh <C-S-e>, Tool Windows > Project <C-l>
+" Editor Actions > Focus Editor <C-h>
 " Other > Select Opened File && Select File in Project View <C-S-o>
 " Search 'Reformat code' <C-S-i>
-" Search <Alt+0> -> <C-S-g>
-" Search <C-w> Close Tab -> <C-q>
+" Search <Alt+0> 'Tool Windows > Commit' -> <C-S-g>
+" Search <C-w> 'Close Tab' -> <C-q>
 
 " Actions on Save
 " format
@@ -102,6 +103,8 @@ map <C-v> <C-r>+
 
 nnoremap H ^
 nnoremap L $
+nnoremap <C-a> ^
+nnoremap <C-e> $
 nnoremap dH d^
 nnoremap dL d$
 nnoremap cH c^
@@ -144,6 +147,8 @@ inoremap <C-e> <End>
 
 vnoremap H ^
 vnoremap L $
+vnoremap <C-a> ^
+vnoremap <C-e> $
 vnoremap / "vy /<C-r>v<CR>zz
 vnoremap ? "vy ?<C-r>v<CR>zz
 vnoremap n "vy /<C-r>v<CR>zz
@@ -168,10 +173,11 @@ vnoremap <C-s> y/<C-R>"<CR>Ncgn
 
 " All / Others
 
-nnoremap <C-a> <ESC>GVgg
-vnoremap <C-a> <ESC>GVgg
+nnoremap <D-a> <ESC>GVgg
+vnoremap <D-a> <ESC>GVgg
 nnoremap <C-S-s> <ESC>:set scroll=0<CR>
 nnoremap <C-s> <ESC>:w<CR>
+nnoremap <D-s> <ESC>:w<CR>
 cnoremap <C-v> <C-r>+
 
 
