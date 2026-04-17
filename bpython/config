@@ -1,2 +1,3 @@
 [general]
+arg_spec = False
 color_scheme = foo

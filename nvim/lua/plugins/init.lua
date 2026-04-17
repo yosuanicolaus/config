@@ -432,7 +432,8 @@ return {
       local g = vim.g
 
       g.tex_flavor = "latex"
-      g.vimtex_view_method = "zathura_simple"
+      g.vimtex_view_method = "sioyek"
+      g.vimtex_view_sioyek_options = "--reuse-window"
       g.vimtex_quickfix_mode = 0
       g.vimtex_syntax_conceal = {
         math_bounds = 0,

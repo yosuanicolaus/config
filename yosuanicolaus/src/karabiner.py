@@ -3,7 +3,7 @@ import json
 import pyperclip
 
 rule_map = {
-    "description": "APPS (ctrl/both_cmds + (jkl;u/12345))",
+    "description": "YONIAPPS",
     "manipulators": [
         {
             "from": {"key_code": key_code, "modifiers": {"mandatory": modifier}},
@@ -11,13 +11,13 @@ rule_map = {
             "type": "basic",
         }
         for key_codes, app in (
-            [["j", "1"], "Google Chrome"],
-            [["k", "2"], "kitty"],
-            [["l", "3"], "Finder"],
-            [["semicolon", "4"], "Discord"],
-            [["u", "5"], "sioyek"],
-            [["i", "6"], "pycharm"],  # change to IDE later? and only when IDE is open?
-            [["o", "7"], "obsidian"],
+            [["a", "1"], "Google Chrome"],
+            [["s", "2"], "kitty"],
+            [["d", "3"], "Finder"],
+            [["f", "4"], "Discord"],
+            [["z", "5"], "sioyek"],
+            [["x", "6"], "pycharm"],  # change to IDE later? and only when IDE is open?
+            [["c", "7"], "obsidian"],
         )
         for modifier in (
             ["left_command", "right_command"],
