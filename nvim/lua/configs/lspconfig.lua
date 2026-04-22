@@ -56,7 +56,7 @@ M.defaults = function()
   dofile(vim.g.base46_cache .. "lsp")
   require("nvchad.lsp").diagnostic_config()
 
-  require("lspconfig").lua_ls.setup {
+  vim.lsp.config("lua_ls", {
     on_attach = M.on_attach,
     capabilities = M.capabilities,
     on_init = M.on_init,
@@ -79,13 +79,12 @@ M.defaults = function()
         },
       },
     },
-  }
+  })
+  vim.lsp.enable "lua_ls"
 end
 
 --------------------------------------------------------------------------------
---------------------------------------------------------------------------------
 
-local lspconfig = require "lspconfig"
 local servers = {
   "html",
   "cssls",
@@ -101,12 +100,12 @@ local servers = {
 
 -- lsps with default config
 for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
+  vim.lsp.config(lsp, {
     on_attach = M.on_attach,
     on_init = M.on_init,
     capabilities = M.capabilities,
-  }
+  })
+  vim.lsp.enable(lsp)
 end
-
 
 return M

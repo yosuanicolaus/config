@@ -58,7 +58,7 @@ matches:
 
   # python breakpoints
   - trigger: ":bp"
-    replace: "from rich.pretty import install, pprint as print, pprint as pp, pprint as p; install(); breakpoint()"
+    replace: "import logging; from rich.pretty import install; install(); logging.getLogger('odoo.tests.common').setLevel(logging.ERROR); breakpoint()"
     force_clipboard: true
   - trigger: ":pp"
     replace: "from rich.pretty import install, pprint as print, pprint as pp, pprint as p; install()"
@@ -155,6 +155,8 @@ matches:
     replace: "▶️"
   - trigger: ":xx"
     replace: "❌"
+  - trigger: ":!"
+    replace: "（！）"
 
   # Stars script (0~5)
   # :s[0~5] prints close stars (★★★★★)

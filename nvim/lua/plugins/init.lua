@@ -212,8 +212,8 @@ return {
       return require "configs.treesitter"
     end,
     config = function(_, opts)
-      require("nvim-treesitter.configs").setup(opts)
-      require("nvim-treesitter.configs").setup {
+      require("nvim-treesitter").setup(opts)
+      require("nvim-treesitter").setup {
         ensure_installed = { "markdown" },
         highlight = {
           enable = true,

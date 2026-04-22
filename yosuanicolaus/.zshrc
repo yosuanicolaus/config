@@ -28,7 +28,6 @@ alias diary='export DIARY_FILE="$(date +'%y%m%d').md" && cd ~/codes/obsidian/ &&
 alias buffer='export BUFFER_FILE="b$(date +'%y%m%d').md" && cd ~/codes/obsidian/ && touch buffer/$BUFFER_FILE && nvim buffer/$BUFFER_FILE'
 alias cdiary='~/codes/obsidian/diary/'
 alias co='~/codes/obsidian/'
-alias cnvo='~/codes/obsidian/ && nvim README.md'
 alias obsync='~/codes/obsidian/ && git add . && git commit -m "obsidian update" && git push'
 
 alias playobn='~/repos/OpenNetBattle/build/ && ./BattleNetwork -s'
@@ -57,17 +56,20 @@ alias cswap='cd ~/.local/state/nvim/swap/'
 alias conf='~/.config/ && nvim'
 alias cnv='~/.config/nvim/ && nvim'
 alias cnvc='echo "use \"cnv\" for neovim config" && sleep 1 && cnv'
+alias cnvcr="~/codes/competitive-rust/ && nvim --listen localhost:3708"
 alias cnvd='~/codes/obsidian/diary/ && nvim'
 alias cnve='~/.config/espanso/ && nvim match/base.yml'
 alias cnvi='~ && nvim ~/.ideavimrc'
 alias cnvk='~/.config/kitty/ && nvim kitty.conf'
+alias cnvo='~/codes/obsidian/ && nvim README.md'
 alias cnvrc='~/repos/config/ && nvim'
-alias cnvz='~ && nvim .zshrc'
 alias cnvrcph='~/.config/rust-competitive-helper/ && nvim rust-competitive-helper.toml'
-alias cnvw='~/.config/wezterm/ && nvim'
 alias cnvs='~/.config/sioyek/ && nvim'
+alias cnvt='/tmp/ && nvim'
+alias cnvu='~/codes/university/ && nvim'
+alias cnvw='~/.config/wezterm/ && nvim'
 alias cnvx='/var/lib/flatpak/app/com.github.xournalpp.xournalpp/x86_64/stable/active/files/share/xournalpp/ && nvim'
-alias cnvcr="~/codes/competitive-rust/ && nvim --listen localhost:3708"
+alias cnvz='~ && nvim .zshrc'
 alias note='nvim ~' # for quick note taking
 
 alias nvc='nvim ~/.config/nvim/lua/mappings.lua'
@@ -206,8 +208,8 @@ param_fin_1="--http-port="6969""
 param_fin_2="--unaccent"
 
 alias tobin='db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin -d $db $l1 $l2 $l3 $l4 $dev --addons-path=$ODOO_ROOT/odoo/addons,$ODOO_ROOT/enterprise,$ODOO_ROOT/tutorials'
-alias obin-old='db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin -d $db $l1 $l2 $l3 $l4 $addons $dev'
-alias obin-new='db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin -d $db $l1 $l2 $l3 $l4 $addons $dev --without-demo=0'
+alias obin-old='source $ODOO_ROOT/odoo/.venv/bin/activate && db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin -d $db $l1 $l2 $l3 $l4 $addons $dev'
+alias obin-new='source $ODOO_ROOT/odoo/.venv/bin/activate && db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin -d $db $l1 $l2 $l3 $l4 $addons $dev --without-demo=0'
 alias obindbg='db=$(obranch); [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin -d $db $l1 $l2 $l3 $l4 $addons'  # without $dev (auto reload, annoying for debugging)
 alias obindup='db=$("obranch")-dup; [[ $db != 1  ]] && $ODOO_ROOT/odoo/odoo-bin -d $db $l1 $l2 $l3 $l4 $addons $dev'
 

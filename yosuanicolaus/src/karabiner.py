@@ -3,7 +3,7 @@ import json
 import pyperclip
 
 rule_map = {
-    "description": "YONIAPPS",
+    "description": "YOSUA's APPS",
     "manipulators": [
         {
             "from": {"key_code": key_code, "modifiers": {"mandatory": modifier}},

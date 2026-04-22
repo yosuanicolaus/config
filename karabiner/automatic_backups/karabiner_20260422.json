@@ -4,39 +4,6 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "Ctrl + Space: Switch language unless in IDE/Terminal/Obsidian",
-                        "manipulators": [
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "md\\.obsidian",
-                                            "^net\\.kovidgoyal\\.kitty$",
-                                            "^io\\.kovidgoyal\\.kitty$",
-                                            "^app\\.ritger\\.kitty$",
-                                            "com\\.jetbrains\\.pycharm",
-                                            "com\\.google\\.antigravity",
-                                            "com\\.google\\.Chrome\\.app\\.ohdpglnjenajbohgikjjdjobbbfkipak",
-                                            "com\\.neovide\\.neovide"
-                                        ],
-                                        "type": "frontmost_application_unless"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "spacebar",
-                                    "modifiers": { "mandatory": ["right_control"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "l",
-                                        "modifiers": ["left_control", "left_command", "left_shift", "left_option"]
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
                         "description": "both-cmds+tab -> cmd+`",
                         "manipulators": [
                             {
@@ -232,7 +199,7 @@
                         ]
                     },
                     {
-                        "description": "YOSUA's APPS",
+                        "description": "APPS (ctrl/both_cmds + (jkl;u/12345))",
                         "manipulators": [
                             {
                                 "from": {
@@ -706,56 +673,6 @@
                     "treat_as_built_in_keyboard": true
                 },
                 {
-                    "fn_function_keys": [
-                        {
-                            "from": { "key_code": "f1" },
-                            "to": [{ "key_code": "f1" }]
-                        },
-                        {
-                            "from": { "key_code": "f2" },
-                            "to": [{ "key_code": "f2" }]
-                        },
-                        {
-                            "from": { "key_code": "f3" },
-                            "to": [{ "key_code": "f3" }]
-                        },
-                        {
-                            "from": { "key_code": "f4" },
-                            "to": [{ "key_code": "f4" }]
-                        },
-                        {
-                            "from": { "key_code": "f5" },
-                            "to": [{ "key_code": "f5" }]
-                        },
-                        {
-                            "from": { "key_code": "f6" },
-                            "to": [{ "key_code": "f6" }]
-                        },
-                        {
-                            "from": { "key_code": "f7" },
-                            "to": [{ "key_code": "f7" }]
-                        },
-                        {
-                            "from": { "key_code": "f8" },
-                            "to": [{ "key_code": "f8" }]
-                        },
-                        {
-                            "from": { "key_code": "f9" },
-                            "to": [{ "key_code": "f9" }]
-                        },
-                        {
-                            "from": { "key_code": "f10" },
-                            "to": [{ "key_code": "f10" }]
-                        },
-                        {
-                            "from": { "key_code": "f11" },
-                            "to": [{ "key_code": "f11" }]
-                        },
-                        {
-                            "from": { "key_code": "f12" },
-                            "to": [{ "key_code": "f12" }]
-                        }
-                    ],
                     "identifiers": {
                         "is_keyboard": true,
                         "product_id": 1,

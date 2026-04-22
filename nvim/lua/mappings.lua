@@ -208,6 +208,8 @@ map("n", "<leader>cpd", "<cmd>CompetiTest delete_testcase<CR>", { desc = "Compet
 --- [ Telescope Find ] ---
 map("n", "<C-f>", "<CMD>Telescope live_grep<CR>", { desc = "telescope live grep" })
 map("v", "<C-f>", '"zy <CMD>Telescope live_grep <CR><C-r>z', { desc = "search selection in all files" })
+map("n", "<D-f>", "<CMD>Telescope live_grep<CR>", { desc = "telescope live grep" })
+map("v", "<D-f>", '"zy <CMD>Telescope live_grep <CR><C-r>z', { desc = "search selection in all files" })
 map("n", "<leader>fw", "<cmd>Telescope live_grep<CR>", { desc = "telescope live grep" })
 map("n", "<leader>fb", "<cmd>Telescope buffers<CR>", { desc = "telescope find buffers" })
 map("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { desc = "telescope help page" })
