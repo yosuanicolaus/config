@@ -213,14 +213,6 @@ return {
     end,
     config = function(_, opts)
       require("nvim-treesitter").setup(opts)
-      require("nvim-treesitter").setup {
-        ensure_installed = { "markdown" },
-        highlight = {
-          enable = true,
-          disable = { "latex" },
-          additional_vim_regex_highlighting = { "latex", "markdown" },
-        },
-      }
     end,
   },
 

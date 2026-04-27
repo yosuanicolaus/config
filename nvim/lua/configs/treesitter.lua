@@ -18,11 +18,13 @@ return {
     "rust",
     "vim",
     "vimdoc",
+    "markdown",
   },
 
   highlight = {
     enable = true,
-    use_languagetree = true,
+    disable = { "latex" },
+    additional_vim_regex_highlighting = { "latex", "markdown" },
   },
 
   indent = { enable = true },
