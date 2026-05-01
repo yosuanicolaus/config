@@ -26,7 +26,7 @@ rule_map = {
             [["f", "4"], "Google Chrome"],
             [["z", "5"], "Finder"],
             [["x", "6"], "obsidian"],
-            [["c", "7"], "Finder"],
+            [["c", "7"], "tldraw"],
             [["v", "8"], "sioyek"],
         )
         for modifier in (
