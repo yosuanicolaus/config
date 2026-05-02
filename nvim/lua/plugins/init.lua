@@ -228,11 +228,13 @@ return {
     end,
   },
 
-  {
-    -- multiple cursor
-    "mg979/vim-visual-multi",
-    lazy = false,
-  },
+  -- {
+  --   -- multiple cursor
+  --   "mg979/vim-visual-multi",
+  --   lazy = false,
+  -- },
+
+  require "configs.multicursor",
 
   {
     -- 2023-11-13 markdown preview in browser

@@ -49,9 +49,7 @@ map("n", "zC", "zM")
 
 -- generalization | quality of life essentials
 map("n", "<C-a>", "GVgg", { desc = "general select all" })
-map("n", "<D-a>", "GVgg", { desc = "general select all" })
 map("n", "<C-s>", "<CMD>w<CR>", { desc = "general save file" })
-map("n", "<D-s>", "<CMD>w<CR>", { desc = "general save file" })
 map("n", "<C-S-s>", "<CMD>set scroll=0<CR>" .. echo "resetted scroll length")
 map("n", "<Esc>", "<CMD>noh<CR>", { desc = "general clear highlights" })
 
@@ -80,9 +78,7 @@ map("i", "<S-CR>", "<ESC>O")
 -- generalization | quality of life improvements
 map("i", "<C-BS>", "<C-w>")
 map("i", "<C-v>", "<C-r>+")
-map("i", "<D-a>", "<ESC>GVgg")
 map("i", "<C-s>", "<CMD>w<CR>")
-map("i", "<D-s>", "<CMD>w<CR>")
 
 ----------------------------------------------------------------------------------
 ---*[ VISUAL MODE ]*--------------------------------------------------------------
@@ -208,8 +204,6 @@ map("n", "<leader>cpd", "<cmd>CompetiTest delete_testcase<CR>", { desc = "Compet
 --- [ Telescope Find ] ---
 map("n", "<C-f>", "<CMD>Telescope live_grep<CR>", { desc = "telescope live grep" })
 map("v", "<C-f>", '"zy <CMD>Telescope live_grep <CR><C-r>z', { desc = "search selection in all files" })
-map("n", "<D-f>", "<CMD>Telescope live_grep<CR>", { desc = "telescope live grep" })
-map("v", "<D-f>", '"zy <CMD>Telescope live_grep <CR><C-r>z', { desc = "search selection in all files" })
 map("n", "<leader>fw", "<cmd>Telescope live_grep<CR>", { desc = "telescope live grep" })
 map("n", "<leader>fb", "<cmd>Telescope buffers<CR>", { desc = "telescope find buffers" })
 map("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { desc = "telescope help page" })
@@ -217,6 +211,12 @@ map("n", "<leader>fm", "<cmd>Telescope marks<CR>", { desc = "telescope find mark
 map("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", { desc = "telescope find oldfiles" })
 map("n", "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "telescope find in current buffer" })
 map("n", "<leader>ft", "<CMD>Telescope tagstack<CR>")
+
+--- [ Remap some mac cmd- shortcuts to C- ] ---
+map({ "n", "v" }, "<D-f>", "<C-f>", { remap = true })
+map({ "n", "i" }, "<D-s>", "<C-s>", { remap = true })
+map({ "n", "i" }, "<D-a>", "<C-a>", { remap = true })
+map({ "n" }, "<D-p>", "<C-p>", { remap = true })
 
 map(
   "n",

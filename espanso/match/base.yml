@@ -106,6 +106,18 @@ matches:
   - trigger: ":^2"
     replace: "²"
 
+  # Open University
+  - trigger: "mst124"
+    replace: "[MST124] "
+  - trigger: "mst125"
+    replace: "[MST125] "
+  - trigger: "m208"
+    replace: "[M208] "
+  - trigger: "mst224"
+    replace: "[MST224] "
+  - trigger: "m248"
+    replace: "[M248] "
+
   # emojis
   - trigger: ":lenny"
     replace: "( ͡° ͜ʖ ͡°)"
