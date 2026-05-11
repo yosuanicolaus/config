@@ -94,10 +94,9 @@ end
 
 -- 240825 Neovide
 if vim.g.neovide then
-  o.guifont = "JetBrainsMono Nerd Font Mono:h11"
+  o.guifont = "JetBrainsMono Nerd Font Mono:h12"
   g.neovide_scroll_animation_length = 0
   g.neovide_cursor_animation_length = 0
-  -- vim.g.neovide_transparency = 0.9
 end
 
 -- 250729 detect *.sch filetype as xml files

@@ -68,7 +68,7 @@ alias cnvs='~/.config/sioyek/ && nvim'
 alias cnvt='/tmp/ && nvim'
 alias cnvu='~/codes/university/ && nvim'
 alias cnvw='~/.config/wezterm/ && nvim'
-alias cnvx='/var/lib/flatpak/app/com.github.xournalpp.xournalpp/x86_64/stable/active/files/share/xournalpp/ && nvim'
+alias cnvx='/Applications/Xournal++.app/Contents/Resources/ && nvim'
 alias cnvz='~ && nvim .zshrc'
 alias note='nvim ~' # for quick note taking
 
