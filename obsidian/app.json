@@ -1,0 +1,12 @@
+{
+  "vimMode": true,
+  "showLineNumber": true,
+  "readableLineLength": false,
+  "strictLineBreaks": false,
+  "alwaysUpdateLinks": true,
+  "foldHeading": true,
+  "newFileLocation": "folder",
+  "newFileFolderPath": "scratch",
+  "rightToLeft": false,
+  "autoPairMarkdown": false
+}

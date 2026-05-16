@@ -16,6 +16,7 @@
 !zed/
 !rust-competitive-helper/
 !karabiner/
+!obsidian/
 !xournalpp/
 !yosuanicolaus/
 
@@ -29,6 +30,8 @@
 !/Code/User/settings.json
 !/Code/User/keybindings.json
 !/Code/User/snippets/
+
+/obsidian/workspace.json
 
 # Whitelist specific files in the home directory
 !.zshrc

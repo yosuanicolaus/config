@@ -1,0 +1,1 @@
+/Users/yosuanicolaus/.config/yosuanicolaus/obsidian.vimrc
