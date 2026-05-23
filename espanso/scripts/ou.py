@@ -1,65 +1,66 @@
 import sys
 
 # Output of the following bash command (last updated [260222])
-# for d in 11 12 13 14; do find "./$d" -mindepth 2 -type f -name "*.pdf" ! -path "*/figures/*" | sort; done
+# for d in 123 124 125 140 208 224 248; do find "./$d" -mindepth 2 -type f -name "*.pdf" ! -path "*/figures/*" | sort; done
 find_result = """
-./11/01/Starting points.pdf
-./11/02/Mathematical models.pdf
-./11/03/Numbers.pdf
-./11/04/Statistical summaries.pdf
-./11/05/Algebra.pdf
-./11/06/Graphs.pdf
-./11/07/Equations and inequalities.pdf
-./11/08/Geometry.pdf
-./11/09/Expanding algebra.pdf
-./11/10/Quadratics.pdf
-./11/11/Statistical pictures.pdf
-./11/12/Trigonometry.pdf
-./11/13/Exponentials.pdf
-./11/14/Mathematics everywhere.pdf
-./12/01/Looking for patterns.pdf
-./12/02/Prices.pdf
-./12/03/Earnings.pdf
-./12/04/Surveys.pdf
-./12/05/Relationships.pdf
-./12/06/Truancy.pdf
-./12/07/Factors affecting reading.pdf
-./12/08/Teaching how to read.pdf
-./12/09/Comparing schools.pdf
-./12/10/Experiments.pdf
-./12/11/Testing new drugs.pdf
-./12/12/Review.pdf
-./13/01/Algebra.pdf
-./13/02/Graphs and equations.pdf
-./13/03/Functions.pdf
-./13/04/Trigonometry.pdf
-./13/05/Coordinate geometry and vectors.pdf
-./13/06/Differentiation.pdf
-./13/07/Differentiation methods and integration.pdf
-./13/08/Integration methods.pdf
-./13/09/Matrices.pdf
-./13/10/Sequences and series.pdf
-./13/11/Taylor polynomials.pdf
-./13/12/Complex numbers.pdf
-./14/01/Key Techniques.pdf
-./14/02/Mathematical Typesetting.pdf
-./14/03/Number Theory.pdf
-./14/04/Conics.pdf
-./14/05/Statics.pdf
-./14/06/Geometric Transformations.pdf
-./14/07/Topics in Calculus.pdf
-./14/08/Differential Equations.pdf
-./14/09/Mathematical Language and Proof.pdf
-./14/10/Dynamics.pdf
-./14/11/Eigenvalues and Eigenvectors.pdf
-./14/12/Combinatorics.pdf
+./123/01/Starting points.pdf
+./123/02/Mathematical models.pdf
+./123/03/Numbers.pdf
+./123/04/Statistical summaries.pdf
+./123/05/Algebra.pdf
+./123/06/Graphs.pdf
+./123/07/Equations and inequalities.pdf
+./123/08/Geometry.pdf
+./123/09/Expanding algebra.pdf
+./123/10/Quadratics.pdf
+./123/11/Statistical pictures.pdf
+./123/12/Trigonometry.pdf
+./123/13/Exponentials.pdf
+./123/14/Mathematics everywhere.pdf
+./124/01/Algebra.pdf
+./124/02/Graphs and equations.pdf
+./124/03/Functions.pdf
+./124/04/Trigonometry.pdf
+./124/05/Coordinate geometry and vectors.pdf
+./124/06/Differentiation.pdf
+./124/07/Differentiation methods and integration.pdf
+./124/08/Integration methods.pdf
+./124/09/Matrices.pdf
+./124/10/Sequences and series.pdf
+./124/11/Taylor polynomials.pdf
+./124/12/Complex numbers.pdf
+./124/figures13/tma3-7.pdf
+./125/01/Key Techniques.pdf
+./125/02/Mathematical Typesetting.pdf
+./125/03/Number Theory.pdf
+./125/04/Conics.pdf
+./125/05/Statics.pdf
+./125/06/Geometric Transformations.pdf
+./125/07/Topics in Calculus.pdf
+./125/08/Differential Equations.pdf
+./125/09/Mathematical Language and Proof.pdf
+./125/10/Dynamics.pdf
+./125/11/Eigenvalues and Eigenvectors.pdf
+./125/12/Combinatorics.pdf
+./140/01/Looking for patterns.pdf
+./140/02/Prices.pdf
+./140/03/Earnings.pdf
+./140/04/Surveys.pdf
+./140/05/Relationships.pdf
+./140/06/Truancy.pdf
+./140/07/Factors affecting reading.pdf
+./140/08/Teaching how to read.pdf
+./140/09/Comparing schools.pdf
+./140/10/Experiments.pdf
+./140/11/Testing new drugs.pdf
+./140/12/Review.pdf
 """.strip()
 
 mod_codes = {
-    "11": "MU123",
-    "12": "M140",
-    "13": "MST124",
-    "14": "MST125",
+    "123": "MU123",
+    "140": "M140",
+    "124": "MST124",
+    "125": "MST125",
 }
 
 ou_modules = {}
@@ -73,17 +74,17 @@ for file_path in find_result.split("\n"):
 
 def generate_ou_module(trigger: str):
     """
-    ex trigger: "1101", "1309"
+    ex trigger: "12301", "10409"
     """
-    mod_num = trigger[:2]
+    mod_num = trigger[:3]
     unit_num = trigger[-2:]
 
     try:
         mod_code = mod_codes[mod_num]
         unit_name = ou_modules[mod_num][unit_num]
-        return f"{mod_code} / u.{unit_num} / {unit_name}"
+        return f"[{mod_code}] u.{unit_num} — {unit_name}"
     except KeyError:
-        return f"OU Module-Unit '{mod_num}-{unit_num}' does not exist"
+        return f"OU Module-Unit '[{mod_num}] u.{unit_num}' does not exist"
 
 
 if __name__ == "__main__":

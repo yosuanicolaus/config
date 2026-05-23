@@ -1,0 +1,9 @@
+# [260523]
+# Anki
+# for date/sdate/mst124/mst125
+
+filter_class: net\.ankiweb\.launcher
+disable_x11_fast_inject: true
+key_delay: 4
+backend: clipboard
+
