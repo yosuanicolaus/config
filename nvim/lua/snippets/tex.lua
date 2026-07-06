@@ -89,9 +89,12 @@ return {
   ps_im({ trig = "ddx" }, "\\dd x"),
   ps_im({ trig = "ddy" }, "\\dd y"),
   ps_im({ trig = "ddu" }, "\\dd u"),
+  ps_im({ trig = "ddt" }, "\\dd t"),
+  ps_im({ trig = "ddv" }, "\\dd v"),
   ps_im({ trig = "+-" }, "\\pm"),
   ps_im({ trig = "e=" }, "&\\equiv $0 \\\\\\\\"),
   ps_im({ trig = "=e" }, "\\equiv $0"),
+  ps_im({ trig = "tag" }, "\\tag{$0}"),
 
   -- INSTANT OUTSIDE MATH MODE
   ps_nm({ trig = ":-1" }, "$^{-1}$"),
