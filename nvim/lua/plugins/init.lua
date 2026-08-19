@@ -443,6 +443,7 @@ return {
   {
     --LaTeX snippets from Gilles Castel
     "yosuanicolaus/luasnip-latex-snippets.nvim",
+    dir = "~/repos/luasnip-latex-snippets.nvim",
     -- vimtex isn't required if using treesitter
     ft = { "tex" },
     requires = { "L3MON4D3/LuaSnip", "lervag/vimtex" },

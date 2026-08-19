@@ -10,12 +10,31 @@ global_vars:
     type: date
     params:
       format: "%y%m%d"
+  - name: my_date_y
+    type: date
+    params:
+      format: "%y%m%d"
+      offset: -86400
+  - name: my_date_yy
+    type: date
+    params:
+      format: "%y%m%d"
+      offset: -172800
+  - name: my_date_t
+    type: date
+    params:
+      format: "%y%m%d"
+      offset: +86400
+  - name: my_date_tt
+    type: date
+    params:
+      format: "%y%m%d"
+      offset: +172800
 
   - name: my_jp_date
     type: shell
     params:
       cmd: "python3 -c \"print('{{my_date}}'.translate(str.maketrans('0123456789', '０１２３４５６７８９')))\""
-
   - name: mytime
     type: date
     params:
@@ -151,8 +170,8 @@ matches:
     replace: "✨"
   - trigger: ":ok"
     replace: "👌"
-  - trigger: ":STAR"
-    replace: "🌟"
+  # - trigger: ":STAR"
+  #   replace: "🌟"
   - trigger: ":salut"
     replace: "🫡"
   - trigger: ":chk"
@@ -169,18 +188,29 @@ matches:
     replace: "（！）"
 
   # Stars script (0~5)
+  # [260819] update - back to basic because star script is slow
+  - trigger: ":s1"
+    replace: "★☆☆☆☆"
+  - trigger: ":s2"
+    replace: "★★☆☆☆"
+  - trigger: ":s3"
+    replace: "★★★☆☆"
+  - trigger: ":s4"
+    replace: "★★★★☆"
+  - trigger: ":s5"
+    replace: "★★★★★"
   # :s[0~5] prints close stars (★★★★★)
   # :ss[0~5] prints distant stars (★ ★ ★ ★ ★ )
   # :S~ / :SS~ prints on 10 stars system (ST/SST for full 10 star)
   # :-s[0~5] (or other type of s) appends "- " at the start
-  - regex: ":(?P<trigger>((-|j)?((s|ss)[0-5]|(S|SS)[0-9]|ST|SST)))"
-    replace: "{{output}} "
-    force_clipboard: true
-    vars:
-      - name: output
-        type: shell
-        params:
-          cmd: "python3 \"{{SCRIPT}}/stars.py\" {{trigger}}"
+  # - regex: ":(?P<trigger>((-|j)?((s|ss)[0-5]|(S|SS)[0-9]|ST|SST)))"
+  #   replace: "{{output}} "
+  #   force_clipboard: true
+  #   vars:
+  #     - name: output
+  #       type: shell
+  #       params:
+  #         cmd: "python3 \"{{SCRIPT}}/stars.py\" {{trigger}}"
 
   - regex: "ou(?P<trigger>([1-3][0-9][0-9][0-1][0-9]))"
     replace: "{{output}} "
@@ -206,34 +236,43 @@ matches:
     replace: "土"
   - trigger: ":nichi"
     replace: "日"
-  - trigger: "(getsu"
+  - trigger: ":(getsu"
     replace: "（月）"
-  - trigger: "(ka"
+  - trigger: ":(ka"
     replace: "（火）"
-  - trigger: "(sui"
+  - trigger: ":(sui"
     replace: "（水）"
-  - trigger: "(moku"
+  - trigger: ":(moku"
     replace: "（木）"
-  - trigger: "(kin"
+  - trigger: ":(kin"
     replace: "（金）"
-  - trigger: "(do"
+  - trigger: ":(do"
     replace: "（土）"
-  - trigger: "(nichi"
+  - trigger: ":(nichi"
     replace: "（日）"
 
   # Date & Time (uses global variables)
   - trigger: ":date"
-    replace: "{{my_date}}"
-  - trigger: ":sdate"
     replace: "[{{my_date}}]"
+  - trigger: ":ydate"
+    replace: "[{{my_date_y}}]"
+  - trigger: ":yydate"
+    replace: "[{{my_date_yy}}]"
+  - trigger: ":tdate"
+    replace: "[{{my_date_t}}]"
+  - trigger: ":ttdate"
+    replace: "[{{my_date_tt}}]"
+
+  - trigger: ":rdate"
+    replace: "{{my_date}}"
   - trigger: ":jdate"
     replace: "「{{my_date}}」"
   - trigger: ":jpdate"
     replace: "「{{my_jp_date}}」"
     force_clipboard: true
-  - trigger: ":time"
-    replace: "{{mytime}}"
 
-  - trigger: ":stime"
+  - trigger: ":time"
     replace: "[{{mytime}}]"
+  - trigger: ":rtime"
+    replace: "{{mytime}}"
 
