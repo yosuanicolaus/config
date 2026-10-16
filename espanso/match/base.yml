@@ -125,15 +125,15 @@ matches:
 
   # Open University
   - trigger: "mst124"
-    replace: "[MST124] "
+    replace: "MST124"
   - trigger: "mst125"
-    replace: "[MST125] "
+    replace: "MST125"
   - trigger: "m208"
-    replace: "[M208] "
+    replace: "M208"
   - trigger: "mst224"
-    replace: "[MST224] "
+    replace: "MST224"
   - trigger: "m248"
-    replace: "[M248] "
+    replace: "M248"
 
   # emojis
   - trigger: ":lenny"
@@ -187,18 +187,44 @@ matches:
   - trigger: ":!"
     replace: "（！）"
 
+  # [260919] moon lit up side to indicate parts of unit to learn
+  - trigger: ":0to25"
+    replace: "🌘"
+  - trigger: ":0to50"
+    replace: "🌗"
+  - trigger: ":0to75"
+    replace: "🌖"
+  - trigger: ":0to100"
+    replace: "🌕"
+  - trigger: ":25to100"
+    replace: "🌔"
+  - trigger: ":50to100"
+    replace: "🌓"
+  - trigger: ":75to100"
+    replace: "🌒"
+
   # Stars script (0~5)
   # [260819] update - back to basic because star script is slow
   - trigger: ":s1"
-    replace: "★☆☆☆☆"
+    replace: "★"
   - trigger: ":s2"
-    replace: "★★☆☆☆"
+    replace: "★★"
   - trigger: ":s3"
-    replace: "★★★☆☆"
+    replace: "★★★"
   - trigger: ":s4"
-    replace: "★★★★☆"
+    replace: "★★★★"
   - trigger: ":s5"
     replace: "★★★★★"
+  - trigger: ":sh0"
+    replace: "☆"
+  - trigger: ":sh1"
+    replace: "★☆"
+  - trigger: ":sh2"
+    replace: "★★☆"
+  - trigger: ":sh3"
+    replace: "★★★☆"
+  - trigger: ":sh4"
+    replace: "★★★★☆"
   # :s[0~5] prints close stars (★★★★★)
   # :ss[0~5] prints distant stars (★ ★ ★ ★ ★ )
   # :S~ / :SS~ prints on 10 stars system (ST/SST for full 10 star)

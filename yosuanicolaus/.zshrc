@@ -47,6 +47,7 @@ alias cdn='cd ~/.config/nvim/'
 alias cdc='cd ~/.config/'
 alias cda='cd ~/app/'
 alias cdd='cd ~/Downloads/'
+alias cddt='cd ~/Downloads/temp/'
 alias cg='cd ~/codes/godot/'
 alias ct='cd ~/codes/obsidian/'
 alias ccr='cd ~/codes/competitive-rust/'
@@ -71,6 +72,8 @@ alias cnvw='~/.config/wezterm/ && nvim'
 alias cnvx='/Applications/Xournal++.app/Contents/Resources/ && nvim'
 alias cnvz='~ && nvim .zshrc'
 alias note='nvim ~' # for quick note taking
+alias note2='nvim ~/codes/' # for quick note taking
+alias note2='nvim ~/Downloads/' # for quick note taking
 
 alias nvc='nvim ~/.config/nvim/lua/mappings.lua'
 alias nve='nvim ~/.config/espanso/match/base.yml'
@@ -443,3 +446,24 @@ export PATH="/Library/TeX/texbin:$PATH"
 # 260409 PSQL for mac
 export PATH="/Library/PostgreSQL/18/bin:$PATH"
 
+# [260918] for easy renaming
+autoload -U zmv
+
+
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+path=('/Users/yosuanicolaus/.juliaup/bin' $path)
+export PATH
+# Tab completion for juliaup and julia channel selection
+[ -f "/Users/yosuanicolaus/.julia/juliaup/completions/zsh.zsh" ] && source "/Users/yosuanicolaus/.julia/juliaup/completions/zsh.zsh"
+
+# <<< juliaup initialize <<<
+
+
+# Added by Antigravity CLI installer
+export PATH="/Users/yosuanicolaus/.local/bin:$PATH"
+
+# [261003] python issue...
+export PATH="$HOME/Library/Python/3.9/bin:$PATH"

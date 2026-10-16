@@ -1,7 +1,13 @@
 dofile(vim.g.base46_cache .. "nvimtree")
 
 return {
-  filters = { dotfiles = false },
+  filters = {
+    dotfiles = false,
+  },
+  git = {
+    enable = true,
+    ignore = false, -- Set to false to show files ignored by .gitignore
+  },
   disable_netrw = true,
   hijack_cursor = true,
   sync_root_with_cwd = true,
