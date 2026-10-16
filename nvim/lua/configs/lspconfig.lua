@@ -86,11 +86,66 @@ end
 
 --------------------------------------------------------------------------------
 
+-- Resolve the python interpreter for uv / venv projects.
+-- Pyright defaults to system python, so `from laya import ...` fails
+-- even though the package exists in `<project>/.venv`.
+local function resolve_project_python(workspace)
+  -- 1. Already-activated venv (e.g. `source .venv/bin/activate`)
+  if vim.env.VIRTUAL_ENV and vim.fn.executable(vim.env.VIRTUAL_ENV .. "/bin/python") == 1 then
+    return vim.env.VIRTUAL_ENV .. "/bin/python"
+  end
+
+  -- 2. Walk up from the workspace root looking for uv/venv layouts
+  local dir = workspace and vim.fn.fnamemodify(workspace, ":p:h") or vim.fn.getcwd()
+  while dir and dir ~= "" do
+    for _, candidate in ipairs {
+      vim.fs.joinpath(dir, ".venv", "bin", "python"),
+      vim.fs.joinpath(dir, "venv", "bin", "python"),
+      vim.fs.joinpath(dir, ".venv", "Scripts", "python.exe"),
+    } do
+      if vim.fn.executable(candidate) == 1 then
+        return candidate
+      end
+    end
+    local parent = vim.fn.fnamemodify(dir, ":h")
+    if not parent or parent == dir then
+      break
+    end
+    dir = parent
+  end
+
+  return vim.fn.exepath "python3" ~= "" and vim.fn.exepath "python3" or "python3"
+end
+
+vim.lsp.config("pyright", {
+  on_attach = M.on_attach,
+  on_init = M.on_init,
+  capabilities = M.capabilities,
+  before_init = function(_, config)
+    local workspace = config.root_dir or vim.fn.getcwd()
+    local python = resolve_project_python(workspace)
+    config.settings = config.settings or {}
+    config.settings.python = config.settings.python or {}
+    -- Only set a default; respect explicit pyrightconfig.json / settings
+    if not config.settings.python.pythonPath then
+      config.settings.python.pythonPath = python
+    end
+  end,
+  settings = {
+    python = {
+      analysis = {
+        autoSearchPaths = true,
+        useLibraryCodeForTypes = true,
+      },
+    },
+  },
+})
+vim.lsp.enable "pyright"
+
 local servers = {
   "html",
   "cssls",
   "rust_analyzer",
-  "pyright",
   "ruff",
   "gdscript",
   "ts_ls",
