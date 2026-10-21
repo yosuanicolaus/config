@@ -95,6 +95,7 @@ return {
   ps_im({ trig = "e=" }, "&\\equiv $0 \\\\\\\\"),
   ps_im({ trig = "=e" }, "\\equiv $0"),
   ps_im({ trig = "tag" }, "\\tag{$0}"),
+  ps_im({ trig = "tg" }, "\\tag*{$0}"),
 
   -- INSTANT OUTSIDE MATH MODE
   ps_nm({ trig = ":-1" }, "$^{-1}$"),
