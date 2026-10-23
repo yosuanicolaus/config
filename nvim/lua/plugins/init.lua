@@ -433,7 +433,7 @@ return {
         math_bounds = 0,
       }
       o.conceallevel = 2
-      g.tex_conceal = "abdmgs"
+      g.tex_conceal = "abdgs"
       g.vimtex_compiler_latexmk = {
         out_dir = vim.fn.getcwd() .. "/build",
       }
@@ -448,7 +448,7 @@ return {
     ft = { "tex" },
     requires = { "L3MON4D3/LuaSnip", "lervag/vimtex" },
     config = function()
-      require("luasnip-latex-snippets").setup { use_treesitter = false }
+      require("luasnip-latex-snippets").setup { use_treesitter = true }
       require("luasnip").config.setup { enable_autosnippets = true }
     end,
   },
@@ -458,4 +458,83 @@ return {
   },
 
   -- { import = "nvchad.blink.lazyspec" },
+
+  {
+    -- [261023]
+    "Julian/lean.nvim",
+    event = { "BufReadPre *.lean", "BufNewFile *.lean" },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      -- Optional: 'nvim-telescope/telescope.nvim', for :Telescope loogle
+    },
+    opts = {
+      mappings = true, -- Enables built-in Lean keybindings
+    },
+  },
+
+  {
+    "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
+    opts = {
+      image = {
+        enabled = true,
+        doc = {
+          enabled = true,
+          inline = true,
+          float = true, -- fallback if inline isn't available
+          max_width = 120, -- default 80 clips wide align blocks
+          max_height = 40,
+          -- default already conceals math text once rendered
+        },
+        math = {
+          enabled = true,
+          latex = {
+            font_size = "normalsize",
+            packages = { "amsmath", "amssymb", "amsfonts", "amscd", "mathtools", "amsthm" },
+          },
+        },
+        -- convert = { notify = true }, -- show errors instead of failing silently
+      },
+    },
+    keys = {
+      {
+        "<leader>ki",
+        function()
+          Snacks.image.hover()
+        end,
+        desc = "Image hover",
+      },
+    },
+
+    config = function(_, opts)
+      require("snacks").setup(opts)
+
+      vim.api.nvim_create_autocmd("User", {
+        pattern = "VeryLazy",
+        callback = function()
+          local inline = require "snacks.image.inline"
+          local orig = inline.update
+          inline.update = function(self, ...)
+            local m = vim.api.nvim_get_mode().mode:sub(1, 1)
+            if m == "i" or m == "R" then
+              return
+            end -- don't re-render while typing
+            return orig(self, ...)
+          end
+
+          -- catch up once when leaving insert mode
+          vim.api.nvim_create_autocmd("InsertLeave", {
+            callback = function(ev)
+              pcall(vim.api.nvim_exec_autocmds, "WinScrolled", {
+                group = "snacks.image.inline." .. ev.buf,
+                buffer = ev.buf,
+                modeline = false,
+              })
+            end,
+          })
+        end,
+      })
+    end,
+  },
 }
