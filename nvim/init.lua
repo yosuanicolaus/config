@@ -23,6 +23,9 @@ dofile(vim.g.base46_cache .. "statusline")
 
 require "nvchad.autocmds"
 
+-- 261027 patches
+require "patches"
+
 vim.schedule(function()
   require "commands"
   require "mappings"
