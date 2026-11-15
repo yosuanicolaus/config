@@ -65,3 +65,16 @@ vim.api.nvim_create_autocmd("User", {
     end
   end,
 })
+
+vim.keymap.set("n", "<leader>um", function()
+  local m = Snacks.image.config.math
+  m.enabled = not m.enabled
+  local buf = vim.api.nvim_get_current_buf()
+  -- nudge the buffer's renderer to re-scan (same trigger as the InsertLeave patch)
+  pcall(vim.api.nvim_exec_autocmds, "WinScrolled", {
+    group = "snacks.image.inline." .. buf,
+    buffer = buf,
+    modeline = false,
+  })
+  vim.notify("Inline math rendering: " .. (m.enabled and "on" or "off"))
+end, { desc = "Toggle inline math rendering" })

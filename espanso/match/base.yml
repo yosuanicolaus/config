@@ -104,6 +104,8 @@ matches:
     replace: "〜"
   - trigger: ":--"
     replace: "—"
+  - trigger: ":80-"
+    replace: "--------------------------------------------------------------------------------"
 
   # math stuffs
   - trigger: ":sub0"

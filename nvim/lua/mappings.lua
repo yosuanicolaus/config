@@ -56,6 +56,7 @@ map("n", "<Esc>", "<CMD>noh<CR>", { desc = "general clear highlights" })
 -- toggles
 map("n", "<leader>tgn", "<CMD>set nu!<CR>", { desc = "toggle line number" })
 map("n", "<leader>tgr", "<CMD>set rnu!<CR>", { desc = "toggle relative number" })
+map("n", "<leader>tgw", "<CMD>set wrap!<CR>", { desc = "toggle wrap" })
 
 -- script: automatically copy file path
 map("n", "<C-g>", "<CMD>call setreg('+', expand('%'))<CR><C-g>")
