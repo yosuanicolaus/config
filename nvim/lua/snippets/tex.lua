@@ -90,6 +90,7 @@ local ps_im = ls.extend_decorator.apply(ps, { condition = pipe { is_math } }) --
 return {
   -- PROMPT OUTSIDE MATH MODE
   ps_nm({ trig = "bq" }, "\\begin{question}\n\t$0\n\\end{question}"),
+  ps_nm({ trig = "bqn" }, "\\begin{question}[$1]\n\t$0\n\\end{question}"),
   ps_nm({ trig = "qp" }, "\\qpart\n$0"),
   ps_nm({ trig = "qsp" }, "\\qsubpart\n$0"),
   ps_nm(
